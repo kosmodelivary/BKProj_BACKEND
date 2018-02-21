@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+	<sqlMap namespace="Delivary">
+	
+	<!-- AdminDto 별칭, resultMap -->
+	<typeAlias alias="AdminDto" type="com.academy.delivery.service.AdminDto"/>
+	<resultMap id="AdminDtoResult" class="AdminDto">
+		<result property="id" />
+		<result property="pass" />
+		<result property="name" />
+		<result property="adminlevel" />
+	</resultMap>
+
+	<!-- MemberDto 별칭, resultMap -->
+	<typeAlias alias="MemberDto" type="com.academy.delivery.service.MemberDto"/>
+	<resultMap id="MemberDtoResult" class="MemberDto">
+		<result property="no" />
+		<result property="email" />
+		<result property="pass" />
+		<result property="name" />
+		<result property="tel" />
+		<result property="agreesms" />
+		<result property="agreeemail" />
+	</resultMap>
+	
+	<!-- StoreDto 별칭, resultMap -->
+	<typeAlias alias="StoreDto" type="com.academy.delivery.service.StoreDto"/>
+	<resultMap id="StoreDtoResult" class="StoreDto">
+		<result property="no" />
+		<result property="name" />
+		<result property="tel" />
+		<result property="address" />
+		<result property="weekdayon" />
+		<result property="weekdayoff" />
+		<result property="weekendon" />
+		<result property="weekendoff" />
+	</resultMap>
+	
+	
+	<!-- AdminDao 사용 DB Query -->
+	<select id="Admin.login" parameterClass="AdminDto" resultClass="int">
+		SELECT COUNT(*) FROM bk_admin WHERE id = #id# AND pass = #pass#
+	</select>
+
+	<!-- MemberDao 사용 DB Query -->
+	<select id="Member.selectList" resultMap="MemberDtoResult">
+		SELECT * FROM bk_member ORDER BY no DESC
+	</select>
+	<select id="Member.selectOne" parameterClass="java.lang.String" resultMap="MemberDtoResult">
+		SELECT * FROM bk_member WHERE no = #no#
+	</select>
+	<update id="Member.update" parameterClass="MemberDto">
+		UPDATE bk_member SET name = #name#, tel = #tel#, agreesms = #agreesms#, agreeemail = #agreeemail# WHERE no = #no#
+	</update>
+	<delete id="Member.delete" parameterClass="java.lang.String" >
+		DELETE FROM bk_member WHERE no = #no# 
+	</delete>
+	
+	<!-- StoreDao 사용 DB Query -->
+	<select id="Store.selectList" resultMap="StoreDtoResult">
+		SELECT * FROM bk_store ORDER BY no DESC
+	</select>
+	<select id="Store.selectOne" parameterClass="java.lang.String" resultMap="StoreDtoResult">
+		SELECT * FROM bk_store WHERE no = #no#
+	</select>
+	<update id="Store.update" parameterClass="StoreDto">
+		UPDATE bk_store SET name = #name#, tel = #tel#, address = #address#, 
+		weekdayon = #weekdayon#, weekdayoff = #weekdayoff#, weekendon = #weekendon#, weekendoff = #weekendoff# 
+		WHERE no = #no#
+	</update>
+	<delete id="Store.delete" parameterClass="java.lang.String" >
+		DELETE FROM bk_store WHERE no = #no# 
+	</delete>
+	<insert id="Store.insert" parameterClass="StoreDto">
+		INSERT INTO bk_store VALUES (SEQ_STORE_NO.NEXTVAL, #name#, #tel#, #address#, #weekdayon#, #weekdayoff#, #weekendon#, #weekendoff#)
+	</insert>
+	
+
+  <!-- 
+  	parameterClass가 Map, DTO 계열인 경우 반드시
+  	Map은 #키값#, DTO는 #속성명# 사용. 대소문자도 반드시 지킬 것.
+  	
+  	parameterClass가 String, int인 경우 #임의의 변수# 해도 관계 없음
+  	
+  	#값# -> 값에 해당하는 곳에서만
+  	$객체$ -> 객체에 해당하는 곳에서만 (테이블 이름, 컬렴 이름)
+  	
+  	- >= : &gt;=, <=: &lt;=
+  	
+  	-  
+  -->
+  <!-- id 속성에 지정한 값을 java code에서 사용 -->
+  <!-- dynamic, iterate 참고할 것 -->
+  <!-- 
+  <select id="ReplyBBS.login" parameterClass="java.util.Map" resultClass="int">
+  	SELECT COUNT(*) FROM member WHERE id = #id# AND pwd = #pwd#
+  </select>
+
+  <select id="ReplyBBS.list" parameterClass="java.util.Map" resultMap="ReplyBBSDtoResult" >
+	SELECT * FROM (SELECT T.*, ROWNUM R FROM (SELECT RB.*, name FROM replybbs RB JOIN member M ON RB.id = M.id
+	
+	<isNotNull property="searchColumn">
+		WHERE $searchColumn$ LIKE '%' || #searchWord# || '%'
+	</isNotNull>				
+	ORDER BY refer DESC, step ASC) T) WHERE R BETWEEN #start# AND #end#
+
+  </select>
+
+  <select id="ReplyBBS.totalcount" parameterClass="java.util.Map" resultClass="Integer">
+	SELECT COUNT(*) FROM replybbs RB JOIN member M ON RB.id = M.id
+	
+	<isNotNull property="searchColumn">
+		WHERE $searchColumn$ LIKE '%' || #searchWord# || '%'
+	</isNotNull>				
+  
+  </select>
+
+  <select id="ReplyBBS.selectOne" parameterClass="java.util.Map" resultClass="ReplyBBSDto" >
+  
+ 	SELECT RB.*, name FROM replybbs RB JOIN member M ON RB.id = M.id WHERE no = #key#
+  
+  </select>
+  
+  <update id="ReplyBBS.reply_update" parameterClass="java.util.Map">
+  
+  	UPDATE replybbs SET step=step + 1 WHERE refer = #refer# AND step &gt; #step#
+  	
+  
+  </update>
+  
+  <insert id="ReplyBBS.reply_insert" parameterClass="java.util.Map">
+  
+  	INSERT INTO replybbs VALUES(SEQ_REPLYBBS.NEXTVAL, #id#, #title#, #content#, SYSDATE, #refer#, #step# + 1, #depth# + 1)
+  
+  </insert>
+  
+  <insert id="ReplyBBS.insert" parameterClass="ReplyBBSDto">
+  
+  	INSERT INTO replybbs(no, id, title, content, refer) VALUES(SEQ_REPLYBBS.NEXTVAL, #id#, #title#, #content#, SEQ_REPLYBBS.CURRVAL)
+  
+  </insert>
+  
+  <update id="ReplyBBS.update" parameterClass="ReplyBBSDto">
+  
+  	UPDATE replybbs SET title = #title#, content = #content# WHERE no = #no#
+  
+  
+  </update>
+  
+  <delete id="ReplyBBS.delete" parameterClass="ReplyBBSDto">
+  
+  	DELETE FROM replybbs WHERE no = #no#
+  
+  </delete>
+ -->
+
+ 
+  <!-- Select with no parameters using the result map for Account class. -->
+  <!-- 
+  <select id="selectAllAccounts" resultMap="AccountResult">
+    select * from ACCOUNT
+  </select>
+   -->
+  <!-- A simpler select example without the result map.  Note the 
+       aliases to match the properties of the target result class. -->
+  <!-- 
+  <select id="selectAccountById" parameterClass="int" resultClass="Account">
+    select
+      ACC_ID as id,
+      ACC_FIRST_NAME as firstName,
+      ACC_LAST_NAME as lastName,
+      ACC_EMAIL as emailAddress
+    from ACCOUNT
+    where ACC_ID = #id#
+  </select>
+  -->
+   
+  <!-- Insert example, using the Account parameter class -->
+  <!-- 
+  <insert id="insertAccount" parameterClass="Account">
+    insert into ACCOUNT (
+      ACC_ID,
+      ACC_FIRST_NAME,
+      ACC_LAST_NAME,
+      ACC_EMAIL
+    values (
+      #id#, #firstName#, #lastName#, #emailAddress#
+    )
+  </insert>
+  -->
+
+  <!-- Update example, using the Account parameter class -->
+  <!-- 
+  <update id="updateAccount" parameterClass="Account">
+    update ACCOUNT set
+      ACC_FIRST_NAME = #firstName#,
+      ACC_LAST_NAME = #lastName#,
+      ACC_EMAIL = #emailAddress#
+    where
+      ACC_ID = #id#
+  </update>
+  -->
+
+  <!-- Delete example, using an integer as the parameter class -->
+  <!-- 
+  <delete id="deleteAccountById" parameterClass="int">
+    delete from ACCOUNT where ACC_ID = #id#
+  </delete>
+  -->
+ 
+
+</sqlMap>

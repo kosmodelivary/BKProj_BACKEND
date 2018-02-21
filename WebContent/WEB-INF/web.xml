@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+<display-name>BKProj_BACKEND</display-name>
+
+	<!-- Controller Servlet List -->
+	<!-- 실시간 주문 현황 -->
+	<servlet>
+		<servlet-name>BackendOrder</servlet-name>
+		<servlet-class>com.academy.delivary.web.OrderController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendOrder</servlet-name>
+		<url-pattern>/ADMIN/Order.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 회원 리스트 - 전체 열람 -->
+	<servlet>
+		<servlet-name>BackendMemberList</servlet-name>
+		<servlet-class>com.academy.delivary.web.MemberListController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendMemberList</servlet-name>
+		<url-pattern>/ADMIN/MEMBER/List.do</url-pattern>
+	</servlet-mapping>
+	<!-- 회원 리스트 - 수정 폼 출력, 수정 처리 -->
+	<servlet>
+		<servlet-name>BackendMemberEdit</servlet-name>
+		<servlet-class>com.academy.delivary.web.MemberEditController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendMemberEdit</servlet-name>
+		<url-pattern>/ADMIN/MEMBER/Edit.do</url-pattern>
+	</servlet-mapping>
+	<!-- 회원 리스트 - 삭제 처리 -->
+	<servlet>
+		<servlet-name>BackendMemberDelete</servlet-name>
+		<servlet-class>com.academy.delivary.web.MemberDeleteController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendMemberDelete</servlet-name>
+		<url-pattern>/ADMIN/MEMBER/Delete.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 매장 리스트 - 전체 열람 -->
+	<servlet>
+		<servlet-name>BackendStoreList</servlet-name>
+		<servlet-class>com.academy.delivary.web.StoreListController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendStoreList</servlet-name>
+		<url-pattern>/ADMIN/STORE/List.do</url-pattern>
+	</servlet-mapping>
+	<!-- 매장 리스트 - 수정 폼 출력, 수정 처리 -->
+	<servlet>
+		<servlet-name>BackendStoreEdit</servlet-name>
+		<servlet-class>com.academy.delivary.web.StoreEditController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendStoreEdit</servlet-name>
+		<url-pattern>/ADMIN/STORE/Edit.do</url-pattern>
+	</servlet-mapping>
+	<!-- 매장 리스트 - 삭제 처리 -->
+	<servlet>
+		<servlet-name>BackendStoreDelete</servlet-name>
+		<servlet-class>com.academy.delivary.web.StoreDeleteController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendStoreDelete</servlet-name>
+		<url-pattern>/ADMIN/STORE/Delete.do</url-pattern>
+	</servlet-mapping>
+	<!-- 매장 리스트 - 추가 처리 -->
+	<servlet>
+		<servlet-name>BackendStoreAdd</servlet-name>
+		<servlet-class>com.academy.delivary.web.StoreAddController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendStoreAdd</servlet-name>
+		<url-pattern>/ADMIN/STORE/Add.do</url-pattern>
+	</servlet-mapping>
+	<!-- 매장 리스트 - 상세보기 처리 -->
+	<servlet>
+		<servlet-name>BackendStoreView</servlet-name>
+		<servlet-class>com.academy.delivary.web.StoreViewController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendStoreView</servlet-name>
+		<url-pattern>/ADMIN/STORE/View.do</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>/admin/index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+</web-app>

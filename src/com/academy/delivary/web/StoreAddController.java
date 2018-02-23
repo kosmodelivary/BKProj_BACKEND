@@ -32,6 +32,7 @@ public class StoreAddController extends HttpServlet {
 			storeDto.setWeekdayoff(Integer.parseInt(req.getParameter("weekdayoff").split(":")[0]));
 			storeDto.setWeekendon(Integer.parseInt(req.getParameter("weekendon").split(":")[0]));
 			storeDto.setWeekendoff(Integer.parseInt(req.getParameter("weekendoff").split(":")[0]));
+			storeDto.setMinordermoney(Integer.parseInt(req.getParameter("minordermoney").split(":")[0]));
 			
 			storeService.insert(storeDto);
 			resp.sendRedirect(req.getContextPath() + "/ADMIN/STORE/List.do");

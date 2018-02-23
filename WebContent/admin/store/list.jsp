@@ -40,12 +40,12 @@
 	   			<div class="col-md-10 col-md-offset-1">
 		   			<table class="table table-bordered">
 		   				<tr>
-		   					<th style="width:10%">매장 일련번호</th>
 		   					<th style="width:10%">매장 이름</th>
 		   					<th style="width:25%">매장 주소</th>
 		   					<th style="width:10%">연락처</th>
 		   					<th style="width:15%">딜리버리 시간 (주중)</th>
 		   					<th style="width:15%">딜리버리 시간 (주말)</th>
+		   					<th style="width:10%">최소 주문 금액</th>
 		   					<th style="width:5%">상세</th>
 		   					<th style="width:5%">수정</th>
 		   					<th>삭제</th>
@@ -58,12 +58,12 @@
 		   				<c:if test="${not flag }">
 		   					<c:forEach var="item" items="${store }" varStatus="loop" >
 				   				<tr>
-				   					<td>${item.no }</td>
 				   					<td>${item.name }</td>
 				   					<td>${item.address }</td>
 				   					<td>${item.tel }</td>
 				   					<td>${item.weekdayon }:00 ~ ${item.weekdayoff }:00</td>
 				   					<td>${item.weekendon }:00 ~ ${item.weekendoff }:00</td>
+				   					<td>${item.minordermoney }원</td>
 				   					<td><a href="<c:url value='/ADMIN/STORE/View.do?no=${item.no }' />">상세</a></td>
 				   					<td><a href="<c:url value='/ADMIN/STORE/Edit.do?no=${item.no }' />">수정</a></td>
 				   					<td><a href="<c:url value='/ADMIN/STORE/Delete.do?no=${item.no }' />" onclick="return isDelete()">삭제</a></td>

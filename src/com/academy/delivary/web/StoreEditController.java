@@ -35,6 +35,7 @@ public class StoreEditController extends HttpServlet {
 			storeDto.setWeekdayoff(Integer.parseInt(req.getParameter("weekdayoff").split(":")[0]));
 			storeDto.setWeekendon(Integer.parseInt(req.getParameter("weekendon").split(":")[0]));
 			storeDto.setWeekendoff(Integer.parseInt(req.getParameter("weekendoff").split(":")[0]));
+			storeDto.setMinordermoney(Integer.parseInt(req.getParameter("minordermoney").split(":")[0]));
 			
 			req.setAttribute("EDIT_RESULT", storeService.update(storeDto));
 			req.getRequestDispatcher("/admin/store/process.jsp").forward(req, resp);

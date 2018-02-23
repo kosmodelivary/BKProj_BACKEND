@@ -85,6 +85,10 @@
 			     					</select>
 			     				</td>
 			     			</tr>
+			     			<tr>
+			     				<td class="col" >최소 주문 금액</td>
+			     				<td><input type="text" name="minordermoney">원</td>
+			     			</tr>
 			     		</table>
 			     		<input class="btn btn-primary" type="submit" value="매장 추가" onclick="return isAdd()">
 			     		<a href="<c:url value='/ADMIN/STORE/List.do' />" class="btn btn-primary">취소</a>

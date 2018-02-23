@@ -38,6 +38,7 @@
 		<result property="weekdayoff" />
 		<result property="weekendon" />
 		<result property="weekendoff" />
+		<result property="minordermoney" />
 	</resultMap>
 	
 	
@@ -69,14 +70,14 @@
 	</select>
 	<update id="Store.update" parameterClass="StoreDto">
 		UPDATE bk_store SET name = #name#, tel = #tel#, address = #address#, 
-		weekdayon = #weekdayon#, weekdayoff = #weekdayoff#, weekendon = #weekendon#, weekendoff = #weekendoff# 
+		weekdayon = #weekdayon#, weekdayoff = #weekdayoff#, weekendon = #weekendon#, weekendoff = #weekendoff#, minordermoney = #minordermoney# 
 		WHERE no = #no#
 	</update>
 	<delete id="Store.delete" parameterClass="java.lang.String" >
 		DELETE FROM bk_store WHERE no = #no# 
 	</delete>
 	<insert id="Store.insert" parameterClass="StoreDto">
-		INSERT INTO bk_store VALUES (SEQ_STORE_NO.NEXTVAL, #name#, #tel#, #address#, #weekdayon#, #weekdayoff#, #weekendon#, #weekendoff#)
+		INSERT INTO bk_store VALUES (SEQ_STORE_NO.NEXTVAL, #name#, #tel#, #address#, #weekdayon#, #weekdayoff#, #weekendon#, #weekendoff#, #minordermoney#)
 	</insert>
 	
 

@@ -55,6 +55,12 @@
 		     				</td>
 		     			</tr>
 		     			<tr>
+		     				<td class="col" >최소 주문 금액</td>
+		     				<td>
+								${storeDto.minordermoney }원
+		     				</td>
+		     			</tr>
+		     			<tr>
 		     				<td class="col" >매장 위치</td>
 		     				<td>
 								<div id="map"></div>

@@ -72,6 +72,10 @@
 			     					</select>
 			     				</td>
 			     			</tr>
+			     			<tr>
+			     				<td class="col" >최소 주문 금액</td>
+			     				<td><input type="text" name="minordermoney" value="${storeDto.minordermoney }">원</td>
+			     			</tr>
 			     		</table>
 			     		<input type="hidden" name="no" value="${storeDto.no }">
 			     		<input class="btn btn-primary" type="submit" value="수정">

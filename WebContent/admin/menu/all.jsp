@@ -18,6 +18,7 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         	${pageContext.request.requestURI }
+        	자바버전 달라도 이상 무인가요 형님~?
         </div>
         
       </div>

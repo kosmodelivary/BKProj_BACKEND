@@ -96,7 +96,7 @@
 	      	});
 		}
 	</script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQo9FPSR1RWpd2JWBwrhbTlIi5DzeubEM&callback=initMap"></script>
+	
 
   	<c:import url="/admin/include/bootstrap_js.jsp" />
   </body>

@@ -13,8 +13,8 @@
             <li><a href="#">-- 추가 메뉴 --</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li <c:if test="${fn:contains(pageContext.request.requestURI, 'menu/menu') }">class="active"</c:if>>
-            	<a href="#">전체 딜리버리 메뉴<c:if test="${fn:contains(pageContext.request.requestURI, 'menu/menu') }"><span class="sr-only">(current)</span></c:if></a>
+            <li <c:if test="${fn:contains(pageContext.request.requestURI, 'menu/all') }">class="active"</c:if>>
+            	<a href="#">전체 딜리버리 메뉴<c:if test="${fn:contains(pageContext.request.requestURI, 'menu/all') }"><span class="sr-only">(current)</span></c:if></a>
             </li>
             <li <c:if test="${fn:contains(pageContext.request.requestURI, 'menu/event') }">class="active"</c:if>>
             	<a href="#">이벤트 관리<c:if test="${fn:contains(pageContext.request.requestURI, 'menu/event') }"><span class="sr-only">(current)</span></c:if></a>

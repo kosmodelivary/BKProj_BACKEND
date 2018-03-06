@@ -25,6 +25,7 @@
 			}
 		};
   	</script>
+  	<!-- https://jqueryui.com/toggle/ 활용하기 -->
   <body>
 	<c:import url="/admin/include/navigator.jsp" />
 

@@ -28,10 +28,10 @@ public class MemberEditController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 
 			MemberDto		memberDto		= memberService.selectOne(req.getParameter("no"));
-			memberDto.setName(req.getParameter("name"));
-			memberDto.setTel(req.getParameter("tel"));
-			memberDto.setAgreesms(req.getParameter("sms"));
-			memberDto.setAgreeemail(req.getParameter("email"));
+			memberDto.setMember_name(req.getParameter("name"));
+			memberDto.setMember_tel(req.getParameter("tel"));
+			memberDto.setMember_agreesms(req.getParameter("sms"));
+			memberDto.setMember_agreeemail(req.getParameter("email"));
 			
 			req.setAttribute("EDIT_RESULT", memberService.update(memberDto));
 			req.getRequestDispatcher("/admin/member/process.jsp").forward(req, resp);

@@ -25,14 +25,14 @@ public class StoreAddController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 
 			StoreDto	storeDto		= new StoreDto();
-			storeDto.setName(req.getParameter("name"));
-			storeDto.setAddress(req.getParameter("address"));
-			storeDto.setTel(req.getParameter("tel"));
-			storeDto.setWeekdayon(Integer.parseInt(req.getParameter("weekdayon").split(":")[0]));
-			storeDto.setWeekdayoff(Integer.parseInt(req.getParameter("weekdayoff").split(":")[0]));
-			storeDto.setWeekendon(Integer.parseInt(req.getParameter("weekendon").split(":")[0]));
-			storeDto.setWeekendoff(Integer.parseInt(req.getParameter("weekendoff").split(":")[0]));
-			storeDto.setMinordermoney(Integer.parseInt(req.getParameter("minordermoney").split(":")[0]));
+			storeDto.setStore_name(req.getParameter("name"));
+			storeDto.setStore_addr(req.getParameter("address"));
+			storeDto.setStore_tel(req.getParameter("tel"));
+			storeDto.setStore_weekdayon(Integer.parseInt(req.getParameter("weekdayon").split(":")[0]));
+			storeDto.setStore_weekdayoff(Integer.parseInt(req.getParameter("weekdayoff").split(":")[0]));
+			storeDto.setStore_weekendon(Integer.parseInt(req.getParameter("weekendon").split(":")[0]));
+			storeDto.setStore_weekendoff(Integer.parseInt(req.getParameter("weekendoff").split(":")[0]));
+			storeDto.setStore_minordermoney(Integer.parseInt(req.getParameter("minordermoney").split(":")[0]));
 			
 			storeService.insert(storeDto);
 			resp.sendRedirect(req.getContextPath() + "/ADMIN/STORE/List.do");

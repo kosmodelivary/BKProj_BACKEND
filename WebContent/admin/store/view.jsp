@@ -17,9 +17,10 @@
 			width: 100%;
 		 }
   	</style>
+  	
   </head>
 
-  <body>
+  <body onload="initMap()">
 	<c:import url="/admin/include/navigator.jsp" />
 
     <div class="container-fluid">
@@ -32,32 +33,32 @@
 		     		<table class="table table-bordered text-center">
 		     			<tr>
 		     				<td class="col">매장 이름</td>
-		     				<td>${storeDto.name }</td>
+		     				<td>${storeDto.store_name }</td>
 		     			</tr>
 		     			<tr>
 		     				<td class="col">매장 주소</td>
-		     				<td>${storeDto.address }</td>
+		     				<td>${storeDto.store_addr }</td>
 		     			</tr>
 		     			<tr>
 		     				<td class="col" >연락처</td>
-		     				<td>${storeDto.tel }</td>
+		     				<td>${storeDto.store_tel }</td>
 		     			</tr>
 		     			<tr>
 		     				<td class="col" >딜리버리 시간 (주중)</td>
 		     				<td>
-								${storeDto.weekdayon }:00 ~ ${storeDto.weekdayoff }:00
+								${storeDto.store_weekdayon }:00 ~ ${storeDto.store_weekdayoff }:00
 		     				</td>
 		     			</tr>
 		     			<tr>
 		     				<td class="col" >딜리버리 시간 (주말)</td>
 		     				<td>
-								${storeDto.weekendon }:00 ~ ${storeDto.weekendoff }:00
+								${storeDto.store_weekendon }:00 ~ ${storeDto.store_weekendoff }:00
 		     				</td>
 		     			</tr>
 		     			<tr>
 		     				<td class="col" >최소 주문 금액</td>
 		     				<td>
-								${storeDto.minordermoney }원
+								${storeDto.store_minordermoney }원
 		     				</td>
 		     			</tr>
 		     			<tr>
@@ -83,20 +84,24 @@
 			});
 
 			var geocoder = new google.maps.Geocoder();
-		    geocoder.geocode({'address': '${storeDto.address }'}, function(results, status) {
+		    geocoder.geocode({'address': '${storeDto.store_addr }'}, function(results, status) {
 		        if (status == 'OK') {
+			      console.log("111111");
 		          map.setCenter(results[0].geometry.location);
 		          var marker = new google.maps.Marker({
 		              map: map,
 		              position: results[0].geometry.location
 		          });
 		        } else {
+				  console.log("222222");
 		          alert('Geocode was not successful for the following reason: ' + status);
 		        }
 	      	});
 		}
 	</script>
-	
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQo9FPSR1RWpd2JWBwrhbTlIi5DzeubEM&callback=initMap">
+    </script>
 
   	<c:import url="/admin/include/bootstrap_js.jsp" />
   </body>

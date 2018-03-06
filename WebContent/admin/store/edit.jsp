@@ -7,13 +7,49 @@
   <head>
   	<c:import url="/admin/include/loginCheck.jsp" />
   	<c:import url="/admin/include/head.jsp" />
+
+  	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
   	
   	<style type="text/css">
   		.col {
   			text-align: center;
-  			width:30%;
+  			width:20%;
+  		}
+  		
+  		.form-control {
+  			width:auto;
   		}
   	</style>
+  	<script type="text/javascript">
+	    function execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var fullAddr = data.address; // 최종 주소 변수
+	                var extraAddr = ''; // 조합형 주소 변수
+
+	                // 기본 주소가 도로명 타입일때 조합한다.
+	                if(data.addressType === 'R'){
+	                    //법정동명이 있을 경우 추가한다.
+	                    if(data.bname !== ''){
+	                        extraAddr += data.bname;
+	                    }
+	                    // 건물명이 있을 경우 추가한다.
+	                    if(data.buildingName !== ''){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+	                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+	                }
+
+	                // 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById("address").value = fullAddr;
+	            }
+	        }).open();
+	    }
+  	</script>
+  	
   </head>
 
   <body>
@@ -25,33 +61,36 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	     	<div class="row" style="padding-top:10px">
-	     		<div class="col-md-5 text-right">
-	     			<form action="<c:url value='/ADMIN/STORE/Edit.do' />" method="post">
+	     		<div class="col-md-7 text-right">
+	     			<form class="form-inline" action="<c:url value='/ADMIN/STORE/Edit.do' />" method="post">
 			     		<table class="table table-bordered text-left">
 			     			<tr>
 			     				<td class="col">매장 이름</td>
-			     				<td><input type="text" name="name" value="${storeDto.name }"></td>
+			     				<td><input class="form-control" type="text" name="name" value="${storeDto.store_name }"></td>
 			     			</tr>
 			     			<tr>
 			     				<td class="col">매장 주소</td>
-			     				<td><input type="text" name="address" value="${storeDto.address }" size="50" ></td>
+			     				<td>
+			     					<input class="form-control" type="text" name="address" id="address" size="50" value="${storeDto.store_addr }" placeholder="주소">
+			     					<input class="btn btn-default" type="button" onclick="execDaumPostcode()" value="주소 검색">
+			     				</td>
 			     			</tr>
 			     			<tr>
 			     				<td class="col" >연락처</td>
-			     				<td><input type="text" name="tel" value="${storeDto.tel }"></td>
+			     				<td><input class="form-control" type="text" name="tel" value="${storeDto.store_tel }"></td>
 			     			</tr>
 			     			<tr>
 			     				<td class="col" >딜리버리 시간 (주중)</td>
 			     				<td>
 			     					<select name="weekdayon">
 			     						<c:forEach var="hour" begin="6" end="12" varStatus="loop" >
-				     						<option <c:if test="${hour == storeDto.weekdayon }">selected</c:if>>${hour }:00</option>
+				     						<option <c:if test="${hour == storeDto.store_weekdayon }">selected</c:if>>${hour }:00</option>
 			     						</c:forEach>
 			     					</select>
 									~
 			     					<select name="weekdayoff">
 			     						<c:forEach var="hour" begin="13" end="25" varStatus="loop" >
-				     						<option <c:if test="${hour == storeDto.weekdayoff }">selected</c:if>>${hour }:00</option>
+				     						<option <c:if test="${hour == storeDto.store_weekdayoff }">selected</c:if>>${hour }:00</option>
 			     						</c:forEach>
 			     					</select>
 			     				</td>
@@ -61,23 +100,29 @@
 			     				<td>
 			     					<select name="weekendon">
 			     						<c:forEach var="hour" begin="6" end="12" varStatus="loop" >
-				     						<option <c:if test="${hour == storeDto.weekendon }">selected</c:if>>${hour }:00</option>
+				     						<option <c:if test="${hour == storeDto.store_weekendon }">selected</c:if>>${hour }:00</option>
 			     						</c:forEach>
 			     					</select>
 									~
 			     					<select name="weekendoff">
 			     						<c:forEach var="hour" begin="13" end="25" varStatus="loop" >
-				     						<option <c:if test="${hour == storeDto.weekendoff }">selected</c:if>>${hour }:00</option>
+				     						<option <c:if test="${hour == storeDto.store_weekendoff }">selected</c:if>>${hour }:00</option>
 			     						</c:forEach>
 			     					</select>
 			     				</td>
 			     			</tr>
 			     			<tr>
 			     				<td class="col" >최소 주문 금액</td>
-			     				<td><input type="text" name="minordermoney" value="${storeDto.minordermoney }">원</td>
+			     				<td>
+			     					<select name="minordermoney">
+			     						<c:forEach var="money" begin="6000" end="10000" step="1000" varStatus="loop" >
+				     						<option <c:if test="${money == storeDto.store_minordermoney }">selected</c:if>>${money }</option>
+			     						</c:forEach>
+			     					</select>
+			     				</td>
 			     			</tr>
 			     		</table>
-			     		<input type="hidden" name="no" value="${storeDto.no }">
+			     		<input type="hidden" name="no" value="${storeDto.store_no }">
 			     		<input class="btn btn-primary" type="submit" value="수정">
 			     		<a href="<c:url value='/ADMIN/STORE/List.do' />" class="btn btn-primary">취소</a>
 		     		</form>

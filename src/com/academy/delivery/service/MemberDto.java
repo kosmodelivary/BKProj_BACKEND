@@ -2,58 +2,58 @@ package com.academy.delivery.service;
 
 public class MemberDto {
 	
-	private String 	no;
-	private String 	email;
-	private String 	pass;
-	private String 	name;
-	private String 	tel;
-	private String 	agreesms;
-	private String 	agreeemail;
+	private String 	member_no;
+	private String 	member_email;
+	private String 	member_password;
+	private String 	member_name;
+	private String 	member_tel;
+	private String 	member_agreesms;
+	private String 	member_agreeemail;
 	
 	//---------------------------------------------------
 	// getter / setter
 	//---------------------------------------------------
 	public String getNo() {
-		return no;
+		return member_no;
 	}
-	public void setNo(String no) {
-		this.no = no;
+	public void setNo(String member_no) {
+		this.member_no = member_no;
 	}
 	public String getEmail() {
-		return email;
+		return member_email;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail(String member_email) {
+		this.member_email = member_email;
 	}
 	public String getPass() {
-		return pass;
+		return member_password;
 	}
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setPass(String member_password) {
+		this.member_password = member_password;
 	}
 	public String getName() {
-		return name;
+		return member_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String member_name) {
+		this.member_name = member_name;
 	}
 	public String getTel() {
-		return tel;
+		return member_tel;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setTel(String member_tel) {
+		this.member_tel = member_tel;
 	}
 	public String getAgreesms() {
-		return agreesms;
+		return member_agreesms;
 	}
-	public void setAgreesms(String agreesms) {
-		this.agreesms = agreesms;
+	public void setAgreesms(String member_agreesms) {
+		this.member_agreesms = member_agreesms;
 	}
 	public String getAgreeemail() {
-		return agreeemail;
+		return member_agreeemail;
 	}
-	public void setAgreeemail(String agreeemail) {
-		this.agreeemail = agreeemail;
+	public void setAgreeemail(String member_agreeemail) {
+		this.member_agreeemail = member_agreeemail;
 	}
 
 	

@@ -9,75 +9,78 @@
 	<!-- AdminDto 별칭, resultMap -->
 	<typeAlias alias="AdminDto" type="com.academy.delivery.service.AdminDto"/>
 	<resultMap id="AdminDtoResult" class="AdminDto">
-		<result property="id" />
-		<result property="pass" />
-		<result property="name" />
-		<result property="adminlevel" />
+		<result property="admin_id" />
+		<result property="admin_pass" />
+		<result property="admin_name" />
+		<result property="admin_level" />
 	</resultMap>
 
 	<!-- MemberDto 별칭, resultMap -->
 	<typeAlias alias="MemberDto" type="com.academy.delivery.service.MemberDto"/>
 	<resultMap id="MemberDtoResult" class="MemberDto">
-		<result property="no" />
-		<result property="email" />
-		<result property="pass" />
-		<result property="name" />
-		<result property="tel" />
-		<result property="agreesms" />
-		<result property="agreeemail" />
+		<result property="member_no" />
+		<result property="member_email" />
+		<result property="member_password" />
+		<result property="member_name" />
+		<result property="member_tel" />
+		<result property="member_agreesms" />
+		<result property="member_agreeemail" />
 	</resultMap>
 	
 	<!-- StoreDto 별칭, resultMap -->
 	<typeAlias alias="StoreDto" type="com.academy.delivery.service.StoreDto"/>
 	<resultMap id="StoreDtoResult" class="StoreDto">
-		<result property="no" />
-		<result property="name" />
-		<result property="tel" />
-		<result property="address" />
-		<result property="weekdayon" />
-		<result property="weekdayoff" />
-		<result property="weekendon" />
-		<result property="weekendoff" />
-		<result property="minordermoney" />
+		<result property="store_no" />
+		<result property="store_name" />
+		<result property="store_tel" />
+		<result property="store_addr" />
+		<result property="store_weekdayon" />
+		<result property="store_weekdayoff" />
+		<result property="store_weekendon" />
+		<result property="store_weekendoff" />
+		<result property="store_minordermoney" />
 	</resultMap>
 	
 	
 	<!-- AdminDao 사용 DB Query -->
 	<select id="Admin.login" parameterClass="AdminDto" resultClass="int">
-		SELECT COUNT(*) FROM bk_admin WHERE id = #id# AND pass = #pass#
+		SELECT COUNT(*) FROM admin WHERE admin_id = #admin_id# AND admin_pass = #admin_pass#
 	</select>
 
 	<!-- MemberDao 사용 DB Query -->
 	<select id="Member.selectList" resultMap="MemberDtoResult">
-		SELECT * FROM bk_member ORDER BY no DESC
+		SELECT * FROM member ORDER BY member_no DESC
 	</select>
 	<select id="Member.selectOne" parameterClass="java.lang.String" resultMap="MemberDtoResult">
-		SELECT * FROM bk_member WHERE no = #no#
+		SELECT * FROM member WHERE member_no = #member_no#
 	</select>
 	<update id="Member.update" parameterClass="MemberDto">
-		UPDATE bk_member SET name = #name#, tel = #tel#, agreesms = #agreesms#, agreeemail = #agreeemail# WHERE no = #no#
+		UPDATE member SET member_name = #member_name#, member_tel = #member_tel#, 
+		member_agreesms = #member_agreesms#, member_agreeemail = #member_agreeemail# WHERE member_no = #member_no#
 	</update>
 	<delete id="Member.delete" parameterClass="java.lang.String" >
-		DELETE FROM bk_member WHERE no = #no# 
+		DELETE FROM member WHERE member_no = #member_no# 
 	</delete>
 	
 	<!-- StoreDao 사용 DB Query -->
 	<select id="Store.selectList" resultMap="StoreDtoResult">
-		SELECT * FROM bk_store ORDER BY no DESC
+		SELECT * FROM store ORDER BY store_no DESC
 	</select>
 	<select id="Store.selectOne" parameterClass="java.lang.String" resultMap="StoreDtoResult">
-		SELECT * FROM bk_store WHERE no = #no#
+		SELECT * FROM store WHERE store_no = #store_no#
 	</select>
 	<update id="Store.update" parameterClass="StoreDto">
-		UPDATE bk_store SET name = #name#, tel = #tel#, address = #address#, 
-		weekdayon = #weekdayon#, weekdayoff = #weekdayoff#, weekendon = #weekendon#, weekendoff = #weekendoff#, minordermoney = #minordermoney# 
-		WHERE no = #no#
+		UPDATE store SET store_name = #store_name#, store_tel = #store_tel#, store_addr = #store_addr#, 
+		store_weekdayon = #store_weekdayon#, store_weekdayoff = #store_weekdayoff#, store_weekendon = #store_weekendon#, store_weekendoff = #store_weekendoff#, 
+		store_minordermoney = #store_minordermoney# 
+		WHERE store_no = #store_no#
 	</update>
 	<delete id="Store.delete" parameterClass="java.lang.String" >
-		DELETE FROM bk_store WHERE no = #no# 
+		DELETE FROM store WHERE store_no = #store_no# 
 	</delete>
 	<insert id="Store.insert" parameterClass="StoreDto">
-		INSERT INTO bk_store VALUES (SEQ_STORE_NO.NEXTVAL, #name#, #tel#, #address#, #weekdayon#, #weekdayoff#, #weekendon#, #weekendoff#, #minordermoney#)
+		INSERT INTO store VALUES(SEQ_STORE_STORE_NO.NEXTVAL, #store_name#, #store_tel#, 
+		#store_addr#, #store_weekdayon#, #store_weekdayoff#, #store_weekendon#, #store_weekendoff#, #store_minordermoney#)
 	</insert>
 	
 

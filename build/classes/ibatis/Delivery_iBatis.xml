@@ -100,7 +100,7 @@
 	</insert>
 	
 	<!-- MenuDao 사용 DB Query -->
-	<select id="Store.selectList" resultMap="StoreDtoResult">
+	<select id="Menu.selectList" resultMap="MenuDtoResult">
 		SELECT * FROM menu ORDER BY menu_no DESC
 	</select>
 	<insert id="Menu.insert" parameterClass="MenuDto">

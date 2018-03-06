@@ -41,6 +41,22 @@
 		<result property="store_minordermoney" />
 	</resultMap>
 	
+	<!-- MenuDto 별칭, resultMap -->
+	<typeAlias alias="MenuDto" type="com.academy.delivery.service.MenuDto"/>
+	<resultMap id="MenuDtoResult" class="MenuDto">
+		<result property="menu_no" />
+		<result property="menu_name" />
+		<result property="menu_price" />
+		<result property="menu_weight" />
+		<result property="menu_calrorie" />
+		<result property="menu_protein" />
+		<result property="menu_sodium" />
+		<result property="menu_sugars" />
+		<result property="menu_fat" />
+		<result property="menu_enddate" />
+		<result property="category_name" />
+	</resultMap>
+	
 	
 	<!-- AdminDao 사용 DB Query -->
 	<select id="Admin.login" parameterClass="AdminDto" resultClass="int">
@@ -83,6 +99,14 @@
 		#store_addr#, #store_weekdayon#, #store_weekdayoff#, #store_weekendon#, #store_weekendoff#, #store_minordermoney#)
 	</insert>
 	
+	<!-- MenuDao 사용 DB Query -->
+	<select id="Store.selectList" resultMap="StoreDtoResult">
+		SELECT * FROM menu ORDER BY menu_no DESC
+	</select>
+	<insert id="Menu.insert" parameterClass="MenuDto">
+		INSERT INTO menu VALUES(SEQ_MENU_MENU_NO.NEXTVAL, #menu_no#, #menu_name#, 
+		#menu_price#, #menu_weight#,#menu_calrorie#,#menu_protein#,#menu_sodium#,#menu_sugars#,#menu_fat#,#menu_enddate#,#category_name#)
+	</insert>
 
   <!-- 
   	parameterClass가 Map, DTO 계열인 경우 반드시

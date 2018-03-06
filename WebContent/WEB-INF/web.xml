@@ -86,6 +86,26 @@
 		<servlet-name>BackendStoreView</servlet-name>
 		<url-pattern>/ADMIN/STORE/View.do</url-pattern>
 	</servlet-mapping>
+	
+	<!-- 메뉴 - 전체 열람 -->
+	<servlet>
+		<servlet-name>BackendMenuList</servlet-name>
+		<servlet-class>com.academy.delivary.web.MenuListController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendMenuList</servlet-name>
+		<url-pattern>/ADMIN/MENU/All.do</url-pattern>
+	</servlet-mapping>
+	<!-- 메뉴 - 추가 처리 -->
+	<servlet>
+		<servlet-name>BackendMenuAdd</servlet-name>
+		<servlet-class>com.academy.delivary.web.MenuAddController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendMenuAdd</servlet-name>
+		<url-pattern>/ADMIN/MENU/Add.do</url-pattern>
+	</servlet-mapping>
+	
 
 	<welcome-file-list>
 		<welcome-file>/admin/index.jsp</welcome-file>

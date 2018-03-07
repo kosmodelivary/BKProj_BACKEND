@@ -45,7 +45,7 @@
 		   					<th style="width:10%">수정</th>
 		   					<th>삭제</th>
 		   				</tr>
-		   				<c:if test="${empty store }" var="flag">
+		   				<c:if test="${empty menu }" var="flag">
 			   				<tr>
 			   					<td colspan="6">등록된 자료가 없습니다.</td>
 			   				</tr>
@@ -53,12 +53,9 @@
 		   				<c:if test="${not flag }">
 		   					<c:forEach var="item" items="${menu }" varStatus="loop" >
 				   				<tr>
-				   					<td>${item.store_name }</td>
-				   					<td>${item.store_addr }</td>
+				   					<td>${item.menu_name }</td>
+				   					<td>${item.category_name }</td>
 				   					<td>${item.store_tel }</td>
-				   					<td>${item.store_weekdayon }:00 ~ ${item.store_weekdayoff }:00</td>
-				   					<td>${item.store_weekendon }:00 ~ ${item.store_weekendoff }:00</td>
-				   					<td>${item.store_minordermoney }원</td>
 				   					<td><a href="<c:url value='/ADMIN/STORE/View.do?no=${item.store_no }' />">상세</a></td>
 				   					<td><a href="<c:url value='/ADMIN/STORE/Edit.do?no=${item.store_no }' />">수정</a></td>
 				   					<td><a href="<c:url value='/ADMIN/STORE/Delete.do?no=${item.store_no }' />" onclick="return isDelete()">삭제</a></td>

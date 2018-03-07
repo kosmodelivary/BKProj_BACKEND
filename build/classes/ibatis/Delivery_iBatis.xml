@@ -101,7 +101,7 @@
 	
 	<!-- MenuDao 사용 DB Query -->
 	<select id="Menu.selectList" resultMap="MenuDtoResult">
-		SELECT * FROM menu ORDER BY menu_no DESC
+		SELECT m.*,mc.c_order FROM menu m JOIN menu_category mc ON m.category_name = mc.category_name ORDER BY menu_no, mc.c_order DESC
 	</select>
 	<insert id="Menu.insert" parameterClass="MenuDto">
 		INSERT INTO menu VALUES(SEQ_MENU_MENU_NO.NEXTVAL, #menu_no#, #menu_name#, 

@@ -76,6 +76,9 @@
 	   				<a href="<c:url value='/ADMIN/STORE/Add.do' />" class="btn btn-primary">매장 추가</a>
 	   			</div>
 	     	</div>
+	     	<div class="text-center row">
+   				${pagingString }
+   			</div>
         </div>
         
       </div>

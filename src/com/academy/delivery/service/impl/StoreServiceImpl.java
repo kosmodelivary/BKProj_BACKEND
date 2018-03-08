@@ -1,6 +1,7 @@
 package com.academy.delivery.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.academy.delivery.service.StoreDto;
 import com.academy.delivery.service.StoreService;
@@ -14,8 +15,8 @@ public class StoreServiceImpl implements StoreService {
 	}
 	
 	@Override
-	public List<StoreDto> selectList() {
-		return storeDao.selectList();
+	public List<StoreDto> selectList(Map map) {
+		return storeDao.selectList(map);
 	} // end selectList
 	
 	@Override
@@ -37,5 +38,10 @@ public class StoreServiceImpl implements StoreService {
 	public int delete(String no) {
 		return storeDao.delete(no);
 	} // end delete
+
+	@Override
+	public int getTotalRecordCount() {
+		return storeDao.getTotalRecordCount();
+	}
 
 } // end MemberServiceImpl 

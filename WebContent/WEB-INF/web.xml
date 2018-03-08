@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-<display-name>BKProj_BACKEND</display-name>
+	<display-name>BKProj_BACKEND</display-name>
 
+	<!-- 페이징 처리 위한 context parameter -->
+	<context-param>
+		<param-name>PAGESIZE</param-name>
+		<param-value>10</param-value>
+	</context-param>
+	<context-param>
+		<param-name>BLOCKPAGE</param-name>
+		<param-value>5</param-value>
+	</context-param>
+	
 	<!-- Controller Servlet List -->
 	<!-- 실시간 주문 현황 -->
 	<servlet>

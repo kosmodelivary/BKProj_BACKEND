@@ -79,8 +79,9 @@
 	</delete>
 	
 	<!-- StoreDao 사용 DB Query -->
-	<select id="Store.selectList" resultMap="StoreDtoResult">
-		SELECT * FROM store ORDER BY store_no DESC
+	<select id="Store.selectList" parameterClass="java.util.Map" resultMap="StoreDtoResult">
+		SELECT * FROM (SELECT T.*, ROWNUM R FROM (SELECT * FROM store ORDER BY store_no DESC) T)
+		WHERE R BETWEEN #start# AND #end#
 	</select>
 	<select id="Store.selectOne" parameterClass="java.lang.String" resultMap="StoreDtoResult">
 		SELECT * FROM store WHERE store_no = #store_no#
@@ -98,6 +99,9 @@
 		INSERT INTO store VALUES(SEQ_STORE_STORE_NO.NEXTVAL, #store_name#, #store_tel#, 
 		#store_addr#, #store_weekdayon#, #store_weekdayoff#, #store_weekendon#, #store_weekendoff#, #store_minordermoney#)
 	</insert>
+	<select id="Store.getTotalCount" resultClass="int">
+		SELECT COUNT(*) FROM store
+	</select>
 	
 	<!-- MenuDao 사용 DB Query -->
 	<select id="Menu.selectList" resultMap="MenuDtoResult">

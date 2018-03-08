@@ -2,6 +2,7 @@ package com.academy.delivery.service.impl;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import com.academy.delivery.common.IbatisUtil;
 import com.academy.delivery.service.StoreDto;
@@ -10,11 +11,11 @@ import com.academy.delivery.service.StoreService;
 public class StoreDao implements StoreService {
 
 	@Override
-	public List<StoreDto> selectList() {
+	public List<StoreDto> selectList(Map map) {
 		List<StoreDto> list	= null;
 		
 		try {
-			list				= IbatisUtil.getMapper().queryForList("Store.selectList");
+			list				= IbatisUtil.getMapper().queryForList("Store.selectList", map);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -72,6 +73,19 @@ public class StoreDao implements StoreService {
 		}
 		
 		return affected;
+	}
+
+	@Override
+	public int getTotalRecordCount() {
+		int totalCount	= 0;
+		
+		try {
+			totalCount		= (Integer) IbatisUtil.getMapper().queryForObject("Store.getTotalCount");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return totalCount;
 	}
 
 } // end MemberDao

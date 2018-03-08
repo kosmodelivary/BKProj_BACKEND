@@ -45,6 +45,7 @@
 	<typeAlias alias="MenuDto" type="com.academy.delivery.service.MenuDto"/>
 	<resultMap id="MenuDtoResult" class="MenuDto">
 		<result property="menu_no" />
+		<result property="category_name" />
 		<result property="menu_name" />
 		<result property="menu_price" />
 		<result property="menu_weight" />
@@ -54,7 +55,6 @@
 		<result property="menu_sugars" />
 		<result property="menu_fat" />
 		<result property="menu_enddate" />
-		<result property="category_name" />
 	</resultMap>
 	
 	
@@ -104,8 +104,8 @@
 		SELECT m.*,mc.c_order FROM menu m JOIN menu_category mc ON m.category_name = mc.category_name ORDER BY menu_no, mc.c_order DESC
 	</select>
 	<insert id="Menu.insert" parameterClass="MenuDto">
-		INSERT INTO menu VALUES(SEQ_MENU_MENU_NO.NEXTVAL, #menu_no#, #menu_name#, 
-		#menu_price#, #menu_weight#,#menu_calrorie#,#menu_protein#,#menu_sodium#,#menu_sugars#,#menu_fat#,#menu_enddate#,#category_name#)
+		INSERT INTO menu VALUES(SEQ_MENU_MENU_NO.NEXTVAL, #menu_no#, #category_name#, #menu_name#, 
+		#menu_price#, #menu_weight#,#menu_calrorie#,#menu_protein#,#menu_sodium#,#menu_sugars#,#menu_fat#,#menu_enddate#)
 	</insert>
 
   <!-- 

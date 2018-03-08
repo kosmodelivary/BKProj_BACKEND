@@ -51,7 +51,7 @@
 		   				</tr>
 		   				<c:if test="${empty member }" var="flag">
 			   				<tr>
-			   					<td colspan="6">등록된 자료가 없습니다.</td>
+			   					<td colspan="8">등록된 자료가 없습니다.</td>
 			   				</tr>
 		   				</c:if>
 		   				<c:if test="${not flag }">

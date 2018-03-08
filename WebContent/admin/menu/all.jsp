@@ -55,10 +55,10 @@
 				   				<tr>
 				   					<td>${item.menu_name }</td>
 				   					<td>${item.category_name }</td>
-				   					<td>${item.store_tel }</td>
-				   					<td><a href="<c:url value='/ADMIN/STORE/View.do?no=${item.store_no }' />">상세</a></td>
-				   					<td><a href="<c:url value='/ADMIN/STORE/Edit.do?no=${item.store_no }' />">수정</a></td>
-				   					<td><a href="<c:url value='/ADMIN/STORE/Delete.do?no=${item.store_no }' />" onclick="return isDelete()">삭제</a></td>
+				   					<td>${item.menu_price }</td>
+				   					<td><a href="<c:url value='/ADMIN/STORE/View.do?no=${item.menu_no }' />">상세</a></td>
+				   					<td><a href="<c:url value='/ADMIN/STORE/Edit.do?no=${item.menu_no }' />">수정</a></td>
+				   					<td><a href="<c:url value='/ADMIN/STORE/Delete.do?no=${item.menu_no }' />" onclick="return isDelete()">삭제</a></td>
 				   				</tr>
 			   				</c:forEach>
 		   				</c:if>

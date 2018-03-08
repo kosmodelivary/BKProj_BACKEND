@@ -5,6 +5,7 @@ import java.sql.Date;
 public class MenuDto {
 	
 	private String 	menu_no;
+	private String 	category_name;
 	private String 	menu_name;
 	private String 	menu_price;
 	private String 	menu_weight;
@@ -14,7 +15,6 @@ public class MenuDto {
 	private String 	menu_sugars;
 	private String 	menu_fat;
 	private Date   	menu_enddate;
-	private String 	category_name;
 
 	//---------------------------------------------------
 	// getter / setter

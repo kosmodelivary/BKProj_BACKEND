@@ -14,9 +14,6 @@ public class MemberDto {
 	// getter / setter
 	//---------------------------------------------------
 	
-	public String getNo() {
-		return member_no;
-	}
 	public String getMember_no() {
 		return member_no;
 	}

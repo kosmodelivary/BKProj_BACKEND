@@ -23,7 +23,7 @@
             <li><a href="#">-- 추가 메뉴 --</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li <c:if test="${fn:contains(pageContext.request.requestURI, '/member/') }">class="active"</c:if>>
+            <li <c:if test="${fn:contains(pageContext.request.requestURI, '/member/list') }">class="active"</c:if>>
             	<a href="${pageContext.request.contextPath }/ADMIN/MEMBER/List.do">
             		회원 리스트<c:if test="${fn:contains(pageContext.request.requestURI, '/member/') }"><span class="sr-only">(current)</span></c:if>
             	</a>
@@ -32,13 +32,15 @@
             <li><a href="#">-- 추가 메뉴 --</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li <c:if test="${fn:contains(pageContext.request.requestURI, '/store/') }">class="active"</c:if>>
+            <li <c:if test="${fn:contains(pageContext.request.requestURI, '/store/list') }">class="active"</c:if>>
             	<a href="${pageContext.request.contextPath }/ADMIN/STORE/List.do">
             		매장 리스트<c:if test="${fn:contains(pageContext.request.requestURI, '/store/') }"><span class="sr-only">(current)</span></c:if>
             	</a>
             </li>
             <li <c:if test="${fn:contains(pageContext.request.requestURI, 'store/delivery') }">class="active"</c:if>>
-            	<a href="#">딜리버리 상황판<c:if test="${fn:contains(pageContext.request.requestURI, 'store/delivery') }"><span class="sr-only">(current)</span></c:if></a>
+            	<a href="${pageContext.request.contextPath }/ADMIN/STORE/DELIVERY/View.do">
+            		딜리버리 상황판<c:if test="${fn:contains(pageContext.request.requestURI, 'store/delivery') }"><span class="sr-only">(current)</span></c:if>
+            	</a>
             </li>
             <li><a href="#">-- 추가 메뉴 --</a></li>
             <li><a href="#">-- 추가 메뉴 --</a></li>

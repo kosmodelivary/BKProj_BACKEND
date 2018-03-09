@@ -96,6 +96,16 @@
 		<servlet-name>BackendStoreView</servlet-name>
 		<url-pattern>/ADMIN/STORE/View.do</url-pattern>
 	</servlet-mapping>
+	<!-- 딜리버리 현황판 -->
+	<servlet>
+		<servlet-name>BackendStoreDelivery</servlet-name>
+		<servlet-class>com.academy.delivary.web.StoreDeliveryController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendStoreDelivery</servlet-name>
+		<url-pattern>/ADMIN/STORE/DELIVERY/View.do</url-pattern>
+	</servlet-mapping>
+	
 	
 	<!-- 메뉴 - 전체 열람 -->
 	<servlet>

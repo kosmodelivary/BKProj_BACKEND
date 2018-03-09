@@ -30,36 +30,36 @@
 			     		<table class="table table-bordered text-left">
 			     			<tr>
 			     				<td class="col" >이메일</td>
-			     				<td>${memberDto.email }</td>
+			     				<td>${memberDto.member_email }</td>
 			     			</tr>
 			     			<tr>
 			     				<td class="col" >이름</td>
-			     				<td><input type="text" name="name" value="${memberDto.name }"></td>
+			     				<td><input type="text" name="name" value="${memberDto.member_name }"></td>
 			     			</tr>
 			     			<tr>
 			     				<td class="col" >연락처</td>
-			     				<td><input type="text" name="tel" value="${memberDto.tel }"></td>
+			     				<td><input type="text" name="tel" value="${memberDto.member_tel }"></td>
 			     			</tr>
 			     			<tr>
 			     				<td class="col" >SMS 수신 동의</td>
 			     				<td>
-			     					<input type="radio" name="sms" id="sms_true" value="true" <c:if test="${memberDto.agreesms eq 'true' }">checked</c:if>>
+			     					<input type="radio" name="sms" id="sms_true" value="true" <c:if test="${memberDto.member_agreesms eq 'true' }">checked</c:if>>
 			     					<label for="sms_true">true</label>&nbsp;&nbsp;
-			     					<input type="radio" name="sms" id="sms_false" value="false" <c:if test="${memberDto.agreesms eq 'false' }">checked</c:if>>
+			     					<input type="radio" name="sms" id="sms_false" value="false" <c:if test="${memberDto.member_agreesms eq 'false' }">checked</c:if>>
 			     					<label for="sms_false">false</label>
 			     				</td>
 			     			</tr>
 			     			<tr>
 			     				<td class="col" >이메일 수신 동의</td>
 			     				<td>
-			     					<input type="radio" name="email" id="email_true" value="true" <c:if test="${memberDto.agreeemail eq 'true' }">checked</c:if>>
+			     					<input type="radio" name="email" id="email_true" value="true" <c:if test="${memberDto.member_agreeemail eq 'true' }">checked</c:if>>
 			     					<label for="email_true">true</label>&nbsp;&nbsp;
-			     					<input type="radio" name="email" id="email_false" value="false" <c:if test="${memberDto.agreeemail eq 'false' }">checked</c:if>>
+			     					<input type="radio" name="email" id="email_false" value="false" <c:if test="${memberDto.member_agreeemail eq 'false' }">checked</c:if>>
 			     					<label for="email_false">false</label>
 			     				</td>
 			     			</tr>
 			     		</table>
-			     		<input type="hidden" name="no" value="${memberDto.no }">
+			     		<input type="hidden" name="no" value="${memberDto.member_no }">
 			     		<input class="btn btn-primary" type="submit" value="수정">
 			     		<a href="<c:url value='/ADMIN/MEMBER/List.do' />" class="btn btn-primary">취소</a>
 		     		</form>

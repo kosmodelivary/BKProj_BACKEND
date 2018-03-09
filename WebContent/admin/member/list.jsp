@@ -57,14 +57,14 @@
 		   				<c:if test="${not flag }">
 		   					<c:forEach var="item" items="${member }" varStatus="loop" >
 				   				<tr>
-				   					<td>${item.no }</td>
-				   					<td>${item.email }</td>
-				   					<td>${item.name }</td>
-				   					<td>${item.tel }</td>
-				   					<td>${item.agreesms }</td>
-				   					<td>${item.agreeemail }</td>
-				   					<td><a href="<c:url value='/ADMIN/MEMBER/Edit.do?no=${item.no }' />">수정</a></td>
-				   					<td><a href="<c:url value='/ADMIN/MEMBER/Delete.do?no=${item.no }' />" onclick="return isDelete()">삭제</a></td>
+				   					<td>${item.member_no }</td>
+				   					<td>${item.member_email }</td>
+				   					<td>${item.member_name }</td>
+				   					<td>${item.member_tel }</td>
+				   					<td>${item.member_agreesms }</td>
+				   					<td>${item.member_agreeemail }</td>
+				   					<td><a href="<c:url value='/ADMIN/MEMBER/Edit.do?no=${item.member_no }' />">수정</a></td>
+				   					<td><a href="<c:url value='/ADMIN/MEMBER/Delete.do?no=${item.member_no }' />" onclick="return isDelete()">삭제</a></td>
 				   				</tr>
 			   				</c:forEach>
 		   				</c:if>

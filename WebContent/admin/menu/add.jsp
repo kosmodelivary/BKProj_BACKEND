@@ -7,9 +7,6 @@
   <head>
   	<c:import url="/admin/include/loginCheck.jsp" />
   	<c:import url="/admin/include/head.jsp" />
-  	
-  	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-  	
   	<style type="text/css">
   		td {
   			top: 50%;
@@ -23,8 +20,14 @@
   		.form-control {
   			width:auto;
   		}
+  		.ui-datepicker-trigger { position:relative;top:10px ;right:{}px ; height:30px ; width:30px}
+		/* {} is the value according to your need */
   	</style>
-
+  	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<!-- jquery core -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- jquery ui -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   	<script type="text/javascript">
 		var isAdd = function() {
 			if (confirm('정말 추가하시겠습니까?') == true) {
@@ -36,7 +39,17 @@
 			}
 		};
   	</script>
-  	
+  	<script>
+  	$(function(){
+		$( "#datepicker" ).datepicker({
+			dateFormat: "yy-mm-dd",
+			showOn: "both",
+			buttonImage: "<c:url value='/Images/calendar-icon.jpg'/>",
+			buttonImageOnly: true,
+			buttonText: "달력"
+		});
+	});
+  	</script>
   </head>
 
   <body>
@@ -53,17 +66,69 @@
 			     		<table class="table table-bordered text-left">
 			     			<tr>
 			     				<td class="col">메뉴 이름</td>
-			     				<td><input class="form-control" type="text" name="m_name"></td>
+			     				<td><input class="form-control" type="text" name="menu_name"></td>
+			     			</tr>
+			     			<tr>
+			     				<td>카테고리</td>
+			     				<td>
+				     				<select name="category_name">
+				     					<option value="menu">메뉴</option>
+				     					<option value="hamburger">햄버거</option>
+				     					<option value="side">사이드</option>
+				     					<option value="drink">드링크</option>
+				     				</select>
+			     				</td>
 			     			</tr>
 			     			<tr>
 			     				<td class="col">가&nbsp;&nbsp;&nbsp;격</td>
 			     				<td>
-			     					<input class="form-control" type="text" name="m_price" id="m_price">
+			     					<input class="form-control" type="text" name="menu_price">
 			     				</td>
 			     			</tr>
-			     			
+			     			<tr>
+			     				<td class="col">중&nbsp;&nbsp;&nbsp;량</td>
+			     				<td>
+			     					<input class="form-control" type="text" name="menu_weight">
+			     				</td>
+			     			</tr>
+			     			<tr>
+			     				<td class="col">열&nbsp;&nbsp;&nbsp;량</td>
+			     				<td>
+			     					<input class="form-control" type="text" name="menu_calrorie">
+			     				</td>
+			     			</tr>
+			     			<tr>
+			     				<td class="col">단&nbsp;백&nbsp;질</td>
+			     				<td>
+			     					<input class="form-control" type="text" name="menu_protein">
+			     				</td>
+			     			</tr>
+			     			<tr>
+			     				<td class="col">나&nbsp;트&nbsp;륨</td>
+			     				<td>
+			     					<input class="form-control" type="text" name="menu_sodium">
+			     				</td>
+			     			</tr>
+			     			<tr>
+			     				<td class="col">당&nbsp;&nbsp;&nbsp;류</td>
+			     				<td>
+			     					<input class="form-control" type="text" name="menu_sugars">
+			     				</td>
+			     			</tr>
+			     			<tr>
+			     				<td class="col">포&nbsp;화&nbsp;지&nbsp;방</td>
+			     				<td>
+			     					<input class="form-control" type="text" name="menu_fat">
+			     				</td>
+			     			</tr>
+			     			<tr>
+			     				<td class="col">판매종료일</td>
+			     				<td>
+			     					<input class="form-control" type="text" name="menu_enddate" id="datepicker"/>
+			     				</td>
+			     			</tr>
 			     		</table>
-			     		<input class="btn btn-primary" type="submit" value="매장 추가" onclick="return isAdd()">
+			     		<input class="btn btn-primary" type="submit" value="메뉴 추가" onclick="return isAdd()">
 			     		<a href="<c:url value='/ADMIN/MENU/List.do' />" class="btn btn-primary">취소</a>
 		     		</form>
 	     		</div>

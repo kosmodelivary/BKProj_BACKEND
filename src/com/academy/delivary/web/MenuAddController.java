@@ -25,7 +25,7 @@ public class MenuAddController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 
 			MenuDto	menuDto		= new MenuDto();
-			//menuDto.setMenu_name(req.getParameter());
+			menuDto.setMenu_name(req.getParameter("menu_name"));
 			
 			
 			menuService.insert(menuDto);

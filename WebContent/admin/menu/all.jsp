@@ -37,35 +37,33 @@
    		    <div class="row" style="padding-top:10px">
 	   			<div class="col-md-10 col-md-offset-1">
 		   			<table class="table table-bordered">
-		   				<tr>
-		   					<th style="width:30%">메뉴 이름</th>
-		   					<th style="width:20%">카테고리</th>
-		   					<th style="width:20%">가&nbsp;&nbsp;&nbsp;격</th>
-		   					<th style="width:10%">상세</th>
-		   					<th style="width:10%">수정</th>
-		   					<th>삭제</th>
-		   				</tr>
-		   				<c:if test="${empty menu }" var="flag">
+		   			<c:if test="${empty menu }" var="flag">
 			   				<tr>
-			   					<td colspan="6">등록된 자료가 없습니다.</td>
+			   					<td>등록된 자료가 없습니다.</td>
 			   				</tr>
 		   				</c:if>
 		   				<c:if test="${not flag }">
 		   					<c:forEach var="item" items="${menu }" varStatus="loop" >
+		   						<tr>
+		   							<td colspan="2"><a href="<c:url value='/ADMIN/MENU/View.do?no=${item.menu_no }' />" style="cursor: pointer;"><img src="" alt="메뉴그림"></a></td>
+		   						</tr>
 				   				<tr>
-				   					<td>${item.menu_name }</td>
+				   					<td colspan="2"><a href="<c:url value='/ADMIN/MENU/View.do?no=${item.menu_no }' />" style="cursor: pointer;">${item.menu_name }</a></td>
+				   				</tr>
+				   				<tr>
 				   					<td>${item.category_name }</td>
 				   					<td>${item.menu_price }</td>
-				   					<td><a href="<c:url value='/ADMIN/STORE/View.do?no=${item.menu_no }' />">상세</a></td>
-				   					<td><a href="<c:url value='/ADMIN/STORE/Edit.do?no=${item.menu_no }' />">수정</a></td>
-				   					<td><a href="<c:url value='/ADMIN/STORE/Delete.do?no=${item.menu_no }' />" onclick="return isDelete()">삭제</a></td>
+			   					</tr>
+			   					<tr>
+				   					<td><a href="<c:url value='/ADMIN/MENU/Edit.do?no=${item.menu_no }' />">수정</a></td>
+				   					<td><a href="<c:url value='/ADMIN/MENU/Delete.do?no=${item.menu_no }' />" onclick="return isDelete()">삭제</a></td>
 				   				</tr>
 			   				</c:forEach>
 		   				</c:if>
 		   			</table>
 	   			</div>
 	   			<div class="col-md-10 col-md-offset-1 text-right">
-	   				<a href="<c:url value='/ADMIN/STORE/Add.do' />" class="btn btn-primary">매장 추가</a>
+	   				<a href="<c:url value='/ADMIN/MENU/Add.do' />" class="btn btn-primary">메뉴 추가</a>
 	   			</div>
 	     	</div>
         	

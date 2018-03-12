@@ -7,6 +7,7 @@
   <head>
   	<c:import url="/admin/include/loginCheck.jsp" />
   	<c:import url="/admin/include/head.jsp" />
+  	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   	<style type="text/css">
   		td {
   			top: 50%;
@@ -20,10 +21,15 @@
   		.form-control {
   			width:auto;
   		}
-  		.ui-datepicker-trigger { position:relative;top:10px ;right:{}px ; height:30px ; width:30px}
+  		.ui-datepicker-trigger {
+  			position:relative;
+  			top:10px;
+  			right:{}px;
+  			height:30px;
+  			width:30px;
+  		}
 		/* {} is the value according to your need */
   	</style>
-  	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<!-- jquery core -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- jquery ui -->

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+	<sqlMap namespace="Delivary">
+	
+	<!-- StoreDto 별칭, resultMap -->
+	<typeAlias alias="StoreDto" type="com.academy.delivery.service.StoreDto"/>
+	<resultMap id="StoreDtoResult" class="StoreDto">
+		<result property="store_no" />
+		<result property="store_name" />
+		<result property="store_tel" />
+		<result property="store_addr" />
+		<result property="store_weekdayon" />
+		<result property="store_weekdayoff" />
+		<result property="store_weekendon" />
+		<result property="store_weekendoff" />
+		<result property="store_minordermoney" />
+	</resultMap>
+	
+	<!-- StoreDao 사용 DB Query -->
+	<select id="Store.selectList" parameterClass="java.util.Map" resultMap="StoreDtoResult">
+		SELECT * FROM (SELECT T.*, ROWNUM R FROM (SELECT * FROM store ORDER BY store_no DESC) T)
+		WHERE R BETWEEN #start# AND #end#
+	</select>
+	<select id="Store.selectOne" parameterClass="java.lang.String" resultMap="StoreDtoResult">
+		SELECT * FROM store WHERE store_no = #store_no#
+	</select>
+	<update id="Store.update" parameterClass="StoreDto">
+		UPDATE store SET store_name = #store_name#, store_tel = #store_tel#, store_addr = #store_addr#, 
+		store_weekdayon = #store_weekdayon#, store_weekdayoff = #store_weekdayoff#, store_weekendon = #store_weekendon#, store_weekendoff = #store_weekendoff#, 
+		store_minordermoney = #store_minordermoney# 
+		WHERE store_no = #store_no#
+	</update>
+	<delete id="Store.delete" parameterClass="java.lang.String" >
+		DELETE FROM store WHERE store_no = #store_no# 
+	</delete>
+	<insert id="Store.insert" parameterClass="StoreDto">
+		INSERT INTO store VALUES(SEQ_STORE_STORE_NO.NEXTVAL, #store_name#, #store_tel#, 
+		#store_addr#, #store_weekdayon#, #store_weekdayoff#, #store_weekendon#, #store_weekendoff#, #store_minordermoney#)
+	</insert>
+	<select id="Store.getTotalCount" resultClass="int">
+		SELECT COUNT(*) FROM store
+	</select>
+	
+</sqlMap>

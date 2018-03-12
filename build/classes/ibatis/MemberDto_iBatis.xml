@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+	<sqlMap namespace="Delivary">
+	
+	<!-- MemberDto 별칭, resultMap -->
+	<typeAlias alias="MemberDto" type="com.academy.delivery.service.MemberDto"/>
+	<resultMap id="MemberDtoResult" class="MemberDto">
+		<result property="member_no" />
+		<result property="member_email" />
+		<result property="member_password" />
+		<result property="member_name" />
+		<result property="member_tel" />
+		<result property="member_agreesms" />
+		<result property="member_agreeemail" />
+	</resultMap>
+	
+	<!-- MemberDao 사용 DB Query -->
+	<select id="Member.selectList" resultMap="MemberDtoResult">
+		SELECT * FROM member ORDER BY member_no DESC
+	</select>
+	<select id="Member.selectOne" parameterClass="java.lang.String" resultMap="MemberDtoResult">
+		SELECT * FROM member WHERE member_no = #member_no#
+	</select>
+	<update id="Member.update" parameterClass="MemberDto">
+		UPDATE member SET member_name = #member_name#, member_tel = #member_tel#, 
+		member_agreesms = #member_agreesms#, member_agreeemail = #member_agreeemail# WHERE member_no = #member_no#
+	</update>
+	<delete id="Member.delete" parameterClass="java.lang.String" >
+		DELETE FROM member WHERE member_no = #member_no# 
+	</delete>
+	
+</sqlMap>

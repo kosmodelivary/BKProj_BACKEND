@@ -12,6 +12,7 @@ public class StoreDeliveryController extends HttpServlet  {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		
 		req.getRequestDispatcher("/admin/store/delivery/view.jsp").forward(req, resp);
 	}
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+	<sqlMap namespace="Delivary">
+	
+	<!-- AdminDto 별칭, resultMap -->
+	<typeAlias alias="AdminDto" type="com.academy.delivery.service.AdminDto"/>
+	<resultMap id="AdminDtoResult" class="AdminDto">
+		<result property="admin_id" />
+		<result property="admin_pass" />
+		<result property="admin_name" />
+		<result property="admin_level" />
+	</resultMap>
+
+	<!-- AdminDao 사용 DB Query -->
+	<select id="Admin.login" parameterClass="AdminDto" resultClass="int">
+		SELECT COUNT(*) FROM admin WHERE admin_id = #admin_id# AND admin_pass = #admin_pass#
+	</select>
+
+
+</sqlMap>

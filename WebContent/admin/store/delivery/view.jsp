@@ -13,6 +13,9 @@
 			height: 650px;
 			width: 100%;
 		}
+		.storeList {
+			width: 15%;
+		}
   	</style>
   </head>
 
@@ -31,17 +34,12 @@
 		     				<td>
 								<div id="map"></div>
 		     				</td>
-		     			</tr>
-		     			<tr>
-		     				<td>
-		     					<a href="#" class="btn btn-info">서울</a>
-		     					<a href="#" class="btn btn-info">수도권 북부</a>
-		     					<a href="#" class="btn btn-info">수도권 남부</a>
-		     					<a href="#" class="btn btn-info">강원</a>
-		     					<a href="#" class="btn btn-info">충청</a>
-		     					<a href="#" class="btn btn-info">전라</a>
-		     					<a href="#" class="btn btn-info">경상</a>
-		     					<a href="#" class="btn btn-info">제주</a>
+		     				<td class="storeList">
+		     					<select class="form-control">
+		     						<option>회기점</option>
+		     						<option>강남점</option>
+		     						<option>우리점</option>
+		     					</select> 
 		     				</td>
 		     			</tr>
 		     		</table>

@@ -16,6 +16,9 @@
 		</dataSource>
 	</transactionManager>
   
-  <sqlMap resource="ibatis/Delivery_iBatis.xml"/>
+  <sqlMap resource="ibatis/AdminDto_iBatis.xml"/>
+  <sqlMap resource="ibatis/MemberDto_iBatis.xml"/>
+  <sqlMap resource="ibatis/StoreDto_iBatis.xml"/>
+  <sqlMap resource="ibatis/MenuDto_iBatis.xml"/>
   
 </sqlMapConfig>

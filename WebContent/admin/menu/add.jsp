@@ -75,7 +75,7 @@
 			     				<td><input class="form-control" type="text" name="menu_name"></td>
 			     			</tr>
 			     			<tr>
-			     				<td>카테고리</td>
+			     				<td class="col">카테고리</td>
 			     				<td>
 				     				<select name="category_name">
 				     					<option value="menu">메뉴</option>

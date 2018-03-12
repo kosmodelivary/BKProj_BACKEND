@@ -1,6 +1,7 @@
 package com.academy.delivary.web;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,10 +27,19 @@ public class MenuAddController extends HttpServlet {
 
 			MenuDto	menuDto		= new MenuDto();
 			menuDto.setMenu_name(req.getParameter("menu_name"));
+			menuDto.setCategory_name(req.getParameter("category_name"));
+			menuDto.setMenu_price(req.getParameter("menu_price"));
+			menuDto.setMenu_weight(req.getParameter("menu_weight"));
+			menuDto.setMenu_calrorie(req.getParameter("menu_calrorie"));
+			menuDto.setMenu_protein(req.getParameter("menu_protein"));
+			menuDto.setMenu_sodium(req.getParameter("menu_sodium"));
+			menuDto.setMenu_sugars(req.getParameter("menu_sugars"));
+			menuDto.setMenu_fat(req.getParameter("menu_fat"));
+			menuDto.setMenu_enddate(null);
 			
 			
 			menuService.insert(menuDto);
-			resp.sendRedirect(req.getContextPath() + "/ADMIN/MENU/List.do");
+			resp.sendRedirect(req.getContextPath() + "/ADMIN/MENU/All.do");
 		}
 		
 	} // end service

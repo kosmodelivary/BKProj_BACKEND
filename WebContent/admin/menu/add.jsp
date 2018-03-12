@@ -7,7 +7,6 @@
   <head>
   	<c:import url="/admin/include/loginCheck.jsp" />
   	<c:import url="/admin/include/head.jsp" />
-  	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   	<style type="text/css">
   		td {
   			top: 50%;
@@ -21,21 +20,11 @@
   		.form-control {
   			width:auto;
   		}
-  		.ui-datepicker-trigger {
-  			position:relative;
-  			top:10px;
-  			right:{}px;
-  			height:30px;
-  			width:30px;
-  		}
 		/* {} is the value according to your need */
   	</style>
-	<!-- jquery core -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<!-- jquery ui -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   	<script type="text/javascript">
 		var isAdd = function() {
+			
 			if (confirm('정말 추가하시겠습니까?') == true) {
 				alert('추가합니다.');
 				return true;
@@ -44,17 +33,6 @@
 				return false;
 			}
 		};
-  	</script>
-  	<script>
-  	$(function(){
-		$( "#datepicker" ).datepicker({
-			dateFormat: "yy-mm-dd",
-			showOn: "both",
-			buttonImage: "<c:url value='/Images/calendar-icon.jpg'/>",
-			buttonImageOnly: true,
-			buttonText: "달력"
-		});
-	});
   	</script>
   </head>
 
@@ -77,7 +55,7 @@
 			     			<tr>
 			     				<td class="col">카테고리</td>
 			     				<td>
-				     				<select name="category_name">
+				     				<select name="category_name" class="form-control">
 				     					<option value="menu">메뉴</option>
 				     					<option value="hamburger">햄버거</option>
 				     					<option value="side">사이드</option>
@@ -130,12 +108,13 @@
 			     			<tr>
 			     				<td class="col">판매종료일</td>
 			     				<td>
-			     					<input class="form-control" type="text" name="menu_enddate" id="datepicker"/>
+			     					<input class="form-control" type="text" name="menu_enddate"/>
+			     					<!-- bootstrap으로 인해 datepicker가 충돌하는거 같네요~ 추후 방법을 찾아서 적용하겠슴돠 -->
 			     				</td>
 			     			</tr>
 			     		</table>
 			     		<input class="btn btn-primary" type="submit" value="메뉴 추가" onclick="return isAdd()">
-			     		<a href="<c:url value='/ADMIN/MENU/List.do' />" class="btn btn-primary">취소</a>
+			     		<a href="<c:url value='/ADMIN/MENU/All.do' />" class="btn btn-primary">취소</a>
 		     		</form>
 	     		</div>
 	     	</div>

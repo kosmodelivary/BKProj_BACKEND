@@ -24,11 +24,25 @@
 	
 	<!-- MenuDao 사용 DB Query -->
 	<select id="Menu.selectList" resultMap="MenuDtoResult">
-		SELECT m.*,mc.c_order FROM menu m JOIN menu_category mc ON m.category_name = mc.category_name ORDER BY menu_no, mc.c_order DESC
+		SELECT m.*,mc.c_order FROM menu m JOIN menu_category mc ON m.category_name = mc.category_name ORDER BY menu_no, mc.c_order
 	</select>
 	<insert id="Menu.insert" parameterClass="MenuDto">
-		INSERT INTO menu VALUES(SEQ_MENU_MENU_NO.NEXTVAL,#category_name#,#menu_name#,
-		#menu_price#,#menu_weight#,#menu_calrorie#,#menu_protein#,#menu_sodium#,#menu_sugars#,#menu_fat#,#menu_enddate#)
+		INSERT INTO menu(menu_no,category_name,menu_name,menu_price,menu_weight,menu_calrorie,menu_protein,menu_sodium,menu_sugars,menu_fat) VALUES(SEQ_MENU_MENU_NO.NEXTVAL,#category_name#,#menu_name#,
+		#menu_price#,#menu_weight#,#menu_calrorie#,#menu_protein#,#menu_sodium#,#menu_sugars#,#menu_fat#)
 	</insert>
+	<select id="Menu.selectOne" parameterClass="java.lang.String" resultMap="MenuDtoResult">
+		SELECT * FROM menu WHERE menu_no = #menu_no#
+	</select>
+	<update id="Menu.update" parameterClass="MenuDto">
+		UPDATE menu 
+		SET menu_name = #menu_name#, menu_price= #menu_price#, category_name = #category_name#, 
+		menu_weight = #menu_weight#, menu_calrorie = #menu_calrorie#, 
+		menu_protein = #menu_protein#, menu_sodium = #menu_sodium#, 
+		menu_sugars = #menu_sugars#, menu_fat = #menu_fat#, menu_enddate = #menu_enddate#
+		WHERE menu_no = #menu_no#
+	</update>
+	<delete id="Menu.delete" parameterClass="java.lang.String">
+		DELETE FROM menu WHERE menu_no = #menu_no#
+	</delete>
 
 </sqlMap>

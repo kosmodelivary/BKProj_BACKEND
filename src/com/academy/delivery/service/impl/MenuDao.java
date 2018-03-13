@@ -1,10 +1,12 @@
 package com.academy.delivery.service.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.academy.delivery.common.IbatisUtil;
 import com.academy.delivery.service.MenuDto;
 import com.academy.delivery.service.MenuService;
+import com.academy.delivery.service.StoreDto;
 
 public class MenuDao implements MenuService{
 
@@ -19,8 +21,15 @@ public class MenuDao implements MenuService{
 
 	@Override
 	public MenuDto selectOne(String menu_no) {
-		// TODO Auto-generated method stub
-		return null;
+		MenuDto menuDto	= null;
+		
+		try {
+			menuDto		= (MenuDto) IbatisUtil.getMapper().queryForObject("Menu.selectOne", menu_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return menuDto;
 	}
 
 	@Override
@@ -35,14 +44,26 @@ public class MenuDao implements MenuService{
 
 	@Override
 	public int update(MenuDto mnDto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int	affected	= 0;
+		try {
+			affected	= IbatisUtil.getMapper().update("Menu.update", mnDto);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return affected;
 	}
 
 	@Override
 	public int delete(String menu_no) {
-		// TODO Auto-generated method stub
-		return 0;
+		int	affected	= 0;
+		try {
+			affected	= IbatisUtil.getMapper().update("Menu.delete", menu_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return affected;
 	}
 
 }

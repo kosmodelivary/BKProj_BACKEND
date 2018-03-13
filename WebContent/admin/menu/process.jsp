@@ -8,7 +8,7 @@
 		<c:when test="${EDIT_RESULT ne '0' }">
 			<script>
 				alert('수정 성공');
-				location.replace("<c:url value='/ADMIN/MENU/List.do' />");
+				location.replace("<c:url value='/ADMIN/MENU/All.do' />");
 			</script>
 		</c:when>
 		<c:otherwise>
@@ -25,7 +25,7 @@
 		<c:when test="${DELETE_RESULT ne '0' }">
 			<script>
 				alert('삭제 성공');
-				location.replace("<c:url value='/ADMIN/MENU/List.do' />");
+				location.replace("<c:url value='/ADMIN/MENU/All.do' />");
 			</script>
 		</c:when>
 		<c:otherwise>

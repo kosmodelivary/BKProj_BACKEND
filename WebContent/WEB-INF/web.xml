@@ -125,6 +125,33 @@
 		<servlet-name>BackendMenuAdd</servlet-name>
 		<url-pattern>/ADMIN/MENU/Add.do</url-pattern>
 	</servlet-mapping>
+	<!-- 메뉴 - 상세보기 처리 -->
+	<servlet>
+		<servlet-name>BackendMenuView</servlet-name>
+		<servlet-class>com.academy.delivary.web.MenuViewController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendMenuView</servlet-name>
+		<url-pattern>/ADMIN/MENU/View.do</url-pattern>
+	</servlet-mapping>
+	<!-- 메뉴 - 수정 처리 -->
+	<servlet>
+		<servlet-name>BackendMenuEdit</servlet-name>
+		<servlet-class>com.academy.delivary.web.MenuEditController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendMenuEdit</servlet-name>
+		<url-pattern>/ADMIN/MENU/Edit.do</url-pattern>
+	</servlet-mapping>
+	<!-- 메뉴 - 삭제 처리 -->
+	<servlet>
+		<servlet-name>BackendMenuDelete</servlet-name>
+		<servlet-class>com.academy.delivary.web.MenuDeleteController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendMenuDelete</servlet-name>
+		<url-pattern>/ADMIN/MENU/Delete.do</url-pattern>
+	</servlet-mapping>
 	
 	<!-- 공지사항 - 목록 -->
 	<servlet>

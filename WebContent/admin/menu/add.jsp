@@ -112,6 +112,12 @@
 			     					<!-- bootstrap으로 인해 datepicker가 충돌하는거 같네요~ 추후 방법을 찾아서 적용하겠슴돠 -->
 			     				</td>
 			     			</tr>
+			     			<tr>
+			     				<td class="col">메뉴 이미지</td>
+			     				<td>
+			     					
+			     				</td>
+			     			</tr>
 			     		</table>
 			     		<input class="btn btn-primary" type="submit" value="메뉴 추가" onclick="return isAdd()">
 			     		<a href="<c:url value='/ADMIN/MENU/All.do' />" class="btn btn-primary">취소</a>

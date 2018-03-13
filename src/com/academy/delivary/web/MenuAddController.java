@@ -8,14 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.academy.delivery.common.FileUtils;
 import com.academy.delivery.service.MenuDto;
 import com.academy.delivery.service.MenuService;
 import com.academy.delivery.service.impl.MenuServiceImpl;
+import com.oreilly.servlet.MultipartRequest;
 
 public class MenuAddController extends HttpServlet {
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req,
+						   HttpServletResponse resp) throws ServletException, IOException {
 		MenuService	menuService		= new MenuServiceImpl();
 
 		// get  방식	: 추가 폼 이동
@@ -24,6 +27,8 @@ public class MenuAddController extends HttpServlet {
 			req.getRequestDispatcher("/admin/menu/add.jsp").forward(req, resp);
 		} else {
 			req.setCharacterEncoding("utf-8");
+			
+//			MultipartRequest mr = FileUtils.upload(req, req.getServletContext().getRealPath("/Upload"));
 
 			MenuDto	menuDto		= new MenuDto();
 			menuDto.setMenu_name(req.getParameter("menu_name"));
@@ -36,6 +41,8 @@ public class MenuAddController extends HttpServlet {
 			menuDto.setMenu_sugars(req.getParameter("menu_sugars"));
 			menuDto.setMenu_fat(req.getParameter("menu_fat"));
 			menuDto.setMenu_enddate(null);
+			
+			
 			
 			
 			menuService.insert(menuDto);

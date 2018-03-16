@@ -10,10 +10,13 @@
 	<typeAlias alias="MemberDto" type="com.academy.delivery.service.MemberDto"/>
 	<resultMap id="MemberDtoResult" class="MemberDto">
 		<result property="member_no" />
+		<result property="findpass_no" />
+		<result property="member_answer" />
 		<result property="member_email" />
 		<result property="member_password" />
 		<result property="member_name" />
 		<result property="member_tel" />
+		<result property="member_lastorderaddr" />
 		<result property="member_agreesms" />
 		<result property="member_agreeemail" />
 	</resultMap>

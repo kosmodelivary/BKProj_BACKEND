@@ -18,6 +18,29 @@
 			width: 15%;
 		}
   	</style>
+  	<script type="text/javascript">
+		$(function(){
+			var currlocation;
+			var jsondata;
+			window.setInterval(function() {
+				console.log('1.0초 단위로 호출');
+				$.ajax({
+					url:'<c:url value="/ADMIN/STORE/DELIVERY/Polling.do" />',
+					type:'post',
+					dataType:'json',
+					success: function(data) {
+						jsondata = JSON.parse(responseData);
+						currlocation = {lat : jsondata.latitude, lng : jsondata.longitude};		// 함수 이름만 사용, ()는 제외
+					},
+					error: function (request, status, error) {
+						// 비정상적인 에러 나왔을 때
+						console.log("code:"+request.status + "\n"+"message:" + request.responseText + "\n" + "error:" + error);
+					},
+				});
+			}, 1000);
+		});
+		
+  	</script>
   </head>
 
   <body onload="initMap()">
@@ -48,6 +71,7 @@
 				     					</select> 
 		     						</c:otherwise>
 		     					</c:choose>
+		     					\${requestScope.latitude } : ${empty requestScope.latitude }
 		     				</td>
 		     			</tr>
 		     		</table>
@@ -66,7 +90,7 @@
 		      center: uluru
 		    });
 		    var marker = new google.maps.Marker({
-		      position: uluru,
+		      position: currlocation,
 		      map: map
 		    });
 		}

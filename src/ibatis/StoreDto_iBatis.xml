@@ -44,5 +44,8 @@
 	<select id="Store.getTotalCount" resultClass="int">
 		SELECT COUNT(*) FROM store
 	</select>
+	<select id="Store.getTotalDeliveryCount" resultClass="int">
+		SELECT COUNT(*) FROM store_delivery
+	</select>
 	
 </sqlMap>

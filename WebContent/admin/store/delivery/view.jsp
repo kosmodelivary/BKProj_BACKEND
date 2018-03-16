@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<c:import url="/admin/include/loginCheck.jsp" />
   	<c:import url="/admin/include/head.jsp" />
   	
@@ -25,7 +26,6 @@
     <div class="container-fluid">
       <div class="row">
       	<c:import url="/admin/include/sidebar.jsp" />
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	     	<div class="row" style="padding-top:10px">
 	     		<div class="col-md-9">
@@ -35,34 +35,40 @@
 								<div id="map"></div>
 		     				</td>
 		     				<td class="storeList">
-		     					<select class="form-control">
-		     						<option>회기점</option>
-		     						<option>강남점</option>
-		     						<option>우리점</option>
-		     					</select> 
+		     					<c:choose>
+		     						<c:when test="${nowDelivery == 0 }">
+				     					운행중인 딜리버리 없음
+		     						</c:when>
+		     						<c:otherwise>
+				     					<select class="form-control">
+				     						<option>- 배달중 전체 -</option>
+				     						<option>회기점</option>
+				     						<option>강남점</option>
+				     						<option>우리점</option>
+				     					</select> 
+		     						</c:otherwise>
+		     					</c:choose>
 		     				</td>
 		     			</tr>
 		     		</table>
 	     		</div>
 	     	</div>
         </div>
-        
       </div>
     </div>
     
 	<script>
+		var uluru = {lat: 37.567, lng: 126.97806};
+		
 		function initMap() {
-		    var uluru = {lat: 37.567, lng: 126.97806};
 		    var map = new google.maps.Map(document.getElementById('map'), {
 		      zoom: 12,
 		      center: uluru
 		    });
-		    /*
 		    var marker = new google.maps.Marker({
 		      position: uluru,
 		      map: map
 		    });
-		    */
 		}
 	</script>
     <script async defer

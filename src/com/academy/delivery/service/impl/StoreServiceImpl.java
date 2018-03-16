@@ -44,4 +44,11 @@ public class StoreServiceImpl implements StoreService {
 		return storeDao.getTotalRecordCount();
 	}
 
+	@Override
+	public int getTotalDeliveryCount() {
+		return storeDao.getTotalDeliveryCount();
+	}
+	
+	
+
 } // end MemberServiceImpl 

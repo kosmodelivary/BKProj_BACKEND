@@ -13,5 +13,6 @@ public interface StoreService {
 	public int delete(String no);
 	
 	public int getTotalRecordCount();
+	public int getTotalDeliveryCount();
 
 }

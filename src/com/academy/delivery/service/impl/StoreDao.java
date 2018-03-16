@@ -88,4 +88,17 @@ public class StoreDao implements StoreService {
 		return totalCount;
 	}
 
+	@Override
+	public int getTotalDeliveryCount() {
+		int totalCount	= 0;
+		
+		try {
+			totalCount		= (Integer) IbatisUtil.getMapper().queryForObject("Store.getTotalDeliveryCount");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return totalCount;
+	}
+
 } // end MemberDao

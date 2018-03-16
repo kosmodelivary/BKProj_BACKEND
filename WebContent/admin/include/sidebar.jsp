@@ -32,8 +32,8 @@
             <li><a href="#">-- 추가 메뉴 --</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li <c:if test="${fn:contains(pageContext.request.requestURI, '/store/list') }">class="active"</c:if>>
-            	<a href="${pageContext.request.contextPath }/ADMIN/STORE/List.do">
+            <li <c:if test="${fn:contains(pageContext.request.requestURI, '/store/') and not fn:contains(pageContext.request.requestURI, 'delivery') }">class="active"</c:if>>
+            	<a href="${pageContext.request.contextPath }/ADMIN/STORE/List.do?nowPage=1">
             		매장 리스트<c:if test="${fn:contains(pageContext.request.requestURI, '/store/') }"><span class="sr-only">(current)</span></c:if>
             	</a>
             </li>

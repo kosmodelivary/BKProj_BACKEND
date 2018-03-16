@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+	<sqlMap namespace="ibatis.FAQDto_iBatis">
+	
+	<!-- FAQ 별칭, resultMap -->
+	<typeAlias alias="FAQDto" type="com.academy.delivery.service.FAQDto"/>
+	<resultMap id="FAQDtoResult" class="FAQDto">
+		<result property="faq_no" />
+		<result property="faq_ask" />
+		<result property="faq_answer" />
+	</resultMap>
+	
+	<!-- FAQDao 사용 DB Query -->
+	<select id="FAQ.selectList" parameterClass="java.util.Map" resultMap="FAQDtoResult">
+		SELECT * FROM(SELECT T.*, ROWNUM R FROM(SELECT * FROM faq ORDER BY faq_no DESC) T)		  
+		WHERE R BETWEEN #start# AND #end#
+	</select>
+	<select id="FAQ.selectOne" parameterClass="java.lang.String" resultMap="FAQDtoResult">
+		SELECT * FROM faq WHERE faq_no = #faq_no#
+	</select>
+	<update id="FAQ.update" parameterClass="FAQDto">
+		UPDATE faq SET faq_ask = #faq_ask#, faq_answer = #faq_answer# 
+		WHERE faq_no = #faq_no#
+	</update>
+	<delete id="FAQ.delete" parameterClass="java.lang.String" >
+		DELETE FROM faq WHERE faq_no = #faq_no# 
+	</delete>
+	<insert id="FAQ.insert" parameterClass="FAQDto">
+		INSERT INTO faq VALUES(SEQ_FAQ_FAQ_NO.NEXTVAL, #faq_ask#, #faq_answer#)
+	</insert>
+	<select id="FAQ.getTotalRecordCount" resultClass="int">
+		SELECT COUNT(*) FROM faq
+	</select>
+	
+	</sqlMap>

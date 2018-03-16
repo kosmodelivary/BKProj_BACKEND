@@ -199,7 +199,33 @@
 		<servlet-name>BackendFaqAdd</servlet-name>
 		<url-pattern>/ADMIN/Faq/Add.do</url-pattern>
 	</servlet-mapping>
-
+	<!-- 매장 리스트 - 수정 폼 출력, 수정 처리 -->
+	<servlet>
+		<servlet-name>BackendFaqEdit</servlet-name>
+		<servlet-class>com.academy.delivary.web.FaqEditController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendFaqEdit</servlet-name>
+		<url-pattern>/ADMIN/Faq/Edit.do</url-pattern>
+	</servlet-mapping>
+	<!-- 매장 리스트 - 삭제 처리 -->
+	<servlet>
+		<servlet-name>BackendFaqDelete</servlet-name>
+		<servlet-class>com.academy.delivary.web.FaqDeleteController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendFaqDelete</servlet-name>
+		<url-pattern>/ADMIN/Faq/Delete.do</url-pattern>
+	</servlet-mapping>
+	<!-- 매장 리스트 - 상세보기 처리 -->
+	<servlet>
+		<servlet-name>BackendFaqView</servlet-name>
+		<servlet-class>com.academy.delivary.web.FaqViewController</servlet-class>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackendFaqView</servlet-name>
+		<url-pattern>/ADMIN/Faq/View.do</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>/admin/index.jsp</welcome-file>
 		<welcome-file>index.html</welcome-file>

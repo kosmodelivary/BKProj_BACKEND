@@ -37,6 +37,11 @@
             		매장 리스트<c:if test="${fn:contains(pageContext.request.requestURI, '/store/') }"><span class="sr-only">(current)</span></c:if>
             	</a>
             </li>
+            <li <c:if test="${fn:contains(pageContext.request.requestURI, '/faq/list') }">class="active"</c:if>>
+            	<a href="${pageContext.request.contextPath }/ADMIN/Faq/List.do">
+            		FAQ<c:if test="${fn:contains(pageContext.request.requestURI, '/faq/') }"><span class="sr-only">(current)</span></c:if>
+            	</a>
+            </li>
             <li <c:if test="${fn:contains(pageContext.request.requestURI, 'store/delivery') }">class="active"</c:if>>
             	<a href="${pageContext.request.contextPath }/ADMIN/STORE/DELIVERY/View.do">
             		딜리버리 상황판<c:if test="${fn:contains(pageContext.request.requestURI, 'store/delivery') }"><span class="sr-only">(current)</span></c:if>

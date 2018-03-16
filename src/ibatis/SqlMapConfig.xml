@@ -20,5 +20,5 @@
   <sqlMap resource="ibatis/MemberDto_iBatis.xml"/>
   <sqlMap resource="ibatis/StoreDto_iBatis.xml"/>
   <sqlMap resource="ibatis/MenuDto_iBatis.xml"/>
-  
+  <sqlMap resource="ibatis/FAQDto_iBatis.xml"/>
 </sqlMapConfig>

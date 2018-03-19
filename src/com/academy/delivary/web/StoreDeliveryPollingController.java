@@ -56,12 +56,14 @@ public class StoreDeliveryPollingController extends HttpServlet {
 
 				object = (JSONObject) parser.parse(req.getParameter("PostData"));
 				if (object != null) {
-					File file	= null;
-					file 		= new File("/admin/store/delivery/json/" + object.get("uuid").toString() + ".json");
-					file.createNewFile();
+					File file	= 
+							new File(req.getServletContext().getRealPath("/admin/store/delivery/json/") + object.get("uuid").toString() + ".json");
 					FileWriter	fw		= new FileWriter(file);
 					fw.write(object.toJSONString());
-					System.out.println("json 파일 출력 완료: " + object.toJSONString());
+					fw.flush();
+					fw.close();
+					System.out.println("json 파일 출력 완료: " + 
+							req.getServletContext().getRealPath("/admin/store/delivery/json/") + object.get("uuid").toString() + ".json");
 				}
 			}
 		} catch (ParseException e) {

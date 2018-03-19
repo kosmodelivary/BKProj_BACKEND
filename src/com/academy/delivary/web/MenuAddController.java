@@ -47,31 +47,31 @@ public class MenuAddController extends HttpServlet {
 					if(item.isFormField()) {
 						switch (item.getFieldName()) {
 							case "menu_name":
-								menuDto.setMenu_name(item.getFieldName());
+								menuDto.setMenu_name(item.getString());
 								break;
 							case "category_name":
-								menuDto.setCategory_name(item.getFieldName());
+								menuDto.setCategory_name(item.getString());
 								break;
 							case "menu_price":
-								menuDto.setMenu_price(item.getFieldName());
+								menuDto.setMenu_price(item.getString());
 								break;
 							case "menu_weight":
-								menuDto.setMenu_weight(item.getFieldName());
+								menuDto.setMenu_weight(item.getString());
 								break;
 							case "menu_calrorie":
-								menuDto.setMenu_calrorie(item.getFieldName());
+								menuDto.setMenu_calrorie(item.getString());
 								break;
 							case "menu_protein":
-								menuDto.setMenu_protein(item.getFieldName());
+								menuDto.setMenu_protein(item.getString());
 								break;
 							case "menu_sodium":
-								menuDto.setMenu_sodium(item.getFieldName());
+								menuDto.setMenu_sodium(item.getString());
 								break;
 							case "menu_sugars":
-								menuDto.setMenu_sugars(item.getFieldName());
+								menuDto.setMenu_sugars(item.getString());
 								break;
 							case "menu_fat":
-								menuDto.setMenu_fat(item.getFieldName());
+								menuDto.setMenu_fat(item.getString());
 								break;
 						}
 					}
@@ -85,6 +85,7 @@ public class MenuAddController extends HttpServlet {
 			} catch (FileUploadException e) {
 				e.printStackTrace();
 			} finally {
+				System.out.println(menuDto.getMenu_name());
 				menuService.insert(menuDto);
 				resp.sendRedirect(req.getContextPath() + "/ADMIN/MENU/All.do");
 			}

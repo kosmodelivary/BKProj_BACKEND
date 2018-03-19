@@ -34,6 +34,8 @@
 			}
 		};
   	</script>
+  	<script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap-datepicker.min.js"></script>
+  	<link rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-datepicker.css"/>
   </head>
 
   <body>
@@ -110,7 +112,7 @@
 			     			<tr>
 			     				<td class="col">판매종료일</td>
 			     				<td>
-			     					<input class="form-control" type="text" name="menu_enddate"/>
+			     					<input class="form-control" id="datetimepicker1" type="text" name="menu_enddate"/>
 			     					<!-- bootstrap으로 인해 datepicker가 충돌하는거 같네요~ 추후 방법을 찾아서 적용하겠슴돠 -->
 			     				</td>
 			     			</tr>

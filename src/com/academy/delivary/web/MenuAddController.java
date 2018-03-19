@@ -1,24 +1,32 @@
 package com.academy.delivary.web;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.academy.delivery.common.FileUtils;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FilenameUtils;
+
+import com.academy.delivery.common.AWSService;
 import com.academy.delivery.service.MenuDto;
 import com.academy.delivery.service.MenuService;
 import com.academy.delivery.service.impl.MenuServiceImpl;
-import com.oreilly.servlet.MultipartRequest;
+
 
 public class MenuAddController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req,
-						   HttpServletResponse resp) throws ServletException, IOException {
+						   HttpServletResponse resp
+						   ) throws ServletException, IOException {
 		MenuService	menuService		= new MenuServiceImpl();
 
 		// get  방식	: 추가 폼 이동
@@ -26,26 +34,61 @@ public class MenuAddController extends HttpServlet {
 		if (req.getMethod().equalsIgnoreCase("get")) {
 			req.getRequestDispatcher("/admin/menu/add.jsp").forward(req, resp);
 		} else {
-			req.setCharacterEncoding("utf-8");
 			
-//			MultipartRequest mr = FileUtils.upload(req, req.getServletContext().getRealPath("/Upload"));
-
-			MenuDto	menuDto		= new MenuDto();
-			menuDto.setMenu_name(req.getParameter("menu_name"));
-			menuDto.setCategory_name(req.getParameter("category_name"));
-			menuDto.setMenu_price(req.getParameter("menu_price"));
-			menuDto.setMenu_weight(req.getParameter("menu_weight"));
-			menuDto.setMenu_calrorie(req.getParameter("menu_calrorie"));
-			menuDto.setMenu_protein(req.getParameter("menu_protein"));
-			menuDto.setMenu_sodium(req.getParameter("menu_sodium"));
-			menuDto.setMenu_sugars(req.getParameter("menu_sugars"));
-			menuDto.setMenu_fat(req.getParameter("menu_fat"));
+			/* 업로드 참조, 멀티파트(cos.jar 방식 아님 aws 전용)
+			 * https://stackoverflow.com/questions/17937841/multipart-form-data-does-not-support-for-request-getparamerter
+			 */ 
+			FileItemFactory factory = new DiskFileItemFactory();
+			ServletFileUpload sfu = new ServletFileUpload(factory);
+			MenuDto menuDto = new MenuDto();
+			try {
+				List<FileItem> list = sfu.parseRequest(req);
+				for(FileItem item : list) {
+					if(item.isFormField()) {
+						switch (item.getFieldName()) {
+							case "menu_name":
+								menuDto.setMenu_name(item.getFieldName());
+								break;
+							case "category_name":
+								menuDto.setCategory_name(item.getFieldName());
+								break;
+							case "menu_price":
+								menuDto.setMenu_price(item.getFieldName());
+								break;
+							case "menu_weight":
+								menuDto.setMenu_weight(item.getFieldName());
+								break;
+							case "menu_calrorie":
+								menuDto.setMenu_calrorie(item.getFieldName());
+								break;
+							case "menu_protein":
+								menuDto.setMenu_protein(item.getFieldName());
+								break;
+							case "menu_sodium":
+								menuDto.setMenu_sodium(item.getFieldName());
+								break;
+							case "menu_sugars":
+								menuDto.setMenu_sugars(item.getFieldName());
+								break;
+							case "menu_fat":
+								menuDto.setMenu_fat(item.getFieldName());
+								break;
+						}
+					}
+					else {
+		                AWSService amazonS3 = new AWSService();
+		                amazonS3.uploadFile(item.getInputStream(),
+		                					item.getSize(), 
+		                					FilenameUtils.getName(item.getName()));
+					}
+				}
+			} catch (FileUploadException e) {
+				e.printStackTrace();
+			} finally {
+				menuService.insert(menuDto);
+				resp.sendRedirect(req.getContextPath() + "/ADMIN/MENU/All.do");
+			}
 			
-			
-			
-			
-			menuService.insert(menuDto);
-			resp.sendRedirect(req.getContextPath() + "/ADMIN/MENU/All.do");
 		}
 		
 	} // end service

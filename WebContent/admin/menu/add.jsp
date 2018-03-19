@@ -46,7 +46,9 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	     	<div class="row" style="padding-top:10px">
 	     		<div class="col-md-7 text-right">
-	     			<form class="form-inline" action="<c:url value='/ADMIN/MENU/Add.do' />" method="post">
+	     			<form class="form-inline"
+			     			action="<c:url value='/ADMIN/MENU/Add.do' />" 
+			     			method="post" enctype="multipart/form-data">
 			     		<table class="table table-bordered text-left">
 			     			<tr>
 			     				<td class="col">메뉴 이름</td>
@@ -115,7 +117,7 @@
 			     			<tr>
 			     				<td class="col">메뉴 이미지</td>
 			     				<td>
-			     					
+			     					<input class="form-control" type="file" name="menu_image"/>
 			     				</td>
 			     			</tr>
 			     		</table>

@@ -45,7 +45,7 @@
 		   				<c:if test="${not flag }">
 		   					<c:forEach var="item" items="${menu }" varStatus="loop" >
 		   						<tr>
-		   							<td colspan="2"><a href="<c:url value='/ADMIN/MENU/View.do?no=${item.menu_no }' />" style="cursor: pointer;"><img src="https://s3.ap-northeast-2.amazonaws.com/bkprojserver/${item.menu_name }.png" alt="메뉴그림"></a></td>
+		   							<td colspan="2"><a href="<c:url value='/ADMIN/MENU/View.do?no=${item.menu_no }' />" style="cursor: pointer;"><img src="https://s3.ap-northeast-2.amazonaws.com/bkprojserver/${item.menu_name }${item.menu_file_extension }" alt="메뉴그림"></a></td>
 		   						</tr>
 				   				<tr>
 				   					<td colspan="2"><a href="<c:url value='/ADMIN/MENU/View.do?no=${item.menu_no }' />" style="cursor: pointer;">${item.menu_name }</a></td>

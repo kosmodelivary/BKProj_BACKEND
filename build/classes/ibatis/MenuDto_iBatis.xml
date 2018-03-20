@@ -20,6 +20,7 @@
 		<result property="menu_sugars" />
 		<result property="menu_fat" />
 		<result property="menu_enddate" />
+		<result property="menu_file_extension" />
 	</resultMap>
 	
 	<!-- MenuDao 사용 DB Query -->
@@ -28,7 +29,7 @@
 	</select>
 	<insert id="Menu.insert" parameterClass="MenuDto">
 		INSERT INTO menu VALUES(SEQ_MENU_MENU_NO.NEXTVAL,#category_name#,#menu_name#,
-		#menu_price#,#menu_weight#,#menu_calrorie#,#menu_protein#,#menu_sodium#,#menu_sugars#,#menu_fat#,#menu_enddate#)
+		#menu_price#,#menu_weight#,#menu_calrorie#,#menu_protein#,#menu_sodium#,#menu_sugars#,#menu_fat#,#menu_enddate#,#menu_file_extension#)
 	</insert>
 	<select id="Menu.selectOne" parameterClass="java.lang.String" resultMap="MenuDtoResult">
 		SELECT * FROM menu WHERE menu_no = #menu_no#
@@ -38,7 +39,7 @@
 		SET menu_name = #menu_name#, menu_price= #menu_price#, category_name = #category_name#, 
 		menu_weight = #menu_weight#, menu_calrorie = #menu_calrorie#, 
 		menu_protein = #menu_protein#, menu_sodium = #menu_sodium#, 
-		menu_sugars = #menu_sugars#, menu_fat = #menu_fat#, menu_enddate = #menu_enddate#
+		menu_sugars = #menu_sugars#, menu_fat = #menu_fat#, menu_enddate = #menu_enddate#, menu_file_extension = #menu_file_extension#
 		WHERE menu_no = #menu_no#
 	</update>
 	<delete id="Menu.delete" parameterClass="java.lang.String">

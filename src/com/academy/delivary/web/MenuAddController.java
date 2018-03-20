@@ -35,7 +35,6 @@ public class MenuAddController extends HttpServlet {
 		if (req.getMethod().equalsIgnoreCase("get")) {
 			req.getRequestDispatcher("/admin/menu/add.jsp").forward(req, resp);
 		} else {
-			
 			/* 업로드 참조, 멀티파트(cos.jar 방식 아님 aws 전용)
 			 * https://stackoverflow.com/questions/17937841/multipart-form-data-does-not-support-for-request-getparamerter
 			 */ 
@@ -79,10 +78,13 @@ public class MenuAddController extends HttpServlet {
 						}
 					}
 					else {
+						System.out.println(item.getName());
 		                AWSService amazonS3 = new AWSService();
 		                amazonS3.uploadFile(item.getInputStream(),
 		                					item.getSize(), 
 		                					FilenameUtils.getName(item.getName()));
+		                int idx = item.getName().indexOf('.');
+		                menuDto.setMenu_file_extension(item.getName().substring(idx));
 					}
 				}
 			} catch (FileUploadException e) {

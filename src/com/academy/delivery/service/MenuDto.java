@@ -15,6 +15,7 @@ public class MenuDto {
 	private String 	menu_sugars;
 	private String 	menu_fat;
 	private Date   	menu_enddate;
+	private String 	menu_file_extension;
 
 	//---------------------------------------------------
 	// getter / setter
@@ -86,5 +87,12 @@ public class MenuDto {
 	public void setCategory_name(String category_name) {
 		this.category_name = category_name;
 	}
+	public String getMenu_file_extension() {
+		return menu_file_extension;
+	}
+	public void setMenu_file_extension(String menu_file_extension) {
+		this.menu_file_extension = menu_file_extension;
+	}
+	
 	
 }

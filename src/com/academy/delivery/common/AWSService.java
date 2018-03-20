@@ -7,6 +7,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
@@ -40,6 +41,11 @@ public class AWSService {
                 amazonS3 = null;
             }
         }
+    }
+    
+    public void deleteFile(String filename) {
+    	DeleteObjectRequest dor = new DeleteObjectRequest(BUCKET_NAME, filename);
+    	amazonS3.deleteObject(dor);
     }
 }
 

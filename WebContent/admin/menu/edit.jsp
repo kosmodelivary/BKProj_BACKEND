@@ -25,14 +25,41 @@
   	<script type="text/javascript">
 		var isAdd = function() {
 			
-			if (confirm('정말 추가하시겠습니까?') == true) {
-				alert('추가합니다.');
+			if (confirm('정말 수정하시겠습니까?') == true) {
+				alert('수정합니다.');
 				return true;
 			} else {
-				alert('추가하지 않습니다.');
+				alert('수정하지 않습니다.');
 				return false;
 			}
 		};
+  	</script>
+  	<script type="text/javascript">
+  		var sel_file;
+  		
+  		$(document).ready(function(){
+  			$('#menu_image').on("change",handleImgSel);
+  		});
+  		
+  		function handleImgSel(e){
+  			var files = e.target.files;
+  			var filesArr = Array.prototype.slice.call(files);
+  			filesArr.forEach(function(f){
+  				if(!f.type.match("image.*")){
+  					alert('메뉴 이미지 파일만 업로드 가능합니다.');
+  					return;
+  				}
+  				
+  				sel_file = f;
+  				
+  				var reader = new FileReader();
+  				reader.onload = function(e){
+  					$('#menu_image_thumbnail').attr("src",e.target.result).css("visibility","visible");
+  				}
+  				reader.readAsDataURL(f);
+  			});
+  		}
+  	
   	</script>
   </head>
 
@@ -46,7 +73,8 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	     	<div class="row" style="padding-top:10px">
 	     		<div class="col-md-7 text-right">
-	     			<form class="form-inline" action="<c:url value='/ADMIN/MENU/Edit.do' />" method="post">
+	     			<form class="form-inline" action="<c:url value='/ADMIN/MENU/Edit.do' />" 
+	     				method="post" enctype="multipart/form-data">
 			     		<table class="table table-bordered text-left">
 			     			<tr>
 			     				<td class="col">메뉴 이름</td>
@@ -115,12 +143,13 @@
 			     			<tr>
 			     				<td class="col">메뉴 이미지</td>
 			     				<td>
-			     					
+			     					<input class="form-control" type="file"  name="menu_image" id="menu_image"/><h1></h1>
+			     					<img src="https://s3.ap-northeast-2.amazonaws.com/bkprojserver/${menuDto.menu_name }${menuDto.menu_file_extension }" id="menu_image_thumbnail" alt="img_thumbnail" style="width:300px;height:300px;"/>
 			     				</td>
 			     			</tr>
 			     		</table>
-			     		<input type="hidden" name="no" value="${menuDto.menu_no }"/>
-			     		<input class="btn btn-primary" type="submit" value="수정">
+			     		<input type="hidden" name="menu_no" value="${menuDto.menu_no }"/>
+			     		<input class="btn btn-primary" type="submit" value="수정" onclick="return isAdd()">
 			     		<a href="<c:url value='/ADMIN/MENU/All.do' />" class="btn btn-primary">취소</a>
 		     		</form>
 	     		</div>

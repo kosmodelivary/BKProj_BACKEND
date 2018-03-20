@@ -34,18 +34,12 @@
 			}
 		};
   	</script>
-  	
-  	<script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap-datepicker.min.js"></script>
-  	<link rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-datepicker.css"/>
   </head>
-
   <body>
 	<c:import url="/admin/include/navigator.jsp" />
-
     <div class="container-fluid">
       <div class="row">
       	<c:import url="/admin/include/sidebar.jsp" />
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	     	<div class="row" style="padding-top:10px">
 	     		<div class="col-md-7 text-right">
@@ -113,7 +107,7 @@
 			     			<tr>
 			     				<td class="col">판매종료일</td>
 			     				<td>
-			     					<input class="form-control" id="datetimepicker1" type="text" name="menu_enddate"/>
+			     					<input class="form-control" id="date" type="text" name="menu_enddate"/>
 			     					<!-- bootstrap으로 인해 datepicker가 충돌하는거 같네요~ 추후 방법을 찾아서 적용하겠슴돠 -->
 			     				</td>
 			     			</tr>
@@ -163,6 +157,13 @@
   			});
   		}
   	
+  	</script>
+  	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.1/combined/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.1/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  	<script>
+  		$('#date').datepicker({
+  			uiLibrary:'bootstrap'
+  		});	
   	</script>
   </body>
 </html>

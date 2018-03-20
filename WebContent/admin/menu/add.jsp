@@ -108,7 +108,6 @@
 			     				<td class="col">판매종료일</td>
 			     				<td>
 			     					<input class="form-control" id="date" type="text" name="menu_enddate"/>
-			     					<!-- bootstrap으로 인해 datepicker가 충돌하는거 같네요~ 추후 방법을 찾아서 적용하겠슴돠 -->
 			     				</td>
 			     			</tr>
 			     			<tr>
@@ -128,8 +127,6 @@
         
       </div>
     </div>
-
-  	<c:import url="/admin/include/bootstrap_js.jsp" />
   	<script type="text/javascript">
   		var sel_file;
   		
@@ -158,24 +155,14 @@
   		}
   	
   	</script>
-  	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.1/combined/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.1/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.1/combined/js/gijgo.min.js" type="text/javascript"></script>
+  	<script src="${pageContext.request.contextPath }/bootstrap/js/messages.ko-kr.js" type="text/javascript"></script>
   	<script>
-	  	$.datepicker.setDefaults({
-	        dateFormat: 'yy-mm-dd',
-	        prevText: '이전 달',
-	        nextText: '다음 달',
-	        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-	        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-	        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-	        showMonthAfterYear: true,
-	        yearSuffix: 'Year'
-	    });
   		$('#date').datepicker({
-  			uiLibrary:'bootstrap'
-  			
+  			uiLibrary:'bootstrap',
+  			locale:'ko-kr',
+  			format:'yyyy-mm-dd'
   		});	
   	</script>
   </body>

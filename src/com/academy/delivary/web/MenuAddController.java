@@ -1,6 +1,7 @@
 package com.academy.delivary.web;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -73,6 +74,8 @@ public class MenuAddController extends HttpServlet {
 							case "menu_fat":
 								menuDto.setMenu_fat(item.getString());
 								break;
+							case "menu_enddate":
+								menuDto.setMenu_enddate(Date.valueOf(item.getString()));
 						}
 					}
 					else {
@@ -85,7 +88,6 @@ public class MenuAddController extends HttpServlet {
 			} catch (FileUploadException e) {
 				e.printStackTrace();
 			} finally {
-				System.out.println(menuDto.getMenu_name());
 				menuService.insert(menuDto);
 				resp.sendRedirect(req.getContextPath() + "/ADMIN/MENU/All.do");
 			}

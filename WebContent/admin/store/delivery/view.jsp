@@ -23,10 +23,14 @@
   	</style>
   	<script type="text/javascript">
 		$(function () {
-				var start = {lat: 37.566535, lng: 126.97796919999996};
+				var currentPosition = {lat: 37.566535, lng: 126.97796919999996};
 			    var map = new google.maps.Map(document.getElementById('map'), {
 				      zoom: 14,
-				      center: start
+				      center: currentPosition
+				});
+			    var marker = new google.maps.Marker({
+				      position: currentPosition,
+				      map: map
 				});
 	
 			window.setInterval(function () {
@@ -35,13 +39,17 @@
 					type: 'post',
 					dataType: 'json',
 					success: function(data) {
+						/*
 						console.log('latitude: ' + data.latitude + ', longitude: ' + data.longitude);
 						var currendtPosition = {lat: data.latitude, lng: data.longitude};
-						
+
 					    var marker = new google.maps.Marker({
 					      position: currendtPosition,
 					      map: map
 					    });
+					    */
+						currentPosition = new google.maps.LatLng(data.latitude, data.longitude);
+						marker.setPosition(currentPosition);
 					},
 					error: function() {
 						console.log('fail');

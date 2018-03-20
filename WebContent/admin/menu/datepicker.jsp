@@ -42,9 +42,6 @@
         
       </div>
     </div>
-
-  	<c:import url="/admin/include/bootstrap_js.jsp" />
-  	
   	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.1/combined/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.1/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
   	<script>

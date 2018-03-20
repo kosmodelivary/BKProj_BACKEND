@@ -107,7 +107,5 @@
 		}
 	*/
 	</script>
-
-  	<c:import url="/admin/include/bootstrap_js.jsp" />
   </body>
 </html>

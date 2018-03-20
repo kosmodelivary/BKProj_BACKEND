@@ -43,7 +43,5 @@
 			<c:redirect url="/ADMIN/Order.do" />
 		</c:if>
     </div>
-
-  	<c:import url="/admin/include/bootstrap_js.jsp" />
   </body>
 </html>

@@ -6,6 +6,9 @@
 <html lang="en">
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script 
+    	async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQo9FPSR1RWpd2JWBwrhbTlIi5DzeubEM">
+    </script>
   	<c:import url="/admin/include/loginCheck.jsp" />
   	<c:import url="/admin/include/head.jsp" />
   	
@@ -19,31 +22,39 @@
 		}
   	</style>
   	<script type="text/javascript">
-		$(function(){
-			var currlocation;
-			var jsondata;
-			window.setInterval(function() {
-				console.log('1.0초 단위로 호출');
-				$.ajax({
-					url:'<c:url value="/ADMIN/STORE/DELIVERY/Polling.do" />',
-					type:'post',
-					dataType:'json',
-					success: function(data) {
-						jsondata = JSON.parse(responseData);
-						currlocation = {lat : jsondata.latitude, lng : jsondata.longitude};		// 함수 이름만 사용, ()는 제외
-					},
-					error: function (request, status, error) {
-						// 비정상적인 에러 나왔을 때
-						console.log("code:"+request.status + "\n"+"message:" + request.responseText + "\n" + "error:" + error);
-					},
+		$(function () {
+				var start = {lat: 37.566535, lng: 126.97796919999996};
+			    var map = new google.maps.Map(document.getElementById('map'), {
+				      zoom: 14,
+				      center: start
 				});
+	
+			window.setInterval(function () {
+				$.ajax({
+					url: '<c:url value="/admin/store/delivery/json/1442b1e5-84a5-48e7-9380-14c1d115dd7a.json" />',
+					type: 'post',
+					dataType: 'json',
+					success: function(data) {
+						console.log('latitude: ' + data.latitude + ', longitude: ' + data.longitude);
+						var currendtPosition = {lat: data.latitude, lng: data.longitude};
+						
+					    var marker = new google.maps.Marker({
+					      position: currendtPosition,
+					      map: map
+					    });
+					},
+					error: function() {
+						console.log('fail');
+					}
+				});
+					
 			}, 1000);
 		});
-		
+			
   	</script>
   </head>
 
-  <body onload="initMap()">
+  <body>
 	<c:import url="/admin/include/navigator.jsp" />
 
     <div class="container-fluid">
@@ -71,7 +82,6 @@
 				     					</select> 
 		     						</c:otherwise>
 		     					</c:choose>
-		     					\${requestScope.latitude } : ${empty requestScope.latitude }
 		     				</td>
 		     			</tr>
 		     		</table>
@@ -82,6 +92,7 @@
     </div>
     
 	<script>
+	/*
 		var uluru = {lat: 37.567, lng: 126.97806};
 		
 		function initMap() {
@@ -90,14 +101,12 @@
 		      center: uluru
 		    });
 		    var marker = new google.maps.Marker({
-		      position: currlocation,
+		      position: uluru,
 		      map: map
 		    });
 		}
+	*/
 	</script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQo9FPSR1RWpd2JWBwrhbTlIi5DzeubEM&callback=initMap">
-    </script>
 
   	<c:import url="/admin/include/bootstrap_js.jsp" />
   </body>

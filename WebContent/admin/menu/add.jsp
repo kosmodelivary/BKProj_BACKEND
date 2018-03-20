@@ -34,6 +34,7 @@
 			}
 		};
   	</script>
+  	
   	<script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap-datepicker.min.js"></script>
   	<link rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-datepicker.css"/>
   </head>
@@ -119,7 +120,8 @@
 			     			<tr>
 			     				<td class="col">메뉴 이미지</td>
 			     				<td>
-			     					<input class="form-control" type="file" name="menu_image"/>
+			     					<input class="form-control" type="file" name="menu_image" id="menu_image"/><h1></h1>
+			     					<img id="menu_image_thumbnail" alt="img_thumbnail" style="width:300px;height:300px;visibility: hidden;"/>
 			     				</td>
 			     			</tr>
 			     		</table>
@@ -134,5 +136,33 @@
     </div>
 
   	<c:import url="/admin/include/bootstrap_js.jsp" />
+  	<script type="text/javascript">
+  		var sel_file;
+  		
+  		$(document).ready(function(){
+  			$('#menu_image').on("change",handleImgSel);
+  		});
+  		
+  		function handleImgSel(e){
+  			var files = e.target.files;
+  			var filesArr = Array.prototype.slice.call(files);
+  			
+  			filesArr.forEach(function(f){
+  				if(!f.type.match("image.*")){
+  					alert('메뉴 이미지 파일만 업로드 가능합니다.');
+  					return;
+  				}
+  				
+  				sel_file = f;
+  				
+  				var reader = new FileReader();
+  				reader.onload = function(e){
+  					$('#menu_image_thumbnail').attr("src",e.target.result).css("visibility","visible");
+  				}
+  				reader.readAsDataURL(f);
+  			});
+  		}
+  	
+  	</script>
   </body>
 </html>

@@ -59,6 +59,7 @@
 				     					<option value="hamburger">햄버거</option>
 				     					<option value="side">사이드</option>
 				     					<option value="drink">드링크</option>
+				     					<option value="set">세트</option>
 				     				</select>
 			     				</td>
 			     			</tr>
@@ -165,5 +166,6 @@
   			format:'yyyy-mm-dd'
   		});	
   	</script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </body>
 </html>

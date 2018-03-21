@@ -88,6 +88,7 @@
 				     					<option value="hamburger" <c:if test="${fn:indexOf(menuDto.category_name, 'ham') != -1 }">selected</c:if>>햄버거</option>
 				     					<option value="side" <c:if test="${fn:indexOf(menuDto.category_name, 'side') != -1 }">selected</c:if>>사이드</option>
 				     					<option value="drink" <c:if test="${fn:indexOf(menuDto.category_name, 'dri') != -1 }">selected</c:if>>드링크</option>
+				     					<option value="set" <c:if test="${fn:indexOf(menuDto.category_name, 'se') != -1 }">selected</c:if>>세트</option>
 				     				</select>
 			     				</td>
 			     			</tr>

@@ -2,6 +2,7 @@ package com.academy.delivary.web;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -41,50 +42,63 @@ public class MenuAddController extends HttpServlet {
 			FileItemFactory factory = new DiskFileItemFactory();
 			ServletFileUpload sfu = new ServletFileUpload(factory);
 			MenuDto menuDto = new MenuDto();
+			String menu_name = null;
 			try {
 				List<FileItem> list = sfu.parseRequest(req);
 				for(FileItem item : list) {
 					if(item.isFormField()) {
 						switch (item.getFieldName()) {
 							case "menu_name":
-								menuDto.setMenu_name(item.getString());
+//								http://entro80.tistory.com/17
+								menu_name = new String(item.getString().getBytes("8859_1"),"utf-8");
+								System.out.println("menu_name"+menu_name);
+								menuDto.setMenu_name(menu_name);
 								break;
 							case "category_name":
+								System.out.println("category_name"+item.getString());
 								menuDto.setCategory_name(item.getString());
 								break;
 							case "menu_price":
+								System.out.println("menu_price"+item.getString());
 								menuDto.setMenu_price(item.getString());
 								break;
 							case "menu_weight":
+								System.out.println("menu_weight"+item.getString());
 								menuDto.setMenu_weight(item.getString());
 								break;
 							case "menu_calrorie":
+								System.out.println("menu_calrorie"+item.getString());
 								menuDto.setMenu_calrorie(item.getString());
 								break;
 							case "menu_protein":
+								System.out.println("menu_protein"+item.getString());
 								menuDto.setMenu_protein(item.getString());
 								break;
 							case "menu_sodium":
+								System.out.println("menu_sodium"+item.getString());
 								menuDto.setMenu_sodium(item.getString());
 								break;
 							case "menu_sugars":
+								System.out.println("menu_sugars"+item.getString());
 								menuDto.setMenu_sugars(item.getString());
 								break;
 							case "menu_fat":
+								System.out.println("menu_fat"+item.getString());
 								menuDto.setMenu_fat(item.getString());
 								break;
 							case "menu_enddate":
+								System.out.println("menu_enddate"+item.getString());
 								menuDto.setMenu_enddate(Date.valueOf(item.getString()));
 						}
 					}
 					else {
-						System.out.println(item.getName());
 		                AWSService amazonS3 = new AWSService();
 		                amazonS3.uploadFile(item.getInputStream(),
 		                					item.getSize(), 
 		                					FilenameUtils.getName(item.getName()));
-		                int idx = item.getName().indexOf('.');
-		                menuDto.setMenu_file_extension(item.getName().substring(idx));
+		                int idx = FilenameUtils.getName(item.getName()).indexOf('.');
+		                menuDto.setMenu_file_extension(FilenameUtils.getName(item.getName()).substring(idx));
+		                System.out.println(FilenameUtils.getName(item.getName()));
 					}
 				}
 			} catch (FileUploadException e) {

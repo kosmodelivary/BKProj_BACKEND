@@ -4,12 +4,15 @@ import java.io.InputStream;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
+import com.amazonaws.services.s3.model.DeleteObjectsRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 public class AWSService {
     private static final String BUCKET_NAME = "bkprojserver";
@@ -44,8 +47,7 @@ public class AWSService {
     }
     
     public void deleteFile(String filename) {
-    	DeleteObjectRequest dor = new DeleteObjectRequest(BUCKET_NAME, filename);
-    	amazonS3.deleteObject(dor);
+    	amazonS3.deleteObject(BUCKET_NAME, filename);
     }
 }
 

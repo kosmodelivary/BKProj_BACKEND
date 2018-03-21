@@ -45,7 +45,7 @@
 		SELECT COUNT(*) FROM store
 	</select>
 	<select id="Store.getTotalDeliveryCount" resultClass="int">
-		SELECT COUNT(*) FROM store_delivery
+		SELECT COUNT(*) FROM store_delivery WHERE delivery_useable = 'true'
 	</select>
 	
 </sqlMap>

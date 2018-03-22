@@ -64,8 +64,6 @@
 	   			</div>
 	   			<div class="col-md-10 col-md-offset-1 text-right">
 	   				<a href="<c:url value='/ADMIN/MENU/Add.do' />" class="btn btn-primary">메뉴 추가</a>
-	   				<br/>
-	   				<a href="<c:url value='/admin/menu/datepicker.jsp'/>">테스트 페이지</a>
 	   			</div>
 	     	</div>
         	

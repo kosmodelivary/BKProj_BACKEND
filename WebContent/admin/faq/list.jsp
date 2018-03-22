@@ -31,7 +31,7 @@
 	
 	<div class="container-fluid">
       <div class="row">
-      	<c:import url="/admin/include/sidebar.jsp" />
+      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	     	<div class="row" style="padding-top:10px">

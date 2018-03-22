@@ -1,161 +1,257 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<c:import url="/admin/include/loginCheck.jsp" />
-<c:import url="/admin/include/head.jsp" />
-<!-- Custom fonts for this template-->
-<link
-	href="${pageContext.request.contextPath }/bootstrap/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<!-- Page level plugin CSS-->
-<link
-	href="${pageContext.request.contextPath }/bootstrap/vendor/datatables/dataTables.bootstrap4.css"
-	rel="stylesheet">
-<!-- Custom styles for this template-->
-<link
-	href="${pageContext.request.contextPath }/bootstrap/css/sb-admin.css"
-	rel="stylesheet">
+  <head>
+  	<c:import url="/admin/include/loginCheck.jsp" />
+  	<c:import url="/admin/include/head.jsp" />
+  </head>
 
-<script>
-	function printClock() {
-
-		var week = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday',
-				'Thursday', 'Friday', 'Saturday');
-		var clock = document.getElementById("clock"); // 출력할 장소 선택
-		var currentDate = new Date(); // 현재시간
-		var calendar = currentDate.getFullYear() + "-"
-				+ (currentDate.getMonth() + 1) + "-" + currentDate.getDate() // 현재 날짜
-		var amPm = 'AM'; // 초기값 AM
-		var currentDay = addZeros(currentDate.getDay(), 1);
-		var currentHours = addZeros(currentDate.getHours(), 2);
-		var currentMinute = addZeros(currentDate.getMinutes(), 2);
-		var currentSeconds = addZeros(currentDate.getSeconds(), 2);
-
-		if (currentHours >= 12) { // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
-			amPm = 'PM';
-			currentHours = addZeros(currentHours - 12, 2);
-		}
-		clock.innerHTML = "Updated " + week[currentDay] + " at " + currentHours
-				+ ":" + currentMinute + ":" + currentSeconds + amPm; //날짜를 출력해 줌
-
-		setTimeout("printClock()", 1000); // 1초마다 printClock() 함수 호출
-	}
-
-	function addZeros(num, digit) { // 자릿수 맞춰주기
-		var zero = '';
-		num = num.toString();
-		if (num.length < digit) {
-			for (i = 0; i < digit - num.length; i++) {
-				zero += '0';
-			}
-		}
-		return zero + num;
-	}
-</script>
-</head>
-
-<body onload="printClock()">
-
+  <body>
 	<c:import url="/admin/include/navigator.jsp" />
 
-	<div class="container-fluid">
-		<div class="row">
-			<c:import url="/admin/include/sidebar.jsp" />
-			
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="container-fluid">
+      <div class="row">
+      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
+<!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
 
-				<!-- content-wrapper -->
-				<div class="container-fluid">
-					<!-- Breadcrumbs-->
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-						<li class="breadcrumb-item active">실시간 주문 현황</li>
-					</ol>
-					<!-- Example DataTables Card-->
-					<div class="card mb-3">
-						<div class="card-body">
-							<div class="table-responsive">
-							
-								<table class="table table-bordered" id="dataTable" width="100%"
-									cellspacing="0">
-									<thead>
-										<tr>
-											<th>주문번호</th>
-											<th>메뉴</th>
-											<th>이름</th>
-											<th>연락처</th>
-											<th>배달장소</th>
-											<th>매장이름</th>
-											<th>매장연락처</th>
-											<th>주문완료시각</th>
-											<th>배달종료시각</th>
-										</tr>
-									</thead>
-									<tfoot>
-										<tr>
-											<th>주문번호</th>
-											<th>메뉴</th>
-											<th>이름</th>
-											<th>연락처</th>
-											<th>배달장소</th>
-											<th>매장이름</th>
-											<th>매장연락처</th>
-											<th>주문완료시각</th>
-											<th>배달종료시각</th>
-										</tr>
-									</tfoot>
-									<tbody>
+              <div class="row">
+                  <div class="col-lg-9 main-chart">
+                  
+                  	<div class="row mtbox">
+                  		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                  			<div class="box1">
+					  			<span class="li_heart"></span>
+					  			<h3>1000</h3>
+                  			</div>
+					  			<p>1000명의 사람이 좋아합니다.</p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_cloud"></span>
+					  			<h3>+48</h3>
+                  			</div>
+					  			<p>48 New files were added in your cloud storage.</p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_stack"></span>
+					  			<h3>23</h3>
+                  			</div>
+					  			<p>You have 23 unread messages in your inbox.</p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_news"></span>
+					  			<h3>+10</h3>
+                  			</div>
+					  			<p>More than 10 news were added in your reader.</p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_data"></span>
+					  			<h3>OK!</h3>
+                  			</div>
+					  			<p>Your server is working perfectly. Relax & enjoy.</p>
+                  		</div>
+                  	
+                  	</div><!-- /row mt -->	
+                  
+                      
+                      <div class="row mt">
+                      <!-- SERVER STATUS PANELS -->
+                      	<div class="col-md-4 col-sm-4 mb">
+                      		<div class="white-panel pn donut-chart">
+                      			<div class="white-header">
+						  			<h5>SERVER LOAD</h5>
+                      			</div>
+								<div class="row">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<p><i class="fa fa-database"></i> 70%</p>
+									</div>
+	                      		</div>
+								<canvas id="serverstatus01" height="120" width="120"></canvas>
+								<script>
+									var doughnutData = [
+											{
+												value: 70,
+												color:"#68dff0"
+											},
+											{
+												value : 30,
+												color : "#fdfdfd"
+											}
+										];
+										var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
+								</script>
+	                      	</div><! --/grey-panel -->
+                      	</div><!-- /col-md-4-->
+                      	
 
-										<tr>
-											<th>834</th>
-											<th>콰트로치즈버거세트</th>
-											<th>홍길동</th>
-											<th>123-4567-6789</th>
-											<th>금천구 가산동 월드메르디앙2차</th>
-											<th>가산점</th>
-											<th>02-123-4567</th>
-											<th>2018-03-20 19:26</th>
-											<th></th>
-										</tr>
-
-									</tbody>
-								</table>
+                      	<div class="col-md-4 col-sm-4 mb">
+                      		<div class="white-panel pn">
+                      			<div class="white-header">
+						  			<h5>TOP PRODUCT</h5>
+                      			</div>
+								<div class="row">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<p><i class="fa fa-heart"></i> 122</p>
+									</div>
+									<div class="col-sm-6 col-xs-6"></div>
+	                      		</div>
+	                      		<div class="centered">
+										<img src="${pageContext.request.contextPath}/bootstrap/img/bk.png" width="120">
+	                      		</div>
+                      		</div>
+                      	</div><!-- /col-md-4 -->
+                      	
+						<div class="col-md-4 mb">
+							<!-- WHITE PANEL - TOP USER -->
+							<div class="white-panel pn">
+								<div class="white-header">
+									<h5>TOP USER</h5>
+								</div>
+								<p><img src="" class="img-circle" width="80"></p>
+								<p><b>이진원</b></p>
+								<div class="row">
+									<div class="col-md-6">
+										<p class="small mt">MEMBER SINCE</p>
+										<p>2012</p>
+									</div>
+									<div class="col-md-6">
+										<p class="small mt">TOTAL SPEND</p>
+										<p>$ 47,60</p>
+									</div>
+								</div>
 							</div>
-						</div>
+						</div><!-- /col-md-4 -->
+                      	
 
-						<div class="card-footer small text-muted">
-							<div style="color: #666;" id="clock" />
-						</div>
-						<!-- /.container-fluid-->
-						<!-- /.content-wrapper-->
+                    </div><!-- /row -->
+                    
+                    				
+					<div class="row">
+						<!-- TWITTER PANEL -->
+						<div class="col-md-4 mb">
+                      		<div class="darkblue-panel pn">
+                      			<div class="darkblue-header">
+						  			<h5>DROPBOX STATICS</h5>
+                      			</div>
+								<canvas id="serverstatus02" height="120" width="120"></canvas>
+								<script>
+									var doughnutData = [
+											{
+												value: 60,
+												color:"#68dff0"
+											},
+											{
+												value : 40,
+												color : "#444c57"
+											}
+										];
+										var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+								</script>
+								<p>April 17, 2014</p>
+								<footer>
+									<div class="pull-left">
+										<h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
+									</div>
+									<div class="pull-right">
+										<h5>60% Used</h5>
+									</div>
+								</footer>
+                      		</div><! -- /darkblue panel -->
+						</div><!-- /col-md-4 -->
+						
+						
+						<div class="col-md-4 mb">
+							<!-- INSTAGRAM PANEL -->
+							<div class="instagram-panel pn">
+								<i class="fa fa-instagram fa-4x"></i>
+								<p>@THISISYOU<br/>
+									5 min. ago
+								</p>
+								<p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
+							</div>
+						</div><!-- /col-md-4 -->
+						
+						<div class="col-md-4 col-sm-4 mb">
+							<!-- REVENUE PANEL -->
+							<div class="darkblue-panel pn">
+								<div class="darkblue-header">
+									<h5>REVENUE</h5>
+								</div>
+								<div class="chart mt">
+									<div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div>
+								</div>
+								<p class="mt"><b>$ 17,980</b><br/>Month Income</p>
+							</div>
+						</div><!-- /col-md-4 -->
+						
+					</div><!-- /row -->
+					
+					<div class="row mt">
+                      <!--CUSTOM CHART START -->
+                      <div class="border-head">
+                          <h3>VISITS</h3>
+                      </div>
+                      <div class="custom-bar-chart">
+                          <ul class="y-axis">
+                              <li><span>10.000</span></li>
+                              <li><span>8.000</span></li>
+                              <li><span>6.000</span></li>
+                              <li><span>4.000</span></li>
+                              <li><span>2.000</span></li>
+                              <li><span>0</span></li>
+                          </ul>
+                          <div class="bar">
+                              <div class="title">JAN</div>
+                              <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+                          </div>
+                          <div class="bar ">
+                              <div class="title">FEB</div>
+                              <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
+                          </div>
+                          <div class="bar ">
+                              <div class="title">MAR</div>
+                              <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
+                          </div>
+                          <div class="bar ">
+                              <div class="title">APR</div>
+                              <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
+                          </div>
+                          <div class="bar">
+                              <div class="title">MAY</div>
+                              <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
+                          </div>
+                          <div class="bar ">
+                              <div class="title">JUN</div>
+                              <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
+                          </div>
+                          <div class="bar">
+                              <div class="title">JUL</div>
+                              <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+                          </div>
+                      </div>
+                      <!--custom chart end-->
+					</div><!-- /row -->	
+					
+                  </div><!-- /col-lg-9 END SECTION MIDDLE -->
 
-					</div>
-				</div>
-			</div>
+<!-- *************************************************************************************************************************************************** -->
 
-			<!-- Bootstrap core JavaScript-->
-			<script
-				src="${pageContext.request.contextPath }/bootstrap/vendor/jquery/jquery.min.js"></script>
-			<script
-				src="${pageContext.request.contextPath }/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-			<!-- Core plugin JavaScript-->
-			<script
-				src="${pageContext.request.contextPath }/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
-			<!-- Page level plugin JavaScript-->
-			<script
-				src="${pageContext.request.contextPath }/bootstrap/vendor/datatables/jquery.dataTables.js"></script>
-			<script
-				src="${pageContext.request.contextPath }/bootstrap/vendor/datatables/dataTables.bootstrap4.js"></script>
-			<!-- Custom scripts for all pages-->
-			<script
-				src="${pageContext.request.contextPath }/bootstrap/js/sb-admin.min.js"></script>
-			<!-- Custom scripts for this page-->
-			<script
-				src="${pageContext.request.contextPath }/bootstrap/js/sb-admin-datatables.min.js"></script>
-</body>
+      	<c:import url="/admin/include/rightSidebar.jsp" /><!-- rigthSidebar 추가 -->
+
+      </div>
+    </div>
+  </body>
 </html>
+
+

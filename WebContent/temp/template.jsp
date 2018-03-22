@@ -13,9 +13,6 @@
     <!-- Bootstrap core CSS -->
     <link href="<c:url value='/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="<c:url value='/admin/css/dashboard.css' />" rel="stylesheet">
-
   </head>
 
   <body>

@@ -39,7 +39,7 @@
 	<c:import url="/admin/include/navigator.jsp" />
     <div class="container-fluid">
       <div class="row">
-      	<c:import url="/admin/include/sidebar.jsp" />
+      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	     	<div class="row" style="padding-top:10px">
 	     		<div class="col-md-7 text-right">
@@ -59,7 +59,6 @@
 				     					<option value="hamburger">햄버거</option>
 				     					<option value="side">사이드</option>
 				     					<option value="drink">드링크</option>
-				     					<option value="set">세트</option>
 				     				</select>
 			     				</td>
 			     			</tr>
@@ -166,6 +165,5 @@
   			format:'yyyy-mm-dd'
   		});	
   	</script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </body>
 </html>

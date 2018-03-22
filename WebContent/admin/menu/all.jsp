@@ -8,6 +8,7 @@
   	<c:import url="/admin/include/loginCheck.jsp" />
   	<c:import url="/admin/include/head.jsp" />
   </head>
+  
    <style type="text/css">
   		.table th, .table td {
   			text-align: center;
@@ -31,7 +32,7 @@
 
     <div class="container-fluid">
       <div class="row">
-      	<c:import url="/admin/include/sidebar.jsp" />
+      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
    		    <div class="row" style="padding-top:10px">
@@ -64,6 +65,8 @@
 	   			</div>
 	   			<div class="col-md-10 col-md-offset-1 text-right">
 	   				<a href="<c:url value='/ADMIN/MENU/Add.do' />" class="btn btn-primary">메뉴 추가</a>
+	   				<br/>
+	   				<a href="<c:url value='/admin/menu/datepicker.jsp'/>">테스트 페이지</a>
 	   			</div>
 	     	</div>
         	

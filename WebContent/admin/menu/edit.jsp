@@ -68,7 +68,7 @@
 
     <div class="container-fluid">
       <div class="row">
-      	<c:import url="/admin/include/sidebar.jsp" />
+      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	     	<div class="row" style="padding-top:10px">
@@ -88,7 +88,6 @@
 				     					<option value="hamburger" <c:if test="${fn:indexOf(menuDto.category_name, 'ham') != -1 }">selected</c:if>>햄버거</option>
 				     					<option value="side" <c:if test="${fn:indexOf(menuDto.category_name, 'side') != -1 }">selected</c:if>>사이드</option>
 				     					<option value="drink" <c:if test="${fn:indexOf(menuDto.category_name, 'dri') != -1 }">selected</c:if>>드링크</option>
-				     					<option value="set" <c:if test="${fn:indexOf(menuDto.category_name, 'se') != -1 }">selected</c:if>>세트</option>
 				     				</select>
 			     				</td>
 			     			</tr>

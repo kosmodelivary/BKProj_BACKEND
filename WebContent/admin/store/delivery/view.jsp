@@ -22,43 +22,37 @@
 		}
   	</style>
   	<script type="text/javascript">
-		$(function () {
-				var currentPosition = {lat: 37.566535, lng: 126.97796919999996};
+		// 배달중인 딜리버리가 있으면 갱신되는 위도, 경도 읽어서 지도에 마커 실시간 이동 
+	  	if (${nowDelivery ne 0 } ) {
+			$(function () {
 			    var map = new google.maps.Map(document.getElementById('map'), {
-				      zoom: 14,
-				      center: currentPosition
+					zoom: 14
 				});
 			    var marker = new google.maps.Marker({
-				      position: currentPosition,
-				      map: map
+					map: map
 				});
-	
-			window.setInterval(function () {
-				$.ajax({
-					url: '<c:url value="/admin/store/delivery/json/1442b1e5-84a5-48e7-9380-14c1d115dd7a.json" />',
-					type: 'post',
-					dataType: 'json',
-					success: function(data) {
-						/*
-						console.log('latitude: ' + data.latitude + ', longitude: ' + data.longitude);
-						var currendtPosition = {lat: data.latitude, lng: data.longitude};
-
-					    var marker = new google.maps.Marker({
-					      position: currendtPosition,
-					      map: map
-					    });
-					    */
-						currentPosition = new google.maps.LatLng(data.latitude, data.longitude);
-						marker.setPosition(currentPosition);
-					},
-					error: function() {
-						console.log('fail');
-					}
-				});
+		
+				var currentPosition, selectedDelivery;
+				window.setInterval(function () {
+					selectedDelivery = $('select option:selected').val();
 					
-			}, 1000);
-		});
-			
+					$.ajax({
+						url: '<c:url value="/admin/store/delivery/json/' + selectedDelivery + '.json" />',
+						type: 'post',
+						dataType: 'json',
+						success: function(data) {
+							currentPosition = new google.maps.LatLng(data.latitude, data.longitude);
+							marker.setPosition(currentPosition);
+							map.panTo(currentPosition);
+						},
+						error: function() {
+							console.log('fail');
+						}
+					});
+						
+				}, 1000);
+			});
+	  	}
   	</script>
   </head>
 
@@ -71,49 +65,37 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	     	<div class="row" style="padding-top:10px">
 	     		<div class="col-md-9">
-		     		<table class="table table-bordered text-center">
-		     			<tr>
-		     				<td>
-								<div id="map"></div>
-		     				</td>
-		     				<td class="storeList">
-		     					<c:choose>
-		     						<c:when test="${nowDelivery == 0 }">
-				     					운행중인 딜리버리 없음
-		     						</c:when>
-		     						<c:otherwise>
+   					<c:choose>
+   						<c:when test="${nowDelivery eq 0 }">
+	     					배달중인 딜리버리 없음
+   						</c:when>
+   						<c:otherwise>
+   							<!-- 
+   								배달중인 딜리버리 리스트 출력
+   								- 처음에는 무조건 가장 위의 딜리버리 배달 보여줌
+   								- 리스트에서 선택하면 선택한 딜리버리 배달 보여줌
+   							-->
+				     		<table class="table table-bordered text-center">
+				     			<tr>
+				     				<td>
+										<div id="map"></div>
+				     				</td>
+				     				<td class="storeList">
 				     					<select class="form-control">
-				     						<option>- 배달중 전체 -</option>
-				     						<option>회기점</option>
-				     						<option>강남점</option>
-				     						<option>우리점</option>
+				     						<c:forEach var="item" items="${storeDelivery }" varStatus="loop">
+				     							<option>${item.delivery_no }</option>
+				     						</c:forEach>
 				     					</select> 
-		     						</c:otherwise>
-		     					</c:choose>
-		     				</td>
-		     			</tr>
-		     		</table>
-	     		</div>
+				     				</td>
+				     			</tr>
+				     		</table>
+  						</c:otherwise>
+  					</c:choose>
+  	     		</div>
 	     	</div>
         </div>
       </div>
     </div>
-    
-	<script>
-	/*
-		var uluru = {lat: 37.567, lng: 126.97806};
-		
-		function initMap() {
-		    var map = new google.maps.Map(document.getElementById('map'), {
-		      zoom: 12,
-		      center: uluru
-		    });
-		    var marker = new google.maps.Marker({
-		      position: uluru,
-		      map: map
-		    });
-		}
-	*/
-	</script>
+
   </body>
 </html>

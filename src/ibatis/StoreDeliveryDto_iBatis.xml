@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+	<sqlMap namespace="Delivary">
+	
+	<!-- StoreDeliveryDto 별칭, resultMap -->
+	<typeAlias alias="StoreDeliveryDto" type="com.academy.delivery.service.StoreDeliveryDto"/>
+	<resultMap id="StoreDtoDeliveryResult" class="StoreDeliveryDto">
+		<result property="delivery_no" />
+		<result property="store_no" />
+		<result property="delivery_useable" />
+	</resultMap>
+	
+	<!-- StoreDeliveryDao 사용 DB Query -->
+	<select id="StoreDelivery.getTotalDeliveryCount" resultClass="int">
+		SELECT COUNT(*) FROM store_delivery WHERE delivery_useable = 'true'
+	</select>
+	<select id="StoreDelivery.selectList" resultClass="StoreDeliveryDto">
+		SELECT * FROM store_delivery WHERE delivery_useable = 'true'
+	</select>
+	
+</sqlMap>

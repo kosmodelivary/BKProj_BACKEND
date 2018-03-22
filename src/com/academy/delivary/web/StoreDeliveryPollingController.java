@@ -31,29 +31,6 @@ public class StoreDeliveryPollingController extends HttpServlet {
 
 		try {
 			if (req.getParameter("PostData") != null) {
-				/*
-				System.out.println("1");
-				object = (JSONObject) parser.parse(req.getParameter("PostData"));
-				if (object != null) {
-					System.out.println("2");
-					req.setAttribute("uuid", object.get("uuid").toString());
-					req.setAttribute("latitude", object.get("latitude").toString());
-					req.setAttribute("longitude", object.get("longitude").toString());
-					req.setAttribute("providerStr", object.get("providerStr").toString());
-					System.out.println(object.get("latitude").toString());
-					req.setAttribute("loc", object.toJSONString());
-					resp.getWriter().print(object);
-					resp.getWriter().print(object.toJSONString());
-					
-					List<Map>			collections		= new Vector<Map>();
-					Map location = new HashMap();
-					location.put("latitude", object.get("latitude").toString());
-					location.put("longitude", object.get("longitude").toString());
-					
-					req.setAttribute("data", JSONArray.toJSONString(collections));
-					System.out.println(JSONArray.toJSONString(collections));
-				*/
-
 				object = (JSONObject) parser.parse(req.getParameter("PostData"));
 				if (object != null) {
 					File file	= 
@@ -70,9 +47,7 @@ public class StoreDeliveryPollingController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-//		req.getRequestDispatcher("/admin/store/delivery/view.jsp").forward(req, resp);
 		resp.sendRedirect("/admin/store/delivery/view.jsp");
-		
 	}
 	
 }

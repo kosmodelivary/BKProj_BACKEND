@@ -23,7 +23,7 @@
   	</style>
   	<script type="text/javascript">
   		// 배달중인 딜리버리가 있으면 갱신되는 위도, 경도 읽어서 지도에 마커 실시간 이동 
-  		if (${nowDelivery != 0} ) {
+  	  	if (${nowDelivery ne 0 } ) {
   			$(function () {
   			    var map = new google.maps.Map(document.getElementById('map'), {
   					zoom: 14
@@ -32,10 +32,12 @@
   					map: map
   				});
   		
-  				var currentPosition;
+  				var currentPosition, selectedDelivery;
   				window.setInterval(function () {
+  					selectedDelivery = $('select option:selected').val();
+  					
   					$.ajax({
-  						url: '<c:url value="/admin/store/delivery/json/1442b1e5-84a5-48e7-9380-14c1d115dd7a.json" />',
+  						url: '<c:url value="/admin/store/delivery/json/' + selectedDelivery + '.json" />',
   						type: 'post',
   						dataType: 'json',
   						success: function(data) {
@@ -64,7 +66,7 @@
 	     	<div class="row" style="padding-top:10px">
 	     		<div class="col-md-9">
    					<c:choose>
-   						<c:when test="${nowDelivery == 0 }">
+   						<c:when test="${nowDelivery eq 0 }">
 	     					배달중인 딜리버리 없음
    						</c:when>
    						<c:otherwise>
@@ -80,10 +82,9 @@
 				     				</td>
 				     				<td class="storeList">
 				     					<select class="form-control">
-				     						<option>- 배달중 전체 -</option>
-				     						<option>회기점</option>
-				     						<option>강남점</option>
-				     						<option>우리점</option>
+				     						<c:forEach var="item" items="${storeDelivery }" varStatus="loop">
+				     							<option>${item.delivery_no }</option>
+				     						</c:forEach>
 				     					</select> 
 				     				</td>
 				     			</tr>

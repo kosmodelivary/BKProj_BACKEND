@@ -73,77 +73,84 @@
     <div class="container-fluid">
       <div class="row">
       	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
+      	
+      	  <!--main content start-->
+	      <section id="main-content">
+	          <section class="wrapper">
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	     	<div class="row" style="padding-top:10px">
-	     		<div class="col-md-7 text-right">
-	     			<form class="form-inline" action="<c:url value='/ADMIN/STORE/Add.do' />" method="post">
-			     		<table class="table table-bordered text-left">
-			     			<tr>
-			     				<td class="col">매장 이름</td>
-			     				<td><input class="form-control" type="text" name="name"></td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">매장 주소</td>
-			     				<td>
-			     					<input class="form-control" type="text" name="address" id="address" size="50" placeholder="주소">
-			     					<input class="btn btn-default" type="button" onclick="execDaumPostcode()" value="주소 검색">
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col" >연락처</td>
-			     				<td><input class="form-control" type="text" name="tel"></td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col" >딜리버리 시간 (주중)</td>
-			     				<td>
-			     					<select name="weekdayon">
-			     						<c:forEach var="hour" begin="6" end="12" varStatus="loop" >
-				     						<option <c:if test="${hour == 10 }">selected</c:if>>${hour }:00</option>
-			     						</c:forEach>
-			     					</select>
-									~
-			     					<select name="weekdayoff">
-			     						<c:forEach var="hour" begin="13" end="25" varStatus="loop" >
-				     						<option <c:if test="${hour == 24 }">selected</c:if>>${hour }:00</option>
-			     						</c:forEach>
-			     					</select>
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col" >딜리버리 시간 (주말)</td>
-			     				<td>
-			     					<select name="weekendon">
-			     						<c:forEach var="hour" begin="6" end="12" varStatus="loop" >
-				     						<option <c:if test="${hour == 10 }">selected</c:if>>${hour }:00</option>
-			     						</c:forEach>
-			     					</select>
-									~
-			     					<select name="weekendoff">
-			     						<c:forEach var="hour" begin="13" end="25" varStatus="loop" >
-				     						<option <c:if test="${hour == 24 }">selected</c:if>>${hour }:00</option>
-			     						</c:forEach>
-			     					</select>
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col" >최소 주문 금액</td>
-			     				<td>
-			     					<select name="minordermoney">
-			     						<c:forEach var="money" begin="6000" end="10000" step="1000" varStatus="loop" >
-				     						<option <c:if test="${money == 8000 }">selected</c:if>>${money }</option>
-			     						</c:forEach>
-			     					</select>
-			     					원
-			     				</td>
-			     			</tr>
-			     		</table>
-			     		<input class="btn btn-primary" type="submit" value="매장 추가" onclick="return isAdd()">
-			     		<a href="<c:url value='/ADMIN/STORE/List.do' />" class="btn btn-primary">취소</a>
-		     		</form>
-	     		</div>
-	     	</div>
-        </div>
+		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			     	<div class="row" style="padding-top:10px">
+			     		<div class="col-md-7 text-right">
+			     			<form class="form-inline" action="<c:url value='/ADMIN/STORE/Add.do' />" method="post">
+					     		<table class="table table-bordered text-left">
+					     			<tr>
+					     				<td class="col">매장 이름</td>
+					     				<td><input class="form-control" type="text" name="name"></td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">매장 주소</td>
+					     				<td>
+					     					<input class="form-control" type="text" name="address" id="address" size="50" placeholder="주소">
+					     					<input class="btn btn-default" type="button" onclick="execDaumPostcode()" value="주소 검색">
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col" >연락처</td>
+					     				<td><input class="form-control" type="text" name="tel"></td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col" >딜리버리 시간 (주중)</td>
+					     				<td>
+					     					<select name="weekdayon">
+					     						<c:forEach var="hour" begin="6" end="12" varStatus="loop" >
+						     						<option <c:if test="${hour == 10 }">selected</c:if>>${hour }:00</option>
+					     						</c:forEach>
+					     					</select>
+											~
+					     					<select name="weekdayoff">
+					     						<c:forEach var="hour" begin="13" end="25" varStatus="loop" >
+						     						<option <c:if test="${hour == 24 }">selected</c:if>>${hour }:00</option>
+					     						</c:forEach>
+					     					</select>
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col" >딜리버리 시간 (주말)</td>
+					     				<td>
+					     					<select name="weekendon">
+					     						<c:forEach var="hour" begin="6" end="12" varStatus="loop" >
+						     						<option <c:if test="${hour == 10 }">selected</c:if>>${hour }:00</option>
+					     						</c:forEach>
+					     					</select>
+											~
+					     					<select name="weekendoff">
+					     						<c:forEach var="hour" begin="13" end="25" varStatus="loop" >
+						     						<option <c:if test="${hour == 24 }">selected</c:if>>${hour }:00</option>
+					     						</c:forEach>
+					     					</select>
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col" >최소 주문 금액</td>
+					     				<td>
+					     					<select name="minordermoney">
+					     						<c:forEach var="money" begin="6000" end="10000" step="1000" varStatus="loop" >
+						     						<option <c:if test="${money == 8000 }">selected</c:if>>${money }</option>
+					     						</c:forEach>
+					     					</select>
+					     					원
+					     				</td>
+					     			</tr>
+					     		</table>
+					     		<input class="btn btn-primary" type="submit" value="매장 추가" onclick="return isAdd()">
+					     		<a href="<c:url value='/ADMIN/STORE/List.do' />" class="btn btn-primary">취소</a>
+				     		</form>
+			     		</div>
+			     	</div>
+		        </div>
+		        
+	        </section>
+	    </section>
         
       </div>
     </div>

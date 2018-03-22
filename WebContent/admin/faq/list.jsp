@@ -32,44 +32,51 @@
 	<div class="container-fluid">
       <div class="row">
       	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
-
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	     	<div class="row" style="padding-top:10px">
-	   			<div class="col-md-10 col-md-offset-1">
-		   			<table class="table table-bordered">
-		   				<tr>
-		   					<th style="width:35%">문의글</th>
-		   					<th style="width:35%">답변글</th>
-		   					<th style="width:10%">상세</th>
-		   					<th style="width:10%">수정</th>
-		   					<th>삭제</th>
-		   				</tr>
-		   				<c:if test="${empty faq }" var="flag">
-			   				<tr>
-			   					<td colspan="9">등록된 FAQ가 없습니다.</td>
-			   				</tr>
-		   				</c:if>
-		   				<c:if test="${not flag }">
-		   					<c:forEach var="item" items="${faq }" varStatus="loop" >
+      	
+	      <!--main content start-->
+	      <section id="main-content">
+	          <section class="wrapper">
+      	
+		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			     	<div class="row" style="padding-top:10px">
+			   			<div class="col-md-10 col-md-offset-1">
+				   			<table class="table table-bordered">
 				   				<tr>
-				   					<td>${item.faq_ask}</td>
-				   					<td>${item.faq_answer}</td>
-				   					<td><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">상세</a></td>
-				   					<td><a href="<c:url value='/ADMIN/Faq/Edit.do?no=${item.faq_no}' />">수정</a></td>
-				   					<td><a href="<c:url value='/ADMIN/Faq/Delete.do?no=${item.faq_no}' />" onclick="return isDelete()">삭제</a></td>
+				   					<th style="width:35%">문의글</th>
+				   					<th style="width:35%">답변글</th>
+				   					<th style="width:10%">상세</th>
+				   					<th style="width:10%">수정</th>
+				   					<th>삭제</th>
 				   				</tr>
-			   				</c:forEach>
-		   				</c:if>
-		   			</table>
-	   			</div>
-	   			<div class="col-md-10 col-md-offset-1 text-right">
-	   				<a href="<c:url value='/ADMIN/Faq/Add.do' />" class="btn btn-primary">FAQ 추가</a>
-	   			</div>
-	     	</div>
-	     	<div class="text-center row">
-   				${pagingString }
-   			</div>
-        </div>
+				   				<c:if test="${empty faq }" var="flag">
+					   				<tr>
+					   					<td colspan="9">등록된 FAQ가 없습니다.</td>
+					   				</tr>
+				   				</c:if>
+				   				<c:if test="${not flag }">
+				   					<c:forEach var="item" items="${faq }" varStatus="loop" >
+						   				<tr>
+						   					<td>${item.faq_ask}</td>
+						   					<td>${item.faq_answer}</td>
+						   					<td><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">상세</a></td>
+						   					<td><a href="<c:url value='/ADMIN/Faq/Edit.do?no=${item.faq_no}' />">수정</a></td>
+						   					<td><a href="<c:url value='/ADMIN/Faq/Delete.do?no=${item.faq_no}' />" onclick="return isDelete()">삭제</a></td>
+						   				</tr>
+					   				</c:forEach>
+				   				</c:if>
+				   			</table>
+			   			</div>
+			   			<div class="col-md-10 col-md-offset-1 text-right">
+			   				<a href="<c:url value='/ADMIN/Faq/Add.do' />" class="btn btn-primary">FAQ 추가</a>
+			   			</div>
+			     	</div>
+			     	<div class="text-center row">
+		   				${pagingString }
+		   			</div>
+		        </div>
+		        
+		     </section>
+		  </section>
         
       </div>
     </div>

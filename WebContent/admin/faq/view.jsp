@@ -26,24 +26,31 @@
     <div class="container-fluid">
       <div class="row">
       	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
+      	
+	      <!--main content start-->
+	      <section id="main-content">
+	          <section class="wrapper">
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	     	<div class="row" style="padding-top:10px">
-	     		<div class="col-md-7">
-		     		<table class="table table-bordered text-center">
-		     			<tr>
-		     				<td class="col">문의 글</td>
-		     				<td>${faqDto.faq_ask}</td>
-		     			</tr>
-		     			<tr>
-		     				<td class="col">답변 글</td>
-		     				<td>${faqDto.faq_answer }</td>
-		     			</tr>
-		     			
-		     		</table>
-	     		</div>
-	     	</div>
-        </div>
+		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			     	<div class="row" style="padding-top:10px">
+			     		<div class="col-md-7">
+				     		<table class="table table-bordered text-center">
+				     			<tr>
+				     				<td class="col">문의 글</td>
+				     				<td>${faqDto.faq_ask}</td>
+				     			</tr>
+				     			<tr>
+				     				<td class="col">답변 글</td>
+				     				<td>${faqDto.faq_answer }</td>
+				     			</tr>
+				     			
+				     		</table>
+			     		</div>
+			     	</div>
+		        </div>
+		        
+		    </section>
+		 </section>
         
       </div>
     </div>

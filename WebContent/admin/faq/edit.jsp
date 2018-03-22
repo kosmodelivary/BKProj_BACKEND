@@ -58,30 +58,37 @@
     <div class="container-fluid">
       <div class="row">
       	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
+      	
+	      <!--main content start-->
+	      <section id="main-content">
+	          <section class="wrapper">
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	     	<div class="row" style="padding-top:10px">
-	     		<div class="col-md-7 text-right">
-	     			<form class="form-inline" action="<c:url value='/ADMIN/Faq/Edit.do' />" method="post">
-			     		<table class="table table-bordered text-left">
-			     			<tr>
-			     				<td class="col">글 등록</td>
-			     				<td><input class="form-control" type="text" name="ask" value="${faqDto.faq_ask }"></td>
-			     			</tr>
-			     			
-			     			<tr>
-			     				<td class="col" >답변</td>
-			     				<td><input class="form-control" type="text" name="answer" value="${faqDto.faq_answer }"></td>
-			     			</tr>
-			     						     						     			
-			     		</table>
-			     		<input type="hidden" name="no" value="${faqDto.faq_no }">
-			     		<input class="btn btn-primary" type="submit" value="수정">
-			     		<a href="<c:url value='/ADMIN/Faq/List.do' />" class="btn btn-primary">취소</a>
-		     		</form>
-	     		</div>
-	     	</div>
-        </div>
+		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			     	<div class="row" style="padding-top:10px">
+			     		<div class="col-md-7 text-right">
+			     			<form class="form-inline" action="<c:url value='/ADMIN/Faq/Edit.do' />" method="post">
+					     		<table class="table table-bordered text-left">
+					     			<tr>
+					     				<td class="col">글 등록</td>
+					     				<td><input class="form-control" type="text" name="ask" value="${faqDto.faq_ask }"></td>
+					     			</tr>
+					     			
+					     			<tr>
+					     				<td class="col" >답변</td>
+					     				<td><input class="form-control" type="text" name="answer" value="${faqDto.faq_answer }"></td>
+					     			</tr>
+					     						     						     			
+					     		</table>
+					     		<input type="hidden" name="no" value="${faqDto.faq_no }">
+					     		<input class="btn btn-primary" type="submit" value="수정">
+					     		<a href="<c:url value='/ADMIN/Faq/List.do' />" class="btn btn-primary">취소</a>
+				     		</form>
+			     		</div>
+			     	</div>
+		        </div>
+		  
+		     </section>
+		  </section>
         
       </div>
     </div>

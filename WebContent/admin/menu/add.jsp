@@ -40,90 +40,98 @@
     <div class="container-fluid">
       <div class="row">
       	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	     	<div class="row" style="padding-top:10px">
-	     		<div class="col-md-7 text-right">
-	     			<form class="form-inline"
-			     			action="<c:url value='/ADMIN/MENU/Add.do' />" 
-			     			method="post" enctype="multipart/form-data">
-			     		<table class="table table-bordered text-left">
-			     			<tr>
-			     				<td class="col">메뉴 이름</td>
-			     				<td><input class="form-control" type="text" name="menu_name"></td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">카테고리</td>
-			     				<td>
-				     				<select name="category_name" class="form-control">
-				     					<option value="menu">메뉴</option>
-				     					<option value="hamburger">햄버거</option>
-				     					<option value="side">사이드</option>
-				     					<option value="drink">드링크</option>
-				     				</select>
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">가&nbsp;&nbsp;&nbsp;격</td>
-			     				<td>
-			     					<input class="form-control" type="text" name="menu_price">
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">중&nbsp;&nbsp;&nbsp;량</td>
-			     				<td>
-			     					<input class="form-control" type="text" name="menu_weight">
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">열&nbsp;&nbsp;&nbsp;량</td>
-			     				<td>
-			     					<input class="form-control" type="text" name="menu_calrorie">
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">단&nbsp;백&nbsp;질</td>
-			     				<td>
-			     					<input class="form-control" type="text" name="menu_protein">
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">나&nbsp;트&nbsp;륨</td>
-			     				<td>
-			     					<input class="form-control" type="text" name="menu_sodium">
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">당&nbsp;&nbsp;&nbsp;류</td>
-			     				<td>
-			     					<input class="form-control" type="text" name="menu_sugars">
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">포&nbsp;화&nbsp;지&nbsp;방</td>
-			     				<td>
-			     					<input class="form-control" type="text" name="menu_fat">
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">판매종료일</td>
-			     				<td>
-			     					<input class="form-control" id="date" type="text" name="menu_enddate"/>
-			     				</td>
-			     			</tr>
-			     			<tr>
-			     				<td class="col">메뉴 이미지</td>
-			     				<td>
-			     					<input class="form-control" type="file" name="menu_image" id="menu_image"/><h1></h1>
-			     					<img id="menu_image_thumbnail" alt="img_thumbnail" style="width:300px;height:300px;visibility: hidden;"/>
-			     				</td>
-			     			</tr>
-			     		</table>
-			     		<input class="btn btn-primary" type="submit" value="메뉴 추가" onclick="return isAdd()">
-			     		<a href="<c:url value='/ADMIN/MENU/All.do' />" class="btn btn-primary">취소</a>
-		     		</form>
-	     		</div>
-	     	</div>
-        </div>
+      	
+	      <!--main content start-->
+	      <section id="main-content">
+	          <section class="wrapper">
+
+		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			     	<div class="row" style="padding-top:10px">
+			     		<div class="col-md-7 text-right">
+			     			<form class="form-inline"
+					     			action="<c:url value='/ADMIN/MENU/Add.do' />" 
+					     			method="post" enctype="multipart/form-data">
+					     		<table class="table table-bordered text-left">
+					     			<tr>
+					     				<td class="col">메뉴 이름</td>
+					     				<td><input class="form-control" type="text" name="menu_name"></td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">카테고리</td>
+					     				<td>
+						     				<select name="category_name" class="form-control">
+						     					<option value="menu">메뉴</option>
+						     					<option value="hamburger">햄버거</option>
+						     					<option value="side">사이드</option>
+						     					<option value="drink">드링크</option>
+						     				</select>
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">가&nbsp;&nbsp;&nbsp;격</td>
+					     				<td>
+					     					<input class="form-control" type="text" name="menu_price">
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">중&nbsp;&nbsp;&nbsp;량</td>
+					     				<td>
+					     					<input class="form-control" type="text" name="menu_weight">
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">열&nbsp;&nbsp;&nbsp;량</td>
+					     				<td>
+					     					<input class="form-control" type="text" name="menu_calrorie">
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">단&nbsp;백&nbsp;질</td>
+					     				<td>
+					     					<input class="form-control" type="text" name="menu_protein">
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">나&nbsp;트&nbsp;륨</td>
+					     				<td>
+					     					<input class="form-control" type="text" name="menu_sodium">
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">당&nbsp;&nbsp;&nbsp;류</td>
+					     				<td>
+					     					<input class="form-control" type="text" name="menu_sugars">
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">포&nbsp;화&nbsp;지&nbsp;방</td>
+					     				<td>
+					     					<input class="form-control" type="text" name="menu_fat">
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">판매종료일</td>
+					     				<td>
+					     					<input class="form-control" id="date" type="text" name="menu_enddate"/>
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">메뉴 이미지</td>
+					     				<td>
+					     					<input class="form-control" type="file" name="menu_image" id="menu_image"/><h1></h1>
+					     					<img id="menu_image_thumbnail" alt="img_thumbnail" style="width:300px;height:300px;visibility: hidden;"/>
+					     				</td>
+					     			</tr>
+					     		</table>
+					     		<input class="btn btn-primary" type="submit" value="메뉴 추가" onclick="return isAdd()">
+					     		<a href="<c:url value='/ADMIN/MENU/All.do' />" class="btn btn-primary">취소</a>
+				     		</form>
+			     		</div>
+			     	</div>
+		        </div>
+	        
+			</section>
+		</section>        
         
       </div>
     </div>

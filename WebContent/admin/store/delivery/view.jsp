@@ -62,38 +62,47 @@
     <div class="container-fluid">
       <div class="row">
       	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	     	<div class="row" style="padding-top:10px">
-	     		<div class="col-md-9">
-   					<c:choose>
-   						<c:when test="${nowDelivery eq 0 }">
-	     					배달중인 딜리버리 없음
-   						</c:when>
-   						<c:otherwise>
-   							<!-- 
-   								배달중인 딜리버리 리스트 출력
-   								- 처음에는 무조건 가장 위의 딜리버리 배달 보여줌
-   								- 리스트에서 선택하면 선택한 딜리버리 배달 보여줌
-   							-->
-				     		<table class="table table-bordered text-center">
-				     			<tr>
-				     				<td>
-										<div id="map"></div>
-				     				</td>
-				     				<td class="storeList">
-				     					<select class="form-control">
-				     						<c:forEach var="item" items="${storeDelivery }" varStatus="loop">
-				     							<option>${item.delivery_no }</option>
-				     						</c:forEach>
-				     					</select> 
-				     				</td>
-				     			</tr>
-				     		</table>
-  						</c:otherwise>
-  					</c:choose>
-  	     		</div>
-	     	</div>
-        </div>
+      	
+      	  <!--main content start-->
+	      <section id="main-content">
+	          <section class="wrapper">
+      	
+		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			     	<div class="row" style="padding-top:10px">
+			     		<div class="col-md-9">
+		   					<c:choose>
+		   						<c:when test="${nowDelivery eq 0 }">
+			     					배달중인 딜리버리 없음
+		   						</c:when>
+		   						<c:otherwise>
+		   							<!-- 
+		   								배달중인 딜리버리 리스트 출력
+		   								- 처음에는 무조건 가장 위의 딜리버리 배달 보여줌
+		   								- 리스트에서 선택하면 선택한 딜리버리 배달 보여줌
+		   							-->
+						     		<table class="table table-bordered text-center">
+						     			<tr>
+						     				<td>
+												<div id="map"></div>
+						     				</td>
+						     				<td class="storeList">
+						     					<select class="form-control">
+						     						<c:forEach var="item" items="${storeDelivery }" varStatus="loop">
+						     							<option>${item.delivery_no }</option>
+						     						</c:forEach>
+						     					</select> 
+						     				</td>
+						     			</tr>
+						     		</table>
+		  						</c:otherwise>
+		  					</c:choose>
+		  	     		</div>
+			     	</div>
+		        </div>
+		        
+        	</section>
+        </section>
+        
       </div>
     </div>
 

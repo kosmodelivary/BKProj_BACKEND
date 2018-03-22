@@ -24,24 +24,23 @@
 	 <div class="main">
 		<div class="login-form">
 			<h1>Manager Login</h1>
-			
 				<c:if test="${sessionScope.USER_ID eq null}" var="isNotLogin" >
-				 <form class="form-signin" method="post" action="<c:url value='/admin/login/loginProcess.jsp' />" >
-				     <input type="text" class="text" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}" id="user" name="user" value="${param.user }" placeholder="ID" required autofocus>
-					 <input type="password" value="password" id="pass" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" name="pass" value="${param.pass }" class="form-control" placeholder="Password" required>
-					
-					 <div class="submit">
-							<input type="submit" onclick="myFunction()" value="LOGIN" >
-					 </div>
-					 <div class="row" id="error">
-				      	${requestScope.ERROR }
-					 </div>
-					 </c:if>
-					 <c:if test="${not isNotLogin }">
-						<c:redirect url="/ADMIN/Order.do" />
-					 </c:if>	
-					<p><a href="#">Forgot Password ?</a></p>
-				</form>
+					 <form class="form-signin" method="post" action='<c:url value="/admin/login/loginProcess.jsp" />' >
+					     <input type="text" class="text" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}" id="user" name="user" value="${param.user }" placeholder="ID" required autofocus>
+						 <input type="password" value="password" id="pass" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" name="pass" value="${param.pass }" class="form-control" placeholder="Password" required>
+						
+						 <div class="submit">
+								<input type="submit" onclick="myFunction()" value="LOGIN" >
+						 </div>
+						 <div class="row" id="error">
+					      	${requestScope.ERROR }
+						 </div>
+						<p><a href="#">Forgot Password ?</a></p>
+					</form>
+				</c:if>
+				 <c:if test="${not isNotLogin }">
+					<c:redirect url="/ADMIN/Order.do" />
+				 </c:if>	
 			</div>
 			<!--//End-login-form-->
 			

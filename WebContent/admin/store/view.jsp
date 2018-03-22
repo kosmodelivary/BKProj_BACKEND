@@ -26,51 +26,58 @@
     <div class="container-fluid">
       <div class="row">
       	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
-
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	     	<div class="row" style="padding-top:10px">
-	     		<div class="col-md-7">
-		     		<table class="table table-bordered text-center">
-		     			<tr>
-		     				<td class="col">매장 이름</td>
-		     				<td>${storeDto.store_name }</td>
-		     			</tr>
-		     			<tr>
-		     				<td class="col">매장 주소</td>
-		     				<td>${storeDto.store_addr }</td>
-		     			</tr>
-		     			<tr>
-		     				<td class="col" >연락처</td>
-		     				<td>${storeDto.store_tel }</td>
-		     			</tr>
-		     			<tr>
-		     				<td class="col" >딜리버리 시간 (주중)</td>
-		     				<td>
-								${storeDto.store_weekdayon }:00 ~ ${storeDto.store_weekdayoff }:00
-		     				</td>
-		     			</tr>
-		     			<tr>
-		     				<td class="col" >딜리버리 시간 (주말)</td>
-		     				<td>
-								${storeDto.store_weekendon }:00 ~ ${storeDto.store_weekendoff }:00
-		     				</td>
-		     			</tr>
-		     			<tr>
-		     				<td class="col" >최소 주문 금액</td>
-		     				<td>
-								${storeDto.store_minordermoney }원
-		     				</td>
-		     			</tr>
-		     			<tr>
-		     				<td class="col" >매장 위치</td>
-		     				<td>
-								<div id="map"></div>
-		     				</td>
-		     			</tr>
-		     		</table>
-	     		</div>
-	     	</div>
-        </div>
+      	
+      	  <!--main content start-->
+	      <section id="main-content">
+	          <section class="wrapper">
+      	
+			        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				     	<div class="row" style="padding-top:10px">
+				     		<div class="col-md-7">
+					     		<table class="table table-bordered text-center">
+					     			<tr>
+					     				<td class="col">매장 이름</td>
+					     				<td>${storeDto.store_name }</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col">매장 주소</td>
+					     				<td>${storeDto.store_addr }</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col" >연락처</td>
+					     				<td>${storeDto.store_tel }</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col" >딜리버리 시간 (주중)</td>
+					     				<td>
+											${storeDto.store_weekdayon }:00 ~ ${storeDto.store_weekdayoff }:00
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col" >딜리버리 시간 (주말)</td>
+					     				<td>
+											${storeDto.store_weekendon }:00 ~ ${storeDto.store_weekendoff }:00
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col" >최소 주문 금액</td>
+					     				<td>
+											${storeDto.store_minordermoney }원
+					     				</td>
+					     			</tr>
+					     			<tr>
+					     				<td class="col" >매장 위치</td>
+					     				<td>
+											<div id="map"></div>
+					     				</td>
+					     			</tr>
+					     		</table>
+				     		</div>
+				     	</div>
+			        </div>
+	        
+	        </section>
+	    </section>
         
       </div>
     </div>

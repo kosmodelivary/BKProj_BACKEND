@@ -47,31 +47,38 @@
     <div class="container-fluid">
       <div class="row">
       	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
+      	
+	      <!--main content start-->
+	      <section id="main-content">
+	          <section class="wrapper">
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	     	<div class="row" style="padding-top:10px">
-	     		<div class="col-md-7 text-right">
-	     			<form class="form-inline" action="<c:url value='/ADMIN/Faq/Add.do' />" method="post">
-			     		<table class="table table-bordered text-left">
-			     			<tr>
-			     				<td class="col">문의 글</td>
-			     				<td><input class="form-control" type="text" name="ask"></td>
-			     			</tr>
-			     			
-			     			<tr>
-			     				<td class="col" >답변 글</td>
-			     				<td><input class="form-control" type="text" name="answer"></td>
-			     			</tr>
-			     			
-			     			
-			     		</table>
-			     		<input class="btn btn-primary" type="submit" value="글 등록" onclick="return isAdd()">
-			     		<a href="<c:url value='/ADMIN/Faq/List.do' />" class="btn btn-primary">취소</a>
-		     		</form>
-	     		</div>
-	     	</div>
-        </div>
-        
+		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			     	<div class="row" style="padding-top:10px">
+			     		<div class="col-md-7 text-right">
+			     			<form class="form-inline" action="<c:url value='/ADMIN/Faq/Add.do' />" method="post">
+					     		<table class="table table-bordered text-left">
+					     			<tr>
+					     				<td class="col">문의 글</td>
+					     				<td><input class="form-control" type="text" name="ask"></td>
+					     			</tr>
+					     			
+					     			<tr>
+					     				<td class="col" >답변 글</td>
+					     				<td><input class="form-control" type="text" name="answer"></td>
+					     			</tr>
+					     			
+					     			
+					     		</table>
+					     		<input class="btn btn-primary" type="submit" value="글 등록" onclick="return isAdd()">
+					     		<a href="<c:url value='/ADMIN/Faq/List.do' />" class="btn btn-primary">취소</a>
+				     		</form>
+			     		</div>
+			     	</div>
+		        </div>
+
+        	</section>
+        </section>
+
       </div>
     </div>
   </body>

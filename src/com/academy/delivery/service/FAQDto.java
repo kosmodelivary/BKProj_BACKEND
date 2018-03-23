@@ -5,6 +5,7 @@ public class FAQDto {
 	private String faq_no;
 	private String faq_ask;
 	private String faq_answer;
+	private String tabcon;
 	
 	//게터 세터
 	public String getFaq_no() {
@@ -24,6 +25,12 @@ public class FAQDto {
 	}
 	public void setFaq_answer(String faq_answer) {
 		this.faq_answer = faq_answer;
+	}
+	public String getTabcon() {
+		return tabcon;
+	}
+	public void setTabcon(String tabcon) {
+		this.tabcon = tabcon;
 	}
 	
 	

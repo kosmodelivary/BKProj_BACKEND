@@ -42,8 +42,9 @@
 			   			<div class="col-md-10 col-md-offset-1">
 				   			<table class="table table-bordered">
 				   				<tr>
-				   					<th style="width:35%">문의글</th>
-				   					<th style="width:35%">답변글</th>
+				   					<th style="width:23%">문의글</th>
+				   					<th style="width:23%">답변글</th>
+				   				    <th style="width:23%">기타</th>				   					
 				   					<th style="width:10%">상세</th>
 				   					<th style="width:10%">수정</th>
 				   					<th>삭제</th>
@@ -56,6 +57,7 @@
 				   				<c:if test="${not flag }">
 				   					<c:forEach var="item" items="${faq }" varStatus="loop" >
 						   				<tr>
+						   					<td>${item.tabcon}</td>
 						   					<td>${item.faq_ask}</td>
 						   					<td>${item.faq_answer}</td>
 						   					<td><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">상세</a></td>

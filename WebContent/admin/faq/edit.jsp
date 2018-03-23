@@ -77,6 +77,10 @@
 					     				<td class="col" >답변</td>
 					     				<td><input class="form-control" type="text" name="answer" value="${faqDto.faq_answer }"></td>
 					     			</tr>
+					     			<tr>
+					     				<td class="col" >기타</td>
+					     				<td><input class="form-control" type="text" name="tabcon" value="${faqDto.tabcon }"></td>
+					     			</tr>
 					     						     						     			
 					     		</table>
 					     		<input type="hidden" name="no" value="${faqDto.faq_no }">

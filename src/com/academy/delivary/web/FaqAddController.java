@@ -30,6 +30,7 @@ public class FaqAddController extends HttpServlet {
 			FAQDto	faqDto		= new FAQDto();
 			faqDto.setFaq_answer(req.getParameter("answer"));
 			faqDto.setFaq_ask(req.getParameter("ask"));
+			faqDto.setTabcon(req.getParameter("tabcon"));
 			
 			faqService.insert(faqDto);		
 			resp.sendRedirect(req.getContextPath() + "/ADMIN/Faq/List.do");

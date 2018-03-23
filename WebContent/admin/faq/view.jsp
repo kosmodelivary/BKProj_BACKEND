@@ -43,6 +43,10 @@
 				     				<td class="col">답변 글</td>
 				     				<td>${faqDto.faq_answer }</td>
 				     			</tr>
+				     			<tr>
+				     				<td class="col">기타</td>
+				     				<td>${faqDto.tabcon }</td>
+				     			</tr>
 				     			
 				     		</table>
 			     		</div>

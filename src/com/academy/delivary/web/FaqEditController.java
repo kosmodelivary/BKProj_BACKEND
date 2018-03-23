@@ -33,6 +33,7 @@ public class FaqEditController extends HttpServlet {
 			FAQDto	faqDto		= faqService.selectOne(req.getParameter("no"));
 			faqDto.setFaq_ask(req.getParameter("ask"));
 			faqDto.setFaq_answer(req.getParameter("answer"));
+			faqDto.setTabcon(req.getParameter("tabcon"));
 			
 			
 			req.setAttribute("EDIT_RESULT", faqService.update(faqDto));

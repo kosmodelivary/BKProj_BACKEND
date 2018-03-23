@@ -12,6 +12,7 @@
 		<result property="faq_no" />
 		<result property="faq_ask" />
 		<result property="faq_answer" />
+		<result property="tabcon"/>
 	</resultMap>
 	
 	<!-- FAQDao 사용 DB Query -->
@@ -23,14 +24,14 @@
 		SELECT * FROM faq WHERE faq_no = #faq_no#
 	</select>
 	<update id="FAQ.update" parameterClass="FAQDto">
-		UPDATE faq SET faq_ask = #faq_ask#, faq_answer = #faq_answer# 
+		UPDATE faq SET faq_ask = #faq_ask#, faq_answer = #faq_answer#  , tabcon = #tabcon#
 		WHERE faq_no = #faq_no#
 	</update>
 	<delete id="FAQ.delete" parameterClass="java.lang.String" >
 		DELETE FROM faq WHERE faq_no = #faq_no# 
 	</delete>
 	<insert id="FAQ.insert" parameterClass="FAQDto">
-		INSERT INTO faq VALUES(SEQ_FAQ_FAQ_NO.NEXTVAL, #faq_ask#, #faq_answer#)
+		INSERT INTO faq VALUES(SEQ_FAQ_FAQ_NO.NEXTVAL, #faq_ask#, #faq_answer#, #tabcon#)
 	</insert>
 	<select id="FAQ.getTotalRecordCount" resultClass="int">
 		SELECT COUNT(*) FROM faq

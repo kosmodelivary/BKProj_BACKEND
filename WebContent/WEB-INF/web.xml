@@ -181,7 +181,7 @@
 		<servlet-name>BackendNoticeAdd</servlet-name>
 		<url-pattern>/ADMIN/Notice/Add.do</url-pattern>
 	</servlet-mapping>
-	<!-- faq - 목록 -->
+	<!-- FAQ - 목록 -->
 	<servlet>
 		<servlet-name>BackendFaqList</servlet-name>
 		<servlet-class>com.academy.delivary.web.FaqListController</servlet-class>  
@@ -190,7 +190,7 @@
 		<servlet-name>BackendFaqList</servlet-name>
 		<url-pattern>/ADMIN/Faq/List.do</url-pattern>
 	</servlet-mapping>
-	<!-- faq - 추가 -->
+	<!-- FAQ - 추가 -->
 	<servlet>
 		<servlet-name>BackendFaqAdd</servlet-name>
 		<servlet-class>com.academy.delivary.web.FaqAddController</servlet-class>  
@@ -199,7 +199,7 @@
 		<servlet-name>BackendFaqAdd</servlet-name>
 		<url-pattern>/ADMIN/Faq/Add.do</url-pattern>
 	</servlet-mapping>
-	<!-- 매장 리스트 - 수정 폼 출력, 수정 처리 -->
+	<!-- FAQ - 수정 폼 출력, 수정 처리 -->
 	<servlet>
 		<servlet-name>BackendFaqEdit</servlet-name>
 		<servlet-class>com.academy.delivary.web.FaqEditController</servlet-class>  
@@ -208,7 +208,7 @@
 		<servlet-name>BackendFaqEdit</servlet-name>
 		<url-pattern>/ADMIN/Faq/Edit.do</url-pattern>
 	</servlet-mapping>
-	<!-- 매장 리스트 - 삭제 처리 -->
+	<!-- FAQ - 삭제 처리 -->
 	<servlet>
 		<servlet-name>BackendFaqDelete</servlet-name>
 		<servlet-class>com.academy.delivary.web.FaqDeleteController</servlet-class>  
@@ -217,7 +217,7 @@
 		<servlet-name>BackendFaqDelete</servlet-name>
 		<url-pattern>/ADMIN/Faq/Delete.do</url-pattern>
 	</servlet-mapping>
-	<!-- 매장 리스트 - 상세보기 처리 -->
+	<!-- FAQ - 상세보기 처리 -->
 	<servlet>
 		<servlet-name>BackendFaqView</servlet-name>
 		<servlet-class>com.academy.delivary.web.FaqViewController</servlet-class>  

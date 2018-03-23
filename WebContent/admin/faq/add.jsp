@@ -66,6 +66,10 @@
 					     				<td class="col" >답변 글</td>
 					     				<td><input class="form-control" type="text" name="answer"></td>
 					     			</tr>
+					     			<tr>
+					     				<td class="col" >기타</td>
+					     				<td><input class="form-control" type="text" name="tabcon"></td>
+					     			</tr>
 					     			
 					     			
 					     		</table>

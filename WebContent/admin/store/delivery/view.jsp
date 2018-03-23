@@ -37,7 +37,8 @@
 					selectedDelivery = $('select option:selected').val();
 					
 					$.ajax({
-						url: '<c:url value="/admin/store/delivery/json/' + selectedDelivery + '.json" />',
+						// url: '<c:url value="/admin/store/delivery/json/' + selectedDelivery + '.json" />',
+						url: '<c:url value="https://s3.ap-northeast-2.amazonaws.com/bkproj-json/' + selectedDelivery + '.json" />',
 						type: 'post',
 						dataType: 'json',
 						success: function(data) {

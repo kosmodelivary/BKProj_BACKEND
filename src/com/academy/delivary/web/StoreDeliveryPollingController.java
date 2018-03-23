@@ -1,10 +1,12 @@
 package com.academy.delivary.web;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,10 +18,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FilenameUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import com.academy.delivery.common.AWSService;
 
 
 public class StoreDeliveryPollingController extends HttpServlet {
@@ -33,20 +38,29 @@ public class StoreDeliveryPollingController extends HttpServlet {
 			if (req.getParameter("PostData") != null) {
 				object = (JSONObject) parser.parse(req.getParameter("PostData"));
 				if (object != null) {
-					File file	= 
-							new File(req.getServletContext().getRealPath("/admin/store/delivery/json/") + object.get("uuid").toString() + ".json");
+					// json 파일 생성
+					String	fileFullPath 	= 
+							req.getServletContext().getRealPath("/admin/store/delivery/json/") + object.get("uuid").toString() + ".json";
+					File 		file  	= new File(fileFullPath);
 					FileWriter	fw		= new FileWriter(file);
 					fw.write(object.toJSONString());
 					fw.flush();
 					fw.close();
-					System.out.println("json 파일 출력 완료: " + 
-							req.getServletContext().getRealPath("/admin/store/delivery/json/") + object.get("uuid").toString() + ".json");
+					System.out.println("json 파일 출력 완료: " + fileFullPath);
+					
+					// 생성된 json 파일 업로드
+					FileInputStream		fis			= new FileInputStream(file);
+	                AWSService 			amazonS3 	= new AWSService();
+	                amazonS3.uploadJson(fis, file.length(), object.get("uuid").toString() + ".json");
+					fis.close();
+					
+					// 업로드 완료되면 삭제?
+					System.out.println("json 파일 업로드 완료: " + fileFullPath);	
 				}
 			}
 		} catch (ParseException e) {
 			e.printStackTrace();
-		}
-		
+		} 
 		resp.sendRedirect("/admin/store/delivery/view.jsp");
 	}
 	

@@ -23,7 +23,7 @@
   	</style>
   	<script type="text/javascript">
 		// 배달중인 딜리버리가 있으면 갱신되는 위도, 경도 읽어서 지도에 마커 실시간 이동 
-	  	if (${nowDelivery ne 0 } ) {
+	  	if (${nowDelivery != 0 }) {
 			$(function () {
 			    var map = new google.maps.Map(document.getElementById('map'), {
 					zoom: 14
@@ -38,9 +38,12 @@
 					
 					$.ajax({
 						// url: '<c:url value="/admin/store/delivery/json/' + selectedDelivery + '.json" />',
-						url: '<c:url value="https://s3.ap-northeast-2.amazonaws.com/bkproj-json/' + selectedDelivery + '.json" />',
+						// url: '<c:url value="https://s3.ap-northeast-2.amazonaws.com/bkproj-json/' + selectedDelivery + '.json" />',
+						// url: '<c:url value="http://restapi.fs.ncloud.com/bkproject/json/delivery/' + selectedDelivery + '.json" />',
+						url: '<c:url value="/admin/store/delivery/deliveryLoading.jsp"/>',
 						type: 'post',
 						dataType: 'json',
+						data: {"selectedDelivery":selectedDelivery},
 						success: function(data) {
 							currentPosition = new google.maps.LatLng(data.latitude, data.longitude);
 							marker.setPosition(currentPosition);
@@ -50,7 +53,7 @@
 							console.log('fail');
 						}
 					});
-						
+
 				}, 1000);
 			});
 	  	}

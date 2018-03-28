@@ -18,12 +18,10 @@ public class StoreDeliveryController extends HttpServlet  {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		StoreDeliveryService	service	= new StoreDeliveryServiceImpl();
 		
-		// 추후 코드 추가
-		// - 딜리버리 배달중인 레코드만 추출
-		// - 
 		List<StoreDeliveryDto>	storeDelivery	= service.selectList();
 		req.setAttribute("storeDelivery", storeDelivery);
 		req.setAttribute("nowDelivery", service.getTotalDeliveryCount());
+		
 		System.out.println(storeDelivery);
 		System.out.println(service.getTotalDeliveryCount());
 		

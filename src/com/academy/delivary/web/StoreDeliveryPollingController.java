@@ -25,6 +25,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.academy.delivery.common.AWSService;
+import com.academy.delivery.common.NCloudService;
 
 
 public class StoreDeliveryPollingController extends HttpServlet {
@@ -46,16 +47,13 @@ public class StoreDeliveryPollingController extends HttpServlet {
 					fw.write(object.toJSONString());
 					fw.flush();
 					fw.close();
-					System.out.println("json 파일 출력 완료: " + fileFullPath);
 					
 					// 생성된 json 파일 업로드
-					FileInputStream		fis			= new FileInputStream(file);
-	                AWSService 			amazonS3 	= new AWSService();
-	                amazonS3.uploadJson(fis, file.length(), object.get("uuid").toString() + ".json");
-					fis.close();
+					NCloudService	ncloud	= new NCloudService();
+					ncloud.upload(file, "delivery");
 					
-					// 업로드 완료되면 삭제?
-					System.out.println("json 파일 업로드 완료: " + fileFullPath);	
+					// 스토리지 업로드 완료했으므로 파일 삭제
+					file.delete();
 				}
 			}
 		} catch (ParseException e) {

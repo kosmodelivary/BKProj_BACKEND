@@ -106,6 +106,8 @@ public class MenuAddController extends HttpServlet {
 //		                					FilenameUtils.getName(item.getName()));
 						NCloudService ncloud = new NCloudService();
 						String filepath = req.getServletContext().getRealPath("/admin/menu/"+FilenameUtils.getName(item.getName()));
+						System.out.println(filepath);
+						
 						File file = new File(filepath);
 						FileOutputStream fos = new FileOutputStream(filepath);
 						int data = -1;

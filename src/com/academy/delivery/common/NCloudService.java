@@ -38,6 +38,8 @@ public class NCloudService {
 			} else if (uploadKeyword.contains("menu")) {
 				rid = new FSResourceID("bkproject/image/menu/" + file.getName());
 			}
+			info 	= new FSUploadSourceInfo(file, contentType, null);
+			
 			uploadFile(file, contentType, rid, info);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -84,7 +86,7 @@ public class NCloudService {
 			if (file.getName().contains("jpg")) {
 				return "image/jpeg";
 			} else if (file.getName().contains("png")) {
-				return "image/jpeg";
+				return "image/png";
 			}
 		}
 		

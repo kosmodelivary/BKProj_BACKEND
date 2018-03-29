@@ -54,7 +54,7 @@
 						     		<table class="table table-bordered text-left">
 						     			<tr>
 						     				<td class="col" rowspan="10">
-						     					<img src="https://s3.ap-northeast-2.amazonaws.com/bkprojserver/${menuDto.menu_name }${menuDto.menu_file_extension }" alt="${menuDto.menu_name }이미지"/>
+						     					<img src="http://restapi.fs.ncloud.com/bkproject/image/menu/${menuDto.menu_name }${menuDto.menu_file_extension }" alt="${menuDto.menu_name }이미지"/>
 						     				</td>
 						     				<th class="col">메&nbsp;뉴&nbsp;이&nbsp;름</th>
 						     				<td style="width:30%">

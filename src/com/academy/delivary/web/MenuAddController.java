@@ -112,13 +112,11 @@ public class MenuAddController extends HttpServlet {
 						FileOutputStream fos = new FileOutputStream(filepath);
 						int data = -1;
 						byte [] b = new byte[128];
-						System.out.println("파일 생성 완료 - 파일존재여부 : "+file.exists());
 						InputStream is = item.getInputStream(); 
 						while((data = is.read(b)) != -1){
 							fos.write(b,0,data);
 							fos.flush();
 						}
-						System.out.println("여기까지 오는가?");
 						if(is != null) is.close();
 						if(fos != null) fos.close();
 

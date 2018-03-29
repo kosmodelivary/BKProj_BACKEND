@@ -3,10 +3,13 @@ package com.academy.delivery.common;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.net.URLEncoder;
 
 import com.ncloud.filestorage.FSRestClient;
 import com.ncloud.filestorage.model.FSClientException;
+import com.ncloud.filestorage.model.FSMetaData;
 import com.ncloud.filestorage.model.FSResourceID;
+import com.ncloud.filestorage.model.FSResourceInfo;
 import com.ncloud.filestorage.model.FSServiceException;
 import com.ncloud.filestorage.model.FSUploadFileResult;
 import com.ncloud.filestorage.model.FSUploadSourceInfo;
@@ -35,8 +38,10 @@ public class NCloudService {
 		try {
 			if (uploadKeyword.contains("delivery")) {
 				rid = new FSResourceID("bkproject/json/delivery/" + file.getName());
-			} else if (uploadKeyword.contains("menu")) {
-				rid = new FSResourceID("bkproject/image/menu/" + file.getName());
+			}
+			else if (uploadKeyword.contains("menu")) {
+				String filename = URLEncoder.encode(file.getName(), "UTF-8");
+				rid = new FSResourceID("bkproject/image/menu/" + filename);
 			}
 			info 	= new FSUploadSourceInfo(file, contentType, null);
 			
@@ -59,6 +64,8 @@ public class NCloudService {
 		FSRestClient.destroy();
 	}
 	
+	
+	
 	public void delete(File file) {
 		
 	} // delete
@@ -78,6 +85,8 @@ public class NCloudService {
 		info 						= new FSUploadSourceInfo(fis, fileType, file.length(), null);
 		FSUploadFileResult 	result 	= client.uploadFile(rid, info);
 	} // uploadFile
+	
+	
 	
 	private String getContentType(String uploadKeyword, File file) {
 		if (uploadKeyword.trim().equalsIgnoreCase("delivery")) {

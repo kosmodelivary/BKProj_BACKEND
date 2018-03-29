@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!-- Toggle Nabigation 추가   -->
-  	<body>
+  	<!-- <body> -->
 	  <section id="container" >
 <!-- **********************************************************************************************************************************************************
       		TOP BAR CONTENT & NOTIFICATIONS
@@ -162,5 +162,5 @@
             </div>          
         </header>
         </section>
-        </body>
+        <!-- </body> -->
       <!--header end-->

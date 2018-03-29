@@ -6,29 +6,19 @@
 <html lang="en">
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script 
-    	async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQo9FPSR1RWpd2JWBwrhbTlIi5DzeubEM">
-    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQo9FPSR1RWpd2JWBwrhbTlIi5DzeubEM" type="text/javascript"></script>
   	<c:import url="/admin/include/loginCheck.jsp" />
   	<c:import url="/admin/include/head.jsp" />
   	
-  	<style type="text/css">
-		#map {
-			height: 650px;
-			width: 100%;
-		}
-		.storeList {
-			width: 15%;
-		}
-  	</style>
   	<script type="text/javascript">
+  		var	map, marker;
 		// 배달중인 딜리버리가 있으면 갱신되는 위도, 경도 읽어서 지도에 마커 실시간 이동 
 	  	if (${nowDelivery != 0 }) {
 			$(function () {
-			    var map = new google.maps.Map(document.getElementById('map'), {
+			    map = new google.maps.Map(document.getElementById('map'), {
 					zoom: 14
 				});
-			    var marker = new google.maps.Marker({
+			    marker = new google.maps.Marker({
 					map: map
 				});
 		
@@ -37,9 +27,6 @@
 					selectedDelivery = $('select option:selected').val();
 					
 					$.ajax({
-						// url: '<c:url value="/admin/store/delivery/json/' + selectedDelivery + '.json" />',
-						// url: '<c:url value="https://s3.ap-northeast-2.amazonaws.com/bkproj-json/' + selectedDelivery + '.json" />',
-						// url: '<c:url value="http://restapi.fs.ncloud.com/bkproject/json/delivery/' + selectedDelivery + '.json" />',
 						url: '<c:url value="/admin/store/delivery/deliveryLoading.jsp"/>',
 						type: 'post',
 						dataType: 'json',
@@ -58,6 +45,15 @@
 			});
 	  	}
   	</script>
+  	<style type="text/css">
+		#map {
+			height: 650px;
+			width: 100%;
+		}
+		.storeList {
+			width: 15%;
+		}
+  	</style>
   </head>
 
   <body>
@@ -109,6 +105,7 @@
         
       </div>
     </div>
-
+  	
+  	
   </body>
 </html>

@@ -1,6 +1,11 @@
 package com.academy.delivary.web;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
@@ -18,9 +23,12 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 
 import com.academy.delivery.common.AWSService;
+import com.academy.delivery.common.NCloudService;
 import com.academy.delivery.service.MenuDto;
 import com.academy.delivery.service.MenuService;
 import com.academy.delivery.service.impl.MenuServiceImpl;
+
+import jdk.jfr.events.FileWriteEvent;
 
 
 public class MenuAddController extends HttpServlet {
@@ -92,13 +100,32 @@ public class MenuAddController extends HttpServlet {
 						}
 					}
 					else {
-		                AWSService amazonS3 = new AWSService();
-		                amazonS3.uploadFile(item.getInputStream(),
-		                					item.getSize(), 
-		                					FilenameUtils.getName(item.getName()));
-		                int idx = FilenameUtils.getName(item.getName()).indexOf('.');
+//		                AWSService amazonS3 = new AWSService();
+//		                amazonS3.uploadFile(item.getInputStream(),
+//		                					item.getSize(), 
+//		                					FilenameUtils.getName(item.getName()));
+						NCloudService ncloud = new NCloudService();
+						String filepath = req.getServletContext().getRealPath("/admin/menu/"+FilenameUtils.getName(item.getName()));
+						File file = new File(filepath);
+						FileOutputStream fos = new FileOutputStream(filepath);
+						int data = -1;
+						byte [] b = new byte[128];
+						System.out.println("파일 생성 완료 - 파일존재여부 : "+file.exists());
+						InputStream is = item.getInputStream(); 
+						while((data = is.read(b)) != -1){
+							fos.write(b,0,data);
+							fos.flush();
+						}
+						System.out.println("여기까지 오는가?");
+						if(is != null) is.close();
+						if(fos != null) fos.close();
+
+						ncloud.upload(file, "menu");
+						
+						file.delete();
+
+						int idx = FilenameUtils.getName(item.getName()).indexOf('.');
 		                menuDto.setMenu_file_extension(FilenameUtils.getName(item.getName()).substring(idx));
-		                System.out.println(FilenameUtils.getName(item.getName()));
 					}
 				}
 			} catch (FileUploadException e) {

@@ -64,6 +64,7 @@
 						     					<option value="hamburger">햄버거</option>
 						     					<option value="side">사이드</option>
 						     					<option value="drink">드링크</option>
+						     					<option value="set">세트</option>
 						     				</select>
 					     				</td>
 					     			</tr>

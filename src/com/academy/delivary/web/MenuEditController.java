@@ -103,8 +103,8 @@ public class MenuEditController extends HttpServlet {
 			} catch (FileUploadException e) {
 				e.printStackTrace();
 			} finally {
-				req.setAttribute("EDIT_RESULT", menuService.update(menuDto));
-				req.getRequestDispatcher("/admin/menu/process.jsp").forward(req, resp);
+//				req.setAttribute("EDIT_RESULT", menuService.update(menuDto));
+//				req.getRequestDispatcher("/admin/menu/process.jsp").forward(req, resp);
 			}
 		}
 	} // end service

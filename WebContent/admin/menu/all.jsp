@@ -40,7 +40,7 @@
 		   		    <div class="row" style="padding-top:10px">
 			   			<div class="col-md-10 col-md-offset-1">
 				   			<table class="table table-bordered">
-				   			<c:if test="${empty menu }" var="flag">
+				   				<c:if test="${empty menu }" var="flag">
 					   				<tr>
 					   					<td>등록된 자료가 없습니다.</td>
 					   				</tr>

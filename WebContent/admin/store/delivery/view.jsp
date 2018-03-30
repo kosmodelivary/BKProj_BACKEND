@@ -5,45 +5,46 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQo9FPSR1RWpd2JWBwrhbTlIi5DzeubEM" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<c:import url="/admin/include/loginCheck.jsp" />
   	<c:import url="/admin/include/head.jsp" />
   	
   	<script type="text/javascript">
-  		var	map, marker;
-		// 배달중인 딜리버리가 있으면 갱신되는 위도, 경도 읽어서 지도에 마커 실시간 이동 
-	  	if (${nowDelivery != 0 }) {
-			$(function () {
-			    map = new google.maps.Map(document.getElementById('map'), {
-					zoom: 14
-				});
-			    marker = new google.maps.Marker({
-					map: map
-				});
-		
-				var currentPosition, selectedDelivery;
-				window.setInterval(function () {
-					selectedDelivery = $('select option:selected').val();
-					
-					$.ajax({
-						url: '<c:url value="/admin/store/delivery/deliveryLoading.jsp"/>',
-						type: 'post',
-						dataType: 'json',
-						data: {"selectedDelivery":selectedDelivery},
-						success: function(data) {
-							currentPosition = new google.maps.LatLng(data.latitude, data.longitude);
-							marker.setPosition(currentPosition);
-							map.panTo(currentPosition);
-						},
-						error: function() {
-							console.log('fail');
-						}
-					});
+  		function initMap() {
+  	  		var	map, marker, currentPosition, selectedDelivery;
 
-				}, 1000);
-			});
-	  	}
+  	  		// 배달중인 딜리버리가 있으면 갱신되는 위도, 경도 읽어서 지도에 마커 실시간 이동 
+  		  	if (${nowDelivery != 0 }) {
+  				$(function () {
+  				    map = new google.maps.Map(document.getElementById('map'), {
+  						zoom: 14
+  					});
+  				    marker = new google.maps.Marker({
+  						map: map
+  					});
+  			
+  					window.setInterval(function () {
+  						selectedDelivery = $('select option:selected').val();
+  						
+  						$.ajax({
+  							url: '<c:url value="/admin/store/delivery/deliveryLoading.jsp"/>',
+  							type: 'post',
+  							dataType: 'json',
+  							data: {"selectedDelivery":selectedDelivery},
+  							success: function(data) {
+  								currentPosition = new google.maps.LatLng(data.latitude, data.longitude);
+  								marker.setPosition(currentPosition);
+  								map.panTo(currentPosition);
+  							},
+  							error: function() {
+  								console.log('fail');
+  							}
+  						});
+
+  					}, 1000);
+  				});
+  		  	}
+  		}
   	</script>
   	<style type="text/css">
 		#map {
@@ -105,7 +106,8 @@
         
       </div>
     </div>
-  	
-  	
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQo9FPSR1RWpd2JWBwrhbTlIi5DzeubEM&callback=initMap"></script>
+
   </body>
 </html>

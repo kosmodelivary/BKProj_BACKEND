@@ -22,6 +22,19 @@ public class StoreDao implements StoreService {
 
 		return list;
 	}
+	
+	@Override
+	public List<String> selectListofName() {
+		List<String> list	= null;
+		
+		try {
+			list				= IbatisUtil.getMapper().queryForList("Store.selectListofName");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 
 	@Override
 	public StoreDto selectOne(String no) {
@@ -29,6 +42,19 @@ public class StoreDao implements StoreService {
 		
 		try {
 			storeDto		= (StoreDto) IbatisUtil.getMapper().queryForObject("Store.selectOne", no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return storeDto;
+	}
+
+	@Override
+	public StoreDto selectOneByName(String name) {
+		StoreDto storeDto	= null;
+		
+		try {
+			storeDto		= (StoreDto) IbatisUtil.getMapper().queryForObject("Store.selectOneByName", name);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

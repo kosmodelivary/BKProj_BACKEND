@@ -16,10 +16,13 @@
 	
 	<!-- StoreDeliveryDao 사용 DB Query -->
 	<select id="StoreDelivery.getTotalDeliveryCount" resultClass="int">
-		SELECT COUNT(*) FROM store_delivery WHERE delivery_useable = 'true'
+		SELECT COUNT(*) FROM store_delivery WHERE delivery_useable = 'false'
 	</select>
 	<select id="StoreDelivery.selectList" resultClass="StoreDeliveryDto">
-		SELECT * FROM store_delivery WHERE delivery_useable = 'true'
+		SELECT * FROM store_delivery WHERE delivery_useable = 'false'
 	</select>
+	<insert id="StoreDelivery.insert" parameterClass="StoreDeliveryDto">
+		INSERT INTO store_delivery VALUES(#delivery_no#, #store_no#, 'true')
+	</insert>
 	
 </sqlMap>

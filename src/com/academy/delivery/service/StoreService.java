@@ -6,7 +6,9 @@ import java.util.Map;
 public interface StoreService {
 
 	public List<StoreDto> selectList(Map map);
+	public List<String> selectListofName();
 	public StoreDto selectOne(String no);
+	public StoreDto selectOneByName(String name);
 	
 	public int insert(StoreDto storeDto);
 	public int update(StoreDto storeDto);

@@ -59,7 +59,7 @@ public class StoreDeliveryPollingController extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} 
-		resp.sendRedirect("/admin/store/delivery/view.jsp");
+//		resp.sendRedirect("/admin/store/delivery/view.jsp");
 	}
 	
 }

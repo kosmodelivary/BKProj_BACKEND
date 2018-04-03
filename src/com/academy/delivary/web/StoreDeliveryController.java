@@ -22,9 +22,6 @@ public class StoreDeliveryController extends HttpServlet  {
 		req.setAttribute("storeDelivery", storeDelivery);
 		req.setAttribute("nowDelivery", service.getTotalDeliveryCount());
 		
-		System.out.println(storeDelivery);
-		System.out.println(service.getTotalDeliveryCount());
-		
 		req.getRequestDispatcher("/admin/store/delivery/view.jsp").forward(req, resp);
 	}
 

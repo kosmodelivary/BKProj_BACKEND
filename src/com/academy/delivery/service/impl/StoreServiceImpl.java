@@ -18,12 +18,22 @@ public class StoreServiceImpl implements StoreService {
 	public List<StoreDto> selectList(Map map) {
 		return storeDao.selectList(map);
 	} // end selectList
-	
+
+	@Override
+	public List<String> selectListofName() {
+		return storeDao.selectListofName();
+	} // selectListofName
+
 	@Override
 	public StoreDto selectOne(String no) {
 		return storeDao.selectOne(no);
 	} // end selectOne
 	
+	@Override
+	public StoreDto selectOneByName(String name) {
+		return storeDao.selectOneByName(name);
+	}
+
 	@Override
 	public int insert(StoreDto storeDto) {
 		return storeDao.insert(storeDto);
@@ -48,7 +58,5 @@ public class StoreServiceImpl implements StoreService {
 	public int getTotalDeliveryCount() {
 		return storeDao.getTotalDeliveryCount();
 	}
-	
-	
 
 } // end MemberServiceImpl 

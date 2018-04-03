@@ -28,6 +28,12 @@
 	<select id="Store.selectOne" parameterClass="java.lang.String" resultMap="StoreDtoResult">
 		SELECT * FROM store WHERE store_no = #store_no#
 	</select>
+	<select id="Store.selectOneByName" parameterClass="java.lang.String" resultMap="StoreDtoResult">
+		SELECT * FROM store WHERE store_name = #store_name#
+	</select>
+	<select id="Store.selectListofName" resultClass="java.lang.String">
+		SELECT store_name FROM store ORDER BY store_name ASC
+	</select>
 	<update id="Store.update" parameterClass="StoreDto">
 		UPDATE store SET store_name = #store_name#, store_tel = #store_tel#, store_addr = #store_addr#, 
 		store_weekdayon = #store_weekdayon#, store_weekdayoff = #store_weekdayoff#, store_weekendon = #store_weekendon#, store_weekendoff = #store_weekendoff#, 

@@ -4,76 +4,122 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  	<c:import url="/admin/include/loginCheck.jsp" />
-  	<c:import url="/admin/include/head.jsp" />
-  	
+<!-- *********************************************************** HEAD *********************************************************** -->
+<head>
+<!-- ******************************************* -->	  
+<c:import url="/admin/include/loginCheck.jsp" />
+<c:import url="/admin/include/head.jsp" />
+<!-- ******************************************* -->  
   	<style type="text/css">
   		.col {
   			text-align: center;
   			width: 30%;
   		}
   	</style>
-  </head>
+</head>
+<!-- *********************************************************** HEAD *********************************************************** -->
+<!-- *********************************************************** BODY *********************************************************** -->
+<body>
+<!-- ******************************************* -->  
+<c:import url="/admin/include/navigator.jsp" />
+<c:import url="/admin/include/leftSidebar.jsp" />
+<!-- ******************************************* -->  
+<div id="page-wrapper" style="padding:80px 0px 0px 0px; margin:0px 0px 0px 210px">
+           
+	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
+		<img alt="수정" width="100" src="${pageContext.request.contextPath}/Images/edit.png"> 
+		<span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;Edit</span>
+	</div>
+		
+	<div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
+	
+   	  	<div class="col-lg-12">
+            <div class="panel panel-default">
+            	<div class="panel-heading">
+					<font size="6pt" color="gray" face="Impact">BurgerKing Member Edit</font>
+				</div>
+				
+              	<div class="panel-body">
 
-  <body>
-	<c:import url="/admin/include/navigator.jsp" />
-
-    <div class="container-fluid">
-      <div class="row">
-      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
-      	
-	      <!--main content start-->
-	      <section id="main-content">
-	          <section class="wrapper">
-
-		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			     	<div class="row" style="padding-top:10px">
-			     		<div class="col-md-5 text-right">
-			     			<form action="<c:url value='/ADMIN/MEMBER/Edit.do' />" method="post">
-					     		<table class="table table-bordered text-left">
-					     			<tr>
-					     				<td class="col" >이메일</td>
-					     				<td>${memberDto.member_email }</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col" >이름</td>
-					     				<td><input type="text" name="name" value="${memberDto.member_name }"></td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col" >연락처</td>
-					     				<td><input type="text" name="tel" value="${memberDto.member_tel }"></td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col" >SMS 수신 동의</td>
-					     				<td>
-					     					<input type="radio" name="sms" id="sms_true" value="true" <c:if test="${memberDto.member_agreesms eq 'true' }">checked</c:if>>
-					     					<label for="sms_true">true</label>&nbsp;&nbsp;
-					     					<input type="radio" name="sms" id="sms_false" value="false" <c:if test="${memberDto.member_agreesms eq 'false' }">checked</c:if>>
-					     					<label for="sms_false">false</label>
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col" >이메일 수신 동의</td>
-					     				<td>
-					     					<input type="radio" name="email" id="email_true" value="true" <c:if test="${memberDto.member_agreeemail eq 'true' }">checked</c:if>>
-					     					<label for="email_true">true</label>&nbsp;&nbsp;
-					     					<input type="radio" name="email" id="email_false" value="false" <c:if test="${memberDto.member_agreeemail eq 'false' }">checked</c:if>>
-					     					<label for="email_false">false</label>
-					     				</td>
-					     			</tr>
-					     		</table>
-					     		<input type="hidden" name="no" value="${memberDto.member_no }">
-					     		<input class="btn btn-primary" type="submit" value="수정">
-					     		<a href="<c:url value='/ADMIN/MEMBER/List.do' />" class="btn btn-primary">취소</a>
-				     		</form>
-			     		</div>
-			     	</div>
-		        </div>
-			
-			</section>
-		</section>
-        
+     			<form action="<c:url value='/ADMIN/MEMBER/Edit.do' />" method="post">
+	     		
+	     		<table class="table table-bordered">
+	     		
+	     			<tr>
+	     				<td style="width:20%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="이메일" width="40" src="${pageContext.request.contextPath}/Images/mail.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;이메일</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								${memberDto.member_email}
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:20%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="이름" width="40" src="${pageContext.request.contextPath}/Images/member.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;이름</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input type="text" name="name" value="${memberDto.member_name }">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:20%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="연락처" width="40" src="${pageContext.request.contextPath}/Images/memberlist.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;연락처</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input type="text" name="tel" value="${memberDto.member_tel }">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:20%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="SMS 수신 동의" width="40" src="${pageContext.request.contextPath}/Images/check.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;SMS 수신 동의</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input type="radio" name="sms" id="sms_true" value="true" <c:if test="${memberDto.member_agreesms eq 'true' }">checked</c:if>>
+		     					<label for="sms_true">true</label>&nbsp;&nbsp;
+		     					<input type="radio" name="sms" id="sms_false" value="false" <c:if test="${memberDto.member_agreesms eq 'false' }">checked</c:if>>
+		     					<label for="sms_false">false</label>
+ 							</font>
+ 						</td>	     			
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:20%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="이메일 수신 동의" width="40" src="${pageContext.request.contextPath}/Images/check.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;이메일 수신 동의</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input type="radio" name="email" id="email_true" value="true" <c:if test="${memberDto.member_agreeemail eq 'true' }">checked</c:if>>
+		     					<label for="email_true">true</label>&nbsp;&nbsp;
+		     					<input type="radio" name="email" id="email_false" value="false" <c:if test="${memberDto.member_agreeemail eq 'false' }">checked</c:if>>
+		     					<label for="email_false">false</label>
+ 							</font>
+ 						</td>
+	     			</tr>	     			
+	     		</table>
+	     		<span style="float:right">
+					<input type="hidden" name="no" value="${memberDto.member_no }">
+		     		<input class="btn btn-default" type="submit" value="수정">
+		     		<a class="btn btn-default" href="<c:url value='/ADMIN/MEMBER/List.do'/>" role="button">목록</a>
+	  			</span>	 	     		
+	     		</form>
+	     		</div>
+	     	</div>
+        </div>
       </div>
     </div>
   </body>

@@ -4,68 +4,71 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  	<c:import url="/admin/include/loginCheck.jsp" />
-  	<c:import url="/admin/include/head.jsp" />
-  </head>
-
-  <body>
-	<c:import url="/admin/include/navigator.jsp" />
-
-    <div class="container-fluid">
-      <div class="row">
-      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
-<!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
-
-              <div class="row">
-                  <div class="col-lg-9 main-chart">
-                  
-                  	<div class="row mtbox">
-                  		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
-                  			<div class="box1">
-					  			<span class="li_heart"></span>
-					  			<h3>1000</h3>
-                  			</div>
-					  			<p>1000명의 사람이 좋아합니다.</p>
-                  		</div>
-                  		<div class="col-md-2 col-sm-2 box0">
-                  			<div class="box1">
-					  			<span class="li_cloud"></span>
-					  			<h3>+48</h3>
-                  			</div>
-					  			<p>48 New files were added in your cloud storage.</p>
-                  		</div>
-                  		<div class="col-md-2 col-sm-2 box0">
-                  			<div class="box1">
-					  			<span class="li_stack"></span>
-					  			<h3>23</h3>
-                  			</div>
-					  			<p>You have 23 unread messages in your inbox.</p>
-                  		</div>
-                  		<div class="col-md-2 col-sm-2 box0">
-                  			<div class="box1">
-					  			<span class="li_news"></span>
-					  			<h3>+10</h3>
-                  			</div>
-					  			<p>More than 10 news were added in your reader.</p>
-                  		</div>
-                  		<div class="col-md-2 col-sm-2 box0">
-                  			<div class="box1">
-					  			<span class="li_data"></span>
-					  			<h3>OK!</h3>
-                  			</div>
-					  			<p>Your server is working perfectly. Relax & enjoy.</p>
-                  		</div>
+<!-- *********************************************************** HEAD *********************************************************** -->
+<head>
+<!-- ******************************************* -->	  
+<c:import url="/admin/include/loginCheck.jsp" />
+<c:import url="/admin/include/head.jsp" />
+<!-- ******************************************* --> 
+</head>
+<!-- *********************************************************** HEAD *********************************************************** -->
+<!-- *********************************************************** BODY *********************************************************** -->
+<body>
+<section id="container" >
+<!-- ******************************************* -->  
+<c:import url="/admin/include/navigator.jsp" />
+<c:import url="/admin/include/leftSidebar.jsp" />
+<!-- ******************************************* --> 
+<section id="main-content">
+	<section class="wrapper">
+		<div class="row">
+			<div class="col-lg-9 main-chart">
+			
+				<div class="row mtbox">
+				
+				<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+              		<div class="box1">
+	  					<span class="li_heart"></span>
+	  					<h3>1000 like</h3>
+              		</div>
+	  					<p>1000명의 사람이<br>좋아합니다.</p>
+              	</div>
+              	
+           		<div class="col-md-2 col-sm-2 box0">
+           			<div class="box1">
+						<span class="li_cloud"></span>
+						<h3>+48</h3>
+           			</div>
+						<p>48 New files were added in your cloud storage.</p>
+           		</div>
+                  		
+           		<div class="col-md-2 col-sm-2 box0">
+           			<div class="box1">
+						<span class="li_stack"></span>
+						<h3>23</h3>
+           			</div>
+						<p>You have 23 unread messages in your inbox.</p>
+           		</div>
+                  		
+           		<div class="col-md-2 col-sm-2 box0">
+           			<div class="box1">
+						<span class="li_news"></span>
+						<h3>+10</h3>
+           			</div>
+						<p>More than 10 news were added in your reader.</p>
+           		</div>
+                  		
+           		<div class="col-md-2 col-sm-2 box0">
+           			<div class="box1">
+						<span class="li_data"></span>
+						<h3>OK!</h3>
+           			</div>
+						<p>Your server is working perfectly. Relax & enjoy.</p>
+           		</div>
                   	
-                  	</div><!-- /row mt -->	
-                  
-                      
-                      <div class="row mt">
+                </div><!-- /row mt -->	
+<!-- ******************************************************************** -->                                        
+                <div class="row mt">
                       <!-- SERVER STATUS PANELS -->
                       	<div class="col-md-4 col-sm-4 mb">
                       		<div class="white-panel pn donut-chart">
@@ -247,14 +250,8 @@
                 </div>
               </section>
             </section>
-
 <!-- *************************************************************************************************************************************************** -->
-
       	<c:import url="/admin/include/rightSidebar.jsp" /><!-- rigthSidebar 추가 -->
-
-      </div>
-    </div>
-  </body>
+	</section>
+  </body> 
 </html>
-
-

@@ -4,10 +4,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  	<c:import url="/admin/include/loginCheck.jsp" />
-  	<c:import url="/admin/include/head.jsp" />
-  	
+<!-- *********************************************************** HEAD *********************************************************** -->
+<head>
+<!-- ******************************************* -->	  
+<c:import url="/admin/include/loginCheck.jsp" />
+<c:import url="/admin/include/head.jsp" />
+<!-- ******************************************* -->  
   	<style type="text/css">
   		.col {
   			width:25%;
@@ -17,74 +19,96 @@
 			width: 100%;
 		 }
   	</style>
-  	
-  </head>
-
-  <body onload="initMap()">
-	<c:import url="/admin/include/navigator.jsp" />
-
-    <div class="container-fluid">
-      <div class="row">
-      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
-      	
-	      <!--main content start-->
-	      <section id="main-content">
-	          <section class="wrapper">
-
-		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			     	<div class="row" style="padding-top:10px">
-			     		<div class="col-md-7">
-				     		<table class="table table-bordered text-center">
-				     			<tr>
-				     				<td class="col">문의 글</td>
-				     				<td>${faqDto.faq_ask}</td>
-				     			</tr>
-				     			<tr>
-				     				<td class="col">답변 글</td>
-				     				<td>${faqDto.faq_answer }</td>
-				     			</tr>
-				     			<tr>
-				     				<td class="col">기타</td>
-				     				<td>${faqDto.tabcon }</td>
-				     			</tr>
-				     			
-				     		</table>
-			     		</div>
-			     	</div>
-		        </div>
-		        
-		    </section>
-		 </section>
-        
-      </div>
-    </div>
-    
-	<script>
-		function initMap() {
-			var storePlace = {lat: -25.363, lng: 131.044};
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 17,
-				center: storePlace
-			});
-
-			var geocoder = new google.maps.Geocoder();
-		    geocoder.geocode({'address': '${storeDto.store_addr }'}, function(results, status) {
-		        if (status == 'OK') {
-			      console.log("111111");
-		          map.setCenter(results[0].geometry.location);
-		          var marker = new google.maps.Marker({
-		              map: map,
-		              position: results[0].geometry.location
-		          });
-		        } else {
-				  console.log("222222");
-		          alert('Geocode was not successful for the following reason: ' + status);
-		        }
-	      	});
-		}
-	</script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQo9FPSR1RWpd2JWBwrhbTlIi5DzeubEM&callback=initMap">
-    </script>
-  </body>
+<script type="text/javascript">
+		var isDelete = function() {
+			if (confirm('정말 지우시겠습니까?') == true) {
+				alert('지웁니다.');
+				return true;
+			} else {
+				alert('안지웁니다.');
+				return false;
+			}
+		};
+</script>  		
+</head>
+<!-- *********************************************************** HEAD *********************************************************** -->
+<!-- *********************************************************** BODY *********************************************************** -->
+<body>
+<div id="wrapper">
+<!-- ******************************************* -->  
+<c:import url="/admin/include/navigator.jsp" />
+<c:import url="/admin/include/leftSidebar.jsp" />
+<!-- ******************************************* -->  
+<div id="page-wrapper" style="padding:80px 0px 0px 0px; margin:0px 0px 0px 210px">             
+	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
+		<img alt="상세보기" width="100" src="${pageContext.request.contextPath}/Images/faq.png"> 
+		<span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;FAQ View</span>
+	</div>
+            
+    <div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
+                
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+           		<div class="panel-heading">
+					<font size="6pt" color="gray" face="Impact">View</font>
+				</div>
+				<div class="panel-body" align="center">
+                          
+                <div class="row">
+				<!-- Table 구현부  -->
+				<div class="col-sm-12" style="padding:5px 30px 5px 30px;">
+                   
+                   <table class="table table-bordered">  
+                   		 <c:if test="${empty faqDto }" var="flag">
+							<tr>
+								<td colspan="9">등록된 자료가 없습니다.</td>
+							</tr>
+						</c:if>
+						<c:if test="${not flag }">
+		     			<tr>
+		     				<td style="width:12%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		                		<img alt="문의글" width="40" src="${pageContext.request.contextPath}/Images/faq.png">
+		                		<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;문의글</font> 
+		                	</td>
+	  						<td class="text-left" style="padding:20px 20px 20px 20px;">
+	  							<font size="4em">${faqDto.faq_ask}</font>
+	  						</td>
+		     			</tr>
+		     			
+		     			<tr>
+		     				<td style="width:12%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		                		<img alt="답변글" width="40" src="${pageContext.request.contextPath}/Images/faq.png">
+		                		<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;답변글</font> 
+		                	</td>
+	  						<td class="text-left" style="padding:20px 20px 20px 20px;">
+	  							<font size="4em">${faqDto.faq_answer}</font>
+	  						</td>
+		     			</tr>
+		     			
+		     			<tr>
+		     				<td style="width:12%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		                		<img alt="기타" width="40" src="${pageContext.request.contextPath}/Images/faq.png">
+		                		<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;기타</font> 
+		                	</td>
+	  						<td class="text-left" style="padding:20px 20px 20px 20px;">
+	  							<font size="4em">${faqDto.tabcon}</font>
+	  						</td>
+		     			</tr>
+		     			</c:if>
+		  			</table> 
+		  			<span style="float:right">
+ 						<a class="btn btn-default" href="<c:url value='/ADMIN/Faq/Edit.do?no=${faqDto.faq_no}' />">수정</a>
+  						<a class="btn btn-default" href="<c:url value='/ADMIN/Faq/Delete.do?no=${faqDto.faq_no}' />" onclick="return isDelete()" role="button">삭제</a>
+  						<a class="btn btn-default" href="<c:url value='/ADMIN/Faq/List.do'/>" role="button">목록</a>
+		  			</span>	 						
+			    	</div>
+			    </div>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	</body>
+<!-- *********************************************************** BODY *********************************************************** -->
 </html>

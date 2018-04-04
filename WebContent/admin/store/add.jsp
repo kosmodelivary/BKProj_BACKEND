@@ -4,13 +4,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  	<c:import url="/admin/include/loginCheck.jsp" />
-  	<c:import url="/admin/include/head.jsp" />
-  	
-  	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-  	
-  	<style type="text/css">
+<!-- *********************************************************** HEAD *********************************************************** -->
+<head>
+<!-- ******************************************* -->	  
+<c:import url="/admin/include/loginCheck.jsp" />
+<c:import url="/admin/include/head.jsp" />
+<!-- ******************************************* -->    	
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<style type="text/css">
   		td {
   			top: 50%;
   		}
@@ -23,9 +24,8 @@
   		.form-control {
   			width:auto;
   		}
-  	</style>
-
-  	<script type="text/javascript">
+</style>
+<script type="text/javascript">
 		var isAdd = function() {
 			if (confirm('정말 추가하시겠습니까?') == true) {
 				alert('추가합니다.');
@@ -63,95 +63,148 @@
 	            }
 	        }).open();
 	    }
-  	</script>
-  	
-  </head>
+</script>
+</head>
+<!-- *********************************************************** HEAD *********************************************************** -->
+<!-- *********************************************************** BODY *********************************************************** -->
+<body>
+<div id="wrapper">
+<!-- ******************************************* -->  
+<c:import url="/admin/include/navigator.jsp" />
+<c:import url="/admin/include/leftSidebar.jsp" />
+<!-- ******************************************* -->  
+<div id="page-wrapper" style="padding:80px 0px 0px 0px; margin:0px 0px 0px 210px">
 
-  <body>
-	<c:import url="/admin/include/navigator.jsp" />
-
-    <div class="container-fluid">
-      <div class="row">
-      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
-      	
-      	  <!--main content start-->
-	      <section id="main-content">
-	          <section class="wrapper">
-
-		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			     	<div class="row" style="padding-top:10px">
-			     		<div class="col-md-7 text-right">
-			     			<form class="form-inline" action="<c:url value='/ADMIN/STORE/Add.do' />" method="post">
-					     		<table class="table table-bordered text-left">
-					     			<tr>
-					     				<td class="col">매장 이름</td>
-					     				<td><input class="form-control" type="text" name="name"></td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">매장 주소</td>
-					     				<td>
-					     					<input class="form-control" type="text" name="address" id="address" size="50" placeholder="주소">
-					     					<input class="btn btn-default" type="button" onclick="execDaumPostcode()" value="주소 검색">
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col" >연락처</td>
-					     				<td><input class="form-control" type="text" name="tel"></td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col" >딜리버리 시간 (주중)</td>
-					     				<td>
-					     					<select name="weekdayon">
-					     						<c:forEach var="hour" begin="6" end="12" varStatus="loop" >
-						     						<option <c:if test="${hour == 10 }">selected</c:if>>${hour }:00</option>
-					     						</c:forEach>
-					     					</select>
-											~
-					     					<select name="weekdayoff">
-					     						<c:forEach var="hour" begin="13" end="25" varStatus="loop" >
-						     						<option <c:if test="${hour == 24 }">selected</c:if>>${hour }:00</option>
-					     						</c:forEach>
-					     					</select>
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col" >딜리버리 시간 (주말)</td>
-					     				<td>
-					     					<select name="weekendon">
-					     						<c:forEach var="hour" begin="6" end="12" varStatus="loop" >
-						     						<option <c:if test="${hour == 10 }">selected</c:if>>${hour }:00</option>
-					     						</c:forEach>
-					     					</select>
-											~
-					     					<select name="weekendoff">
-					     						<c:forEach var="hour" begin="13" end="25" varStatus="loop" >
-						     						<option <c:if test="${hour == 24 }">selected</c:if>>${hour }:00</option>
-					     						</c:forEach>
-					     					</select>
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col" >최소 주문 금액</td>
-					     				<td>
-					     					<select name="minordermoney">
-					     						<c:forEach var="money" begin="6000" end="10000" step="1000" varStatus="loop" >
-						     						<option <c:if test="${money == 8000 }">selected</c:if>>${money }</option>
-					     						</c:forEach>
-					     					</select>
-					     					원
-					     				</td>
-					     			</tr>
-					     		</table>
-					     		<input class="btn btn-primary" type="submit" value="매장 추가" onclick="return isAdd()">
-					     		<a href="<c:url value='/ADMIN/STORE/List.do' />" class="btn btn-primary">취소</a>
-				     		</form>
-			     		</div>
-			     	</div>
-		        </div>
-		        
-	        </section>
-	    </section>
-        
+	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
+        <img alt="메뉴추가" width="95px" src="${pageContext.request.contextPath}/Images/shop02.png"> 
+        <span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;Add Store</span>
+    </div>
+	
+    <div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
+                
+    <div class="col-lg-12">
+    	<div class="panel panel-default">
+        	<div class="panel-heading">
+            	<font size="6pt" color="gray" face="Impact">Add BurgerKing Store</font>
+			</div>
+					     
+			<div class="panel-body">		     		
+			     			
+     			<form class="form-inline" action="<c:url value='/ADMIN/STORE/Add.do' />" 
+     			      method="post">
+     			      
+		     		<table class="table table-bordered">
+		     		
+		     			<tr>
+		     				<td style="width:22%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+			     				<img alt="매장 이름" width="40" src="${pageContext.request.contextPath}/Images/shop01.png">
+			     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;매장 이름</font>
+		     				</td>
+		     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+	 							<font size="4em">
+	  								<input class="form-control" type="text" name="name" placeholder="매장이름을 입력하세요.">
+	 							</font>
+	 						</td>
+	 					</tr>
+		     			
+		     			<tr>
+			     			<td style="width:22%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+			     				<img alt="주소" width="40" src="${pageContext.request.contextPath}/Images/address.png">
+			     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;매장 주소</font>
+		     				</td>
+		     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+	 							<font size="4em">
+	  								<input class="form-control" type="text" name="address" id="address" size="50" placeholder="주소">
+		     						<input class="btn btn-default" type="button" onclick="execDaumPostcode()" value="주소 검색">	
+	 							</font>
+	 						</td>
+		     			</tr>
+		     			
+		     			<tr>
+		     				<td style="width:22%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+			     				<img alt="연락처" width="40" src="${pageContext.request.contextPath}/Images/memberlist.png">
+			     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;연락처</font>
+		     				</td>
+		     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+	 							<font size="4em">
+	  								<input class="form-control" type="text" name="tel" placeholder="연락처를 입력하세요.">	
+	 							</font>
+	 						</td>
+		     			</tr>
+		     			
+		     			<tr>
+		     				<td style="width:22%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+			     				<img alt="배달시간" width="40" src="${pageContext.request.contextPath}/Images/delivery.png">
+			     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;배달 가능시간(주중)</font>
+		     				</td>
+		     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+	 							<font size="4em">
+	  								<select name="weekdayon">
+		     						<c:forEach var="hour" begin="6" end="12" varStatus="loop" >
+			     						<option <c:if test="${hour == 10 }">selected</c:if>>${hour }:00</option>
+		     						</c:forEach>
+		     					</select>
+								~
+		     					<select name="weekdayoff">
+		     						<c:forEach var="hour" begin="13" end="25" varStatus="loop" >
+			     						<option <c:if test="${hour == 24 }">selected</c:if>>${hour }:00</option>
+		     						</c:forEach>
+		     					</select>	
+	 							</font>
+	 						</td>		     			
+		     			</tr>
+		     			
+		     			<tr>
+		     				<td style="width:22%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+			     				<img alt="배달시간" width="40" src="${pageContext.request.contextPath}/Images/delivery.png">
+			     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;배달 가능시간(주말)</font>
+		     				</td>
+		     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+	 							<font size="4em">
+			     					<select name="weekendon">
+			     						<c:forEach var="hour" begin="6" end="12" varStatus="loop" >
+				     						<option <c:if test="${hour == 10 }">selected</c:if>>${hour }:00</option>
+			     						</c:forEach>
+			     					</select>
+									~
+			     					<select name="weekendoff">
+			     						<c:forEach var="hour" begin="13" end="25" varStatus="loop" >
+				     						<option <c:if test="${hour == 24 }">selected</c:if>>${hour }:00</option>
+			     						</c:forEach>
+			     					</select>	
+	 							</font>
+	 						</td>		     			
+		     			</tr>
+		     					     			
+		     			<tr>
+		     				<td style="width:22%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+			     				<img alt="주문금액" width="40" src="${pageContext.request.contextPath}/Images/money.png">
+			     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;최소 주문금액</font>
+		     				</td>
+		     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+	 							<font size="4em">
+	  								<select name="minordermoney">
+			     						<c:forEach var="money" begin="6000" end="10000" step="1000" varStatus="loop" >
+				     						<option <c:if test="${money == 8000 }">selected</c:if>>${money }</option>
+			     						</c:forEach>
+			     					</select>
+			     					원	
+	 							</font>
+	 						</td>		     				     	
+		     			</tr>
+		     			
+		     		</table>
+		     		
+		     		<span style="float:right">
+						<input class="btn btn-default" type="submit" value="매장 추가" onclick="return isAdd()">
+		     			<a href="<c:url value='/ADMIN/STORE/List.do' />" class="btn btn-default">취소</a>
+		  			</span>	 
+		     		
+	     		</form>
+	     		</div>
+	     	</div>
+         </div>
+		</div>		        
       </div>
     </div>
   </body>

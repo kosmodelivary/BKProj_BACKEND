@@ -4,9 +4,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  	<c:import url="/admin/include/loginCheck.jsp" />
-  	<c:import url="/admin/include/head.jsp" />
+<!-- *********************************************************** HEAD *********************************************************** -->
+<head>
+<!-- ******************************************* -->	  
+<c:import url="/admin/include/loginCheck.jsp" />
+<c:import url="/admin/include/head.jsp" />
+<!-- ******************************************* -->  
   	<style type="text/css">
   		td {
   			top: 50%;
@@ -61,108 +64,188 @@
   		}
   	
   	</script>
-  </head>
-
-  <body>
-	<c:import url="/admin/include/navigator.jsp" />
-
-    <div class="container-fluid">
-      <div class="row">
-      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
+</head>
+<!-- *********************************************************** HEAD *********************************************************** -->
+<!-- *********************************************************** BODY *********************************************************** -->
+<body>
+<div id="wrapper">
+<!-- ******************************************* -->	  
+<c:import url="/admin/include/navigator.jsp" />
+<c:import url="/admin/include/leftSidebar.jsp" />
+<!-- ******************************************* --> 
+<div id="page-wrapper" style="padding:80px 0px 0px 0px; margin:0px 0px 0px 210px">       
+            
+    <div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
+       <img alt="Edit" width="100" src="${pageContext.request.contextPath}/Images/edit.png"> 
+       <span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;Edit</span>
+    </div>
       	
-	      <!--main content start-->
-	      <section id="main-content">
-	          <section class="wrapper">
-      	
-		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			     	<div class="row" style="padding-top:10px">
-			     		<div class="col-md-7 text-right">
-			     			<form class="form-inline" action="<c:url value='/ADMIN/MENU/Edit.do' />" 
-			     				method="post" enctype="multipart/form-data">
-					     		<table class="table table-bordered text-left">
-					     			<tr>
-					     				<td class="col">메뉴 이름</td>
-					     				<td><input class="form-control" type="text" name="menu_name" value="${menuDto.menu_name }"></td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">카테고리</td>
-					     				<td>
-						     				<select name="category_name" class="form-control">
-						     					<option value="menu">메뉴</option>
-						     					<option value="hamburger" <c:if test="${fn:indexOf(menuDto.category_name, 'ham') != -1 }">selected</c:if>>햄버거</option>
-						     					<option value="side" <c:if test="${fn:indexOf(menuDto.category_name, 'side') != -1 }">selected</c:if>>사이드</option>
-						     					<option value="drink" <c:if test="${fn:indexOf(menuDto.category_name, 'dri') != -1 }">selected</c:if>>드링크</option>
-						     					<option value="set" <c:if test="${fn:indexOf(menuDto.category_name, 'se') != -1 }">selected</c:if>>세트</option>
-						     				</select>
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">가&nbsp;&nbsp;&nbsp;격</td>
-					     				<td>
-					     					<input class="form-control" type="text" name="menu_price" value="${menuDto.menu_price }">
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">중&nbsp;&nbsp;&nbsp;량</td>
-					     				<td>
-					     					<input class="form-control" type="text" name="menu_weight" value="${menuDto.menu_weight }">
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">열&nbsp;&nbsp;&nbsp;량</td>
-					     				<td>
-					     					<input class="form-control" type="text" name="menu_calrorie" value="${menuDto.menu_calrorie }">
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">단&nbsp;백&nbsp;질</td>
-					     				<td>
-					     					<input class="form-control" type="text" name="menu_protein" value="${menuDto.menu_protein }">
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">나&nbsp;트&nbsp;륨</td>
-					     				<td>
-					     					<input class="form-control" type="text" name="menu_sodium" value="${menuDto.menu_sodium }">
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">당&nbsp;&nbsp;&nbsp;류</td>
-					     				<td>
-					     					<input class="form-control" type="text" name="menu_sugars" value="${menuDto.menu_sugars }">
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">포&nbsp;화&nbsp;지&nbsp;방</td>
-					     				<td>
-					     					<input class="form-control" type="text" name="menu_fat" value="${menuDto.menu_fat }">
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">판매종료일</td>
-					     				<td>
-					     					<input class="form-control" type="text" name="menu_enddate" value="${menuDto.menu_enddate }"/>
-					     					<!-- bootstrap으로 인해 datepicker가 충돌하는거 같네요~ 추후 방법을 찾아서 적용하겠슴돠 -->
-					     				</td>
-					     			</tr>
-					     			<tr>
-					     				<td class="col">메뉴 이미지</td>
-					     				<td>
-					     					<input class="form-control" type="file"  name="menu_image" id="menu_image"/><h1></h1>
-					     					<img src="https://s3.ap-northeast-2.amazonaws.com/bkprojserver/${menuDto.menu_name }${menuDto.menu_file_extension }" id="menu_image_thumbnail" alt="img_thumbnail" style="width:300px;height:300px;"/>
-					     				</td>
-					     			</tr>
-					     		</table>
-					     		<input type="hidden" name="menu_no" value="${menuDto.menu_no }"/>
-					     		<input class="btn btn-primary" type="submit" value="수정" onclick="return isAdd()">
-					     		<a href="<c:url value='/ADMIN/MENU/All.do' />" class="btn btn-primary">취소</a>
-				     		</form>
-			     		</div>
-			     	</div>
-		        </div>
-	        	</section>
-	        </section>
-        
+	<div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
+		
+		<div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><!-- Table panel 머리 -->
+				  	<font size="6pt" color="gray" face="Impact">${menuDto.category_name }</font>
+				</div>
+						
+                <div class="panel-body">
+                				     			
+			     <form action="<c:url value='/ADMIN/MENU/Edit.do' />" 
+			     	   method="post" enctype="multipart/form-data">
+				 
+				 <table class="table table-bordered">
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="메뉴 이름" width="40" src="${pageContext.request.contextPath}/Images/name.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;메뉴 이름</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input class="form-control" type="text" name="menu_name" value="${menuDto.menu_name}">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="분류" width="40" src="${pageContext.request.contextPath}/Images/category.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;메뉴 분류</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<select name="category_name" class="form-control">
+			     					<option value="menu">메뉴</option>
+		     					<option value="hamburger" <c:if test="${fn:indexOf(menuDto.category_name, 'ham') != -1 }">selected</c:if>>햄버거</option>
+		     					<option value="side" <c:if test="${fn:indexOf(menuDto.category_name, 'side') != -1 }">selected</c:if>>사이드</option>
+		     					<option value="drink" <c:if test="${fn:indexOf(menuDto.category_name, 'dri') != -1 }">selected</c:if>>드링크</option>
+			     				</select>
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="가격" width="40" src="${pageContext.request.contextPath}/Images/money.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;메뉴 가격</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input class="form-control" type="text" name="menu_price" value="${menuDto.menu_price }">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="중량" width="40" src="${pageContext.request.contextPath}/Images/check.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;중&nbsp;량</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input class="form-control" type="text" name="menu_weight" value="${menuDto.menu_weight }">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="열량" width="40" src="${pageContext.request.contextPath}/Images/check.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;열&nbsp;량</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input class="form-control" type="text" name="menu_calrorie"  value="${menuDto.menu_calrorie }">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="단백질" width="40" src="${pageContext.request.contextPath}/Images/check.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;단&nbsp;백&nbsp;질</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input class="form-control" type="text" name="menu_protein" value="${menuDto.menu_protein }">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="나트륨" width="40" src="${pageContext.request.contextPath}/Images/check.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;나&nbsp;트&nbsp;륨</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input class="form-control" type="text" name="menu_sodium" value="${menuDto.menu_sodium }">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="당류" width="40" src="${pageContext.request.contextPath}/Images/check.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;당&nbsp;류</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input class="form-control" type="text" name="menu_sugars"  value="${menuDto.menu_sugars }">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="포화지방" width="40" src="${pageContext.request.contextPath}/Images/check.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;포화&nbsp;지방</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input class="form-control" type="text" name="menu_fat" value="${menuDto.menu_fat }">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="판매종료일" width="40" src="${pageContext.request.contextPath}/Images/date.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;판매 종료일</font>
+	     				</td>
+	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
+ 							<font size="4em">
+  								<input class="form-control" type="text" name="menu_enddate" value="${menuDto.menu_enddate }">
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     			<tr>
+	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+		     				<img alt="메뉴 이미지" width="40" src="${pageContext.request.contextPath}/Images/image.png">
+		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;메뉴 이미지</font>
+	     				</td>
+	     				<td class="text-left" style="padding:40px 20px 0px 20px;">
+ 							<font size="4em">
+  								<input class="form-control" type="file" name="menu_image" id="menu_image"/><h1></h1>
+					     		<img src="https://s3.ap-northeast-2.amazonaws.com/bkprojserver/${menuDto.menu_name }${menuDto.menu_file_extension }" 
+					     		     id="menu_image_thumbnail" alt="img_thumbnail" style="width:300px;height:300px;"/>
+ 							</font>
+ 						</td>
+	     			</tr>
+	     			
+	     		</table>
+	     		
+	     		<span style="float:right">
+					<input type="hidden" name="menu_no" value="${menuDto.menu_no }"/>
+		     		<input class="btn btn-default" type="submit" value="수정" onclick="return isAdd()">
+		     		<a href="<c:url value='/ADMIN/MENU/All.do' />" class="btn btn-default">취소</a>
+	  			</span>	 
+     		</form>
+			</div>
+			</div>
+			</div>
+		</div>
       </div>
     </div>
   </body>

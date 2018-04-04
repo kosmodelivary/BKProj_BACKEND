@@ -6,7 +6,7 @@
       RIGHT SIDEBAR CONTENT
      *********************************************************************************************************************************************************** -->                  
                   
-                <div class="col-md-3 ds" style="position:fixed; right:-40px; top:45px">
+                <div class="col-md-3 ds" style="position:fixed; right:-40px; top:60px">
                   <!--COMPLETED ACTIONS DONUTS CHART-->
 				<h3>Real-time Delivery Status</h3>
                                       

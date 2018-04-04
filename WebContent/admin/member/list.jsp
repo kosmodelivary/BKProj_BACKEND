@@ -4,82 +4,143 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  	<c:import url="/admin/include/loginCheck.jsp" />
-  	<c:import url="/admin/include/head.jsp" />
-  	
-  	<style type="text/css">
-  		.table th, .table td {
-  			text-align: center;
-  		}
-  	</style>
-  	
-  	<script type="text/javascript">
-		var isDelete = function() {
-			if (confirm('정말 지우시겠습니까?') == true) {
-				alert('지웁니다.');
-				return true;
-			} else {
-				alert('안지웁니다.');
-				return false;
-			}
-		};
-  	</script>
-  	
-  </head>
+<!-- *********************************************************** HEAD *********************************************************** -->
+<head>
+<!-- ******************************************* -->	  
+<c:import url="/admin/include/loginCheck.jsp" />
+<c:import url="/admin/include/head.jsp" />
+<!-- ******************************************* -->
+<!-- Table 페이지 구현에 필요 --> 
+    <!-- Bootstrap Core CSS -->
+   <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="${pageContext.request.contextPath}/bootstrap/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="${pageContext.request.contextPath}/bootstrap/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="${pageContext.request.contextPath}/bootstrap/datatables/dataTables.responsive.css" rel="stylesheet">  
+    <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath}/bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">  
+    <!-- Custom Fonts -->
+    <link href="${pageContext.request.contextPath}/bootstrap/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+  
+	<style type="text/css">
+	  		.table th, .table td {
+	  			text-align: center;
+	  		}
+	</style>
+	<script type="text/javascript">
+			var isDelete = function() {
+				if (confirm('정말 지우시겠습니까?') == true) {
+					alert('지웁니다.');
+					return true;
+				} else {
+					alert('안지웁니다.');
+					return false;
+				}
+			};
+	</script>  
+</head>
+<!-- *********************************************************** HEAD *********************************************************** -->
+<!-- *********************************************************** BODY *********************************************************** -->
+<body>
+<div id="wrapper"><!-- 페이지 전체 감싸는 div 태그 -->
+<!-- ******************************************* -->  
+<c:import url="/admin/include/navigator.jsp" />
+<c:import url="/admin/include/leftSidebar.jsp" />
+<!-- ******************************************* -->  
+<div id="page-wrapper" style="padding:80px 0px 0px 0px; margin:0px 0px 0px 210px">         
+            
+	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
+		<img alt="Store" width="100" src="${pageContext.request.contextPath}/Images/memberlist.png"> 
+		<span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;Member</span>
+	</div>
 
-  <body>
-	<c:import url="/admin/include/navigator.jsp" />
-
-    <div class="container-fluid">
-      <div class="row">
-      	<c:import url="/admin/include/leftSidebar.jsp" /><!-- sidebar -> leftSidebar로 변경 -->
-      	
-	      <!--main content start-->
-	      <section id="main-content">
-	          <section class="wrapper">
-
-			        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				     	<div class="row" style="padding-top:10px">
-				   			<div class="col-md-10 col-md-offset-1">
-					   			<table class="table table-bordered">
-					   				<tr>
-					   					<th style="width:10%">회원 일련번호</th>
-					   					<th style="width:20%">이메일</th>
-					   					<th style="width:20%">이름</th>
-					   					<th style="width:10%">연락처</th>
-					   					<th style="width:15%">SMS 수신 동의</th>
-					   					<th style="width:15%">이메일 수신 동의</th>
-					   					<th style="width:5%">수정</th>
-					   					<th>삭제</th>
-					   				</tr>
-					   				<c:if test="${empty member }" var="flag">
-						   				<tr>
-						   					<td colspan="8">등록된 자료가 없습니다.</td>
-						   				</tr>
-					   				</c:if>
-					   				<c:if test="${not flag }">
-					   					<c:forEach var="item" items="${member }" varStatus="loop" >
-							   				<tr>
-							   					<td>${item.member_no }</td>
-							   					<td>${item.member_email }</td>
-							   					<td>${item.member_name }</td>
-							   					<td>${item.member_tel }</td>
-							   					<td>${item.member_agreesms }</td>
-							   					<td>${item.member_agreeemail }</td>
-							   					<td><a href="<c:url value='/ADMIN/MEMBER/Edit.do?no=${item.member_no }' />">수정</a></td>
-							   					<td><a href="<c:url value='/ADMIN/MEMBER/Delete.do?no=${item.member_no }' />" onclick="return isDelete()">삭제</a></td>
-							   				</tr>
-						   				</c:forEach>
-					   				</c:if>
-					   			</table>
-				   			</div>
-				     	</div>
-			        </div>
-	     	</section>
-	     </section>
-        
+	<div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
+		<!-- Table 칼럼 -->	
+		<div class="col-lg-12">
+			<div class="panel panel-default"><!-- Table 테두리 설정 -->
+				<div class="panel-heading"><!-- Table panel 머리 -->
+		  			<font size="6pt" color="gray" face="Impact">Member List</font>
+				</div>
+			
+				<div class="panel-body" align="center"><!-- Table panel 바디 -->
+        			    		
+		    	<div class="row">
+						    
+		    	<!-- Table 구현부  -->
+				<div class="col-sm-12" style="padding:5px 10px 5px10px; width:100%" align="left">
+				
+				<table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" 
+				       role="grid" aria-describedby="dataTables-example_info">
+	   				<thead>
+		   				<tr style="text-align:center">
+		   					<th style="width:10%">회원번호</th>
+		   					<th style="width:18%">이메일</th>
+		   					<th style="width:11%">이름</th>
+		   					<th style="width:18%">연락처</th>
+		   					<th style="width:14%">SMS 수신 동의</th>
+		   					<th style="width:14%">E-mail 수신 동의</th>
+		   					<th style="width:10%">수정</th>
+		   				</tr>
+	   				</thead>
+	   				<tbody>
+		   				<c:if test="${empty member }" var="flag">
+			   				<tr>
+			   					<td colspan="8">등록된 자료가 없습니다.</td>
+			   				</tr>
+		   				</c:if>
+		   				<c:if test="${not flag }">
+		   					<c:forEach var="item" items="${member }" varStatus="loop" >
+				   				<tr>
+				   					<td>${item.member_no}</td>				   		
+				   					<td>${item.member_email }</td>
+				   					<td>${item.member_name }</td>
+				   					<td>${item.member_tel }</td>
+				   					<td>${item.member_agreesms }</td>
+				   					<td>${item.member_agreeemail }</td>
+				   					<td>
+				   						<a href="<c:url value='/ADMIN/MEMBER/Edit.do?no=${item.member_no}'/>">
+				   							<img alt="수정" width="20" src="${pageContext.request.contextPath}/Images/edit.png">
+				   						</a>
+				   					</td>			   					
+				   				</tr>
+			   				</c:forEach>
+		   				</c:if>
+		   			</tbody>
+				</table>
+			   	</div>
+			</div>			
+			</div>	
+		</div>
+		</div>
+		</div>
+		</div>
       </div>
     </div>
   </body>
+  <!-- *********************************************************** BODY *********************************************************** -->
+    <!-- jQuery -->
+    <script src="${pageContext.request.contextPath}/bootstrap/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="${pageContext.request.contextPath}/bootstrap/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="${pageContext.request.contextPath}/bootstrap/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="${pageContext.request.contextPath}/bootstrap/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="${pageContext.request.contextPath}/bootstrap/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/bootstrap/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="${pageContext.request.contextPath}/bootstrap/dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
+</body>
 </html>

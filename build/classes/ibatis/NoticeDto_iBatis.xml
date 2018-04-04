@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+	<sqlMap namespace="Delivary">
+	
+	<!-- NoticeDto 별칭, resultMap -->
+	<typeAlias alias="NoticeDto" type="com.academy.delivery.service.NoticeDto"/>
+	<resultMap id="NoticeDtoResult" class="NoticeDto">
+		<result property="notice_no" />
+		<result property="notice_title" />
+		<result property="notice_content" />
+		<result property="notice_visitcount" />
+		<result property="notice_postdate" />
+	</resultMap>
+	
+	<!-- NoticeDao 사용 DB Query -->
+	<select id="Notice.selectList" parameterClass="java.util.Map" resultMap="NoticeDtoResult">
+		SELECT * FROM (SELECT T.*, ROWNUM R FROM (SELECT * FROM notice ORDER BY notice_no DESC) T)
+		WHERE R BETWEEN #start# AND #end#
+	</select>
+	<select id="Notice.selectOne" parameterClass="java.lang.String" resultMap="NoticeDtoResult">
+		SELECT * FROM notice WHERE notice_no = #notice_no#
+	</select>
+	
+	<update id="Notice.update" parameterClass="noticeDto">
+		UPDATE notice SET notice_title = #notice_title#, notice_content = #notice_content#
+		WHERE notice_no = #notice_no#
+	</update>
+	
+	
+	<delete id="Notice.delete" parameterClass="java.lang.String" >
+		DELETE FROM notice WHERE notice_no = #notice_no# 
+	</delete>
+	<insert id="Notice.insert" parameterClass="noticeDto">
+		INSERT INTO notice VALUES(SEQ_notice_notice_NO.NEXTVAL, #notice_title#, #notice_content#, Default, SYSDATE)
+	</insert>
+	<select id="Notice.getTotalCount" resultClass="int">
+		SELECT COUNT(*) FROM NOTICE
+	</select>
+	
+</sqlMap>

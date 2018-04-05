@@ -24,5 +24,8 @@
 	<insert id="StoreDelivery.insert" parameterClass="StoreDeliveryDto">
 		INSERT INTO store_delivery VALUES(#delivery_no#, #store_no#, 'true')
 	</insert>
+	<update id="StoreDelivery.update" parameterClass="StoreDeliveryDto">
+		UPDATE store_delivery SET delivery_useable = #delivery_useable# WHERE delivery_no = #delivery_no#
+	</update>
 	
 </sqlMap>

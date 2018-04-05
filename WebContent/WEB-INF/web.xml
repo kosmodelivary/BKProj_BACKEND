@@ -106,6 +106,14 @@
 	<url-pattern>/ADMIN/STORE/DELIVERY/Add.do</url-pattern>
   </servlet-mapping>
   <servlet>
+	<servlet-name>BackendStoreDeliveryUseable</servlet-name>
+	<servlet-class>com.academy.delivary.web.StoreDeliveryUseableController</servlet-class>  
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>BackendStoreDeliveryUseable</servlet-name>
+	<url-pattern>/ADMIN/STORE/DELIVERY/Useable.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>BackendMenuList</servlet-name>
     <servlet-class>com.academy.delivary.web.MenuListController</servlet-class>
   </servlet>

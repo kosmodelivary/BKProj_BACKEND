@@ -46,7 +46,7 @@
 			
 			 <!-----start-copyright---->
    					<div class="copy-right">
-						<p>Do you like <a href="http://w3layouts.com">BurgerKing?</a></p>
+						<p>Do you like <a href="http://w3layouts.com">Java Murger?</a></p>
 					</div>
 				<!-----//end-copyright---->
 		</div>

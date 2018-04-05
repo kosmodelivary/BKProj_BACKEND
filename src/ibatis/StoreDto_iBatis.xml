@@ -21,9 +21,15 @@
 	</resultMap>
 	
 	<!-- StoreDao 사용 DB Query -->
+	<!-- 2018.04.04 스킨 적용 이후로 해당 쿼리는 아래 쿼리로 대체
 	<select id="Store.selectList" parameterClass="java.util.Map" resultMap="StoreDtoResult">
 		SELECT * FROM (SELECT T.*, ROWNUM R FROM (SELECT * FROM store ORDER BY store_no DESC) T)
 		WHERE R BETWEEN #start# AND #end#
+	</select>
+	-->
+	<!-- 2018.04.04 스킨 적용 이후로 리스트 가져오는 쿼리 -->
+	<select id="Store.selectList" parameterClass="java.util.Map" resultMap="StoreDtoResult">
+		SELECT * FROM (SELECT T.*, ROWNUM R FROM (SELECT * FROM store ORDER BY store_no DESC) T)
 	</select>
 	<select id="Store.selectOne" parameterClass="java.lang.String" resultMap="StoreDtoResult">
 		SELECT * FROM store WHERE store_no = #store_no#

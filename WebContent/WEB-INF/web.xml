@@ -98,6 +98,14 @@
     <url-pattern>/ADMIN/STORE/DELIVERY/Polling.do</url-pattern>
   </servlet-mapping>
   <servlet>
+	<servlet-name>BackendStoreDeliveryAdding</servlet-name>
+	<servlet-class>com.academy.delivary.web.StoreDeliveryAddingController</servlet-class>  
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>BackendStoreDeliveryAdding</servlet-name>
+	<url-pattern>/ADMIN/STORE/DELIVERY/Add.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>BackendMenuList</servlet-name>
     <servlet-class>com.academy.delivary.web.MenuListController</servlet-class>
   </servlet>

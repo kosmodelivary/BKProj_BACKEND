@@ -38,22 +38,31 @@ public class StoreDeliveryPollingController extends HttpServlet {
 		try {
 			if (req.getParameter("PostData") != null) {
 				object = (JSONObject) parser.parse(req.getParameter("PostData"));
+				
 				if (object != null) {
+					// json 파일 임시 저장할 폴더 유무 확인
+					String	jsonPath		= req.getServletContext().getRealPath("/admin/store/delivery/json/");
+					File	jsonDir			= new File(jsonPath);
+					if (!jsonDir.exists()) {
+						jsonDir.mkdir();
+					}
+
 					// json 파일 생성
-					String	fileFullPath 	= 
-							req.getServletContext().getRealPath("/admin/store/delivery/json/") + object.get("uuid").toString() + ".json";
-					File 		file  	= new File(fileFullPath);
-					FileWriter	fw		= new FileWriter(file);
+					File 		jsonFile  	= new File(jsonPath + object.get("uuid").toString() + ".json");
+					jsonFile.createNewFile();
+					
+					// 생성된 json 파일 stream 연결
+					FileWriter	fw		= new FileWriter(jsonFile);
 					fw.write(object.toJSONString());
 					fw.flush();
 					fw.close();
 					
 					// 생성된 json 파일 업로드
 					NCloudService	ncloud	= new NCloudService();
-					ncloud.upload(file, "delivery");
+					ncloud.upload(jsonFile, "delivery");
 					
-					// 스토리지 업로드 완료했으므로 파일 삭제
-					file.delete();
+					// 스토리지에 업로드 완료했으므로 json 파일 삭제
+					jsonFile.delete();
 				}
 			}
 		} catch (ParseException e) {

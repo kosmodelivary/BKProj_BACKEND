@@ -56,5 +56,9 @@
 	<select id="Store.getTotalCount" resultClass="int">
 		SELECT COUNT(*) FROM store
 	</select>
+	<select id="Store.getDeliveryAddr" parameterClass="java.lang.String" resultClass="java.lang.String">
+		SELECT store_addr FROM store WHERE store_no = #store_no#
+	</select>
+	
 	
 </sqlMap>

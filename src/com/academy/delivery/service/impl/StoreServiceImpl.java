@@ -59,4 +59,9 @@ public class StoreServiceImpl implements StoreService {
 		return storeDao.getTotalDeliveryCount();
 	}
 
+	@Override
+	public String getDeliveryAddr(String storeNo) {
+		return storeDao.getDeliveryAddr(storeNo);
+	}
+
 } // end MemberServiceImpl 

@@ -127,4 +127,17 @@ public class StoreDao implements StoreService {
 		return totalCount;
 	}
 
+	@Override
+	public String getDeliveryAddr(String storeNo) {
+		String	storeAddr	= null;
+		
+		try {
+			storeAddr		= (String) IbatisUtil.getMapper().queryForObject("Store.getDeliveryAddr", storeNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return storeAddr;
+	}
+
 } // end MemberDao

@@ -16,5 +16,6 @@ public interface StoreService {
 	
 	public int getTotalRecordCount();
 	public int getTotalDeliveryCount();
+	public String getDeliveryAddr(String storeNo);
 
 }

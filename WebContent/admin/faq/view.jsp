@@ -88,7 +88,7 @@
 		     			<tr>
 		     				<td style="width:12%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		                		<img alt="기타" width="40" src="${pageContext.request.contextPath}/Images/faq.png">
-		                		<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;기타</font> 
+		                		<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;분류</font> 
 		                	</td>
 	  						<td class="text-left" style="padding:20px 20px 20px 20px;">
 	  							<font size="4em">${faqDto.tabcon}</font>

@@ -60,7 +60,7 @@
 				   			<tr>
 								<th style="width:35%">문의글</th>
 			   					<th style="width:35%">답변글</th>
-			   				    <th style="width:30%">기타</th>
+			   				    <th style="width:30%">분류</th>
 		   				    </tr>
 				   		</thead>	
 				   		
@@ -69,13 +69,14 @@
 		   						<td>등록된 FAQ가 없습니다.</td>
 		   					</tr>
 			   			</c:if>
+			   			
 			   			<c:if test="${not flag }">
 			   			<c:forEach var="item" items="${faq }" varStatus="loop" >
 			   			<tbody>
 			   				<tr>
-			   					<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">&nbsp;&nbsp;${item.faq_ask}</a></td>
-								<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">&nbsp;&nbsp;${item.faq_answer}</a></td>
-								<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">&nbsp;&nbsp;${item.tabcon}</a></td>
+			   					<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.faq_ask}</a></td>
+								<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.faq_answer}</a></td>
+								<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.tabcon}</a></td>
 							</tr>
 			   			</tbody>		
 			   			</c:forEach>
@@ -98,6 +99,9 @@
 </div>
 </body>
 <!-- *********************************************************** BODY *********************************************************** -->
+<script type="text/javascript">
+	
+</script>
 <!-- ******************************************* -->	  
 <c:import url="/admin/include/footer.jsp" />
 <!-- ******************************************* -->  

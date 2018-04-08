@@ -60,7 +60,6 @@
 							  <th style="width:15%; text-align:center;">번  호</th>
 							  <th style="width:55%; text-align:center;">제   목</th>
 							  <th style="width:15%; text-align:center;">작  성  일</th>
-							  <!-- <th style="width:15%; text-align:center;">조  회  수</th> -->
 							  <th style="width:15%; text-align:center;">작  성  자</th>
 							</tr>
               			</thead>
@@ -74,7 +73,6 @@
 					            	<td style="text-align:center;">${item.notice_no }</td>
 									<td style="text-align:left;"><a href="<c:url value='/ADMIN/NOTICE/View.do?no=${item.notice_no}'/>">&nbsp;&nbsp;${item.notice_title }</a></td>
 									<td style="text-align:center;">${item.notice_postdate }</td>
-					                <%-- <td style="text-align:center;">${item.notice_visitcount }</td> --%>
 					                <td style="text-align:center;">${sessionScope.USER_ID }</td>
 				                </tr>
 		                     	</c:forEach>

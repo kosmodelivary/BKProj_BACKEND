@@ -30,7 +30,6 @@ public class StoreDeliveryController extends HttpServlet  {
 		
 		req.setAttribute("storeDelivery", storeDelivery);
 		req.setAttribute("nowDelivery", deliveryService.getTotalDeliveryCount());
-		req.setAttribute("idxZeroAddr", storeService.getDeliveryAddr(storeDelivery.get(0).getStore_no()));
 		
 		req.getRequestDispatcher("/admin/store/delivery/view.jsp").forward(req, resp);
 		

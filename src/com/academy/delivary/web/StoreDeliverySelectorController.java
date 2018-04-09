@@ -36,9 +36,10 @@ public class StoreDeliverySelectorController extends HttpServlet {
 			// selector에서 선택되어 있는 index 숫자로 변환
 			if (req.getParameter("index") != null) {
 				object	= (JSONObject) parser.parse(req.getParameter("index"));
-				index	= object.get("index").toString() != null ? Integer.parseInt(object.get("index").toString()) : 0;
+				index	= object.get("index").toString() != null ? Integer.parseInt(object.get("index").toString()) - 1 : 0;
 			}
 
+			System.out.println("index: " + index);
 			// ajax에 돌려줄 매장 주소 json 객체에 저장
 			object		= new JSONObject();
 			object.put("address", storeService.getDeliveryAddr(storeDelivery.get(index).getStore_no()));

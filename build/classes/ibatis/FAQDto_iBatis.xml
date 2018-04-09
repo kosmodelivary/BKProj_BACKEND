@@ -16,9 +16,14 @@
 	</resultMap>
 	
 	<!-- FAQDao 사용 DB Query -->
+	 <!-- 
 	<select id="FAQ.selectList" parameterClass="java.util.Map" resultMap="FAQDtoResult">
 		SELECT * FROM(SELECT T.*, ROWNUM R FROM(SELECT * FROM faq ORDER BY faq_no DESC) T)		  
 		WHERE R BETWEEN #start# AND #end#
+	</select>
+	 -->
+	<select id="FAQ.selectList" parameterClass="java.util.Map" resultMap="FAQDtoResult">
+		SELECT * FROM (SELECT T.*, ROWNUM R FROM (SELECT * FROM faq ORDER BY faq_no DESC) T)		  
 	</select>
 	<select id="FAQ.selectOne" parameterClass="java.lang.String" resultMap="FAQDtoResult">
 		SELECT * FROM faq WHERE faq_no = #faq_no#

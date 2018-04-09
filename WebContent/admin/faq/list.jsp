@@ -49,40 +49,35 @@
 				
         		<div class="panel-body" align="center"><!-- Table panel 바디 -->
         			    		
-		    	<div class="row">
-						    
-				<!-- Table 구현부  -->
-				<div class="col-sm-12" style="padding:5px 30px 5px 30px;" align="left">
-
-				   	<table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
-				   		
-				   		<thead>
-				   			<tr>
-								<th style="width:35%">문의글</th>
-			   					<th style="width:35%">답변글</th>
-			   				    <th style="width:30%">분류</th>
-		   				    </tr>
-				   		</thead>	
-				   		
-			   			<c:if test="${empty faq }" var="flag">
-		   					<tr>
-		   						<td>등록된 FAQ가 없습니다.</td>
-		   					</tr>
-			   			</c:if>
-			   			
-			   			<c:if test="${not flag }">
-			   			<c:forEach var="item" items="${faq }" varStatus="loop" >
-			   			<tbody>
-			   				<tr>
-			   					<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.faq_ask}</a></td>
-								<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.faq_answer}</a></td>
-								<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.tabcon}</a></td>
-							</tr>
-			   			</tbody>		
-			   			</c:forEach>
-			   			</c:if>
-			   			</table>	
-				   				
+			    	<div class="row">
+							    
+					<!-- Table 구현부  -->
+					<div class="col-sm-12" style="padding:5px 30px 5px 30px;" align="left">
+						   	<table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
+						   		<thead>
+						   			<tr>
+										<th style="width:35%">문의글</th>
+					   					<th style="width:35%">답변글</th>
+					   				    <th style="width:30%">분류</th>
+				   				    </tr>
+						   		</thead>	
+						   		<tbody>
+						   			<c:if test="${empty faq }" var="flag">
+					   					<tr>
+					   						<td>등록된 FAQ가 없습니다.</td>
+					   					</tr>
+						   			</c:if>
+						   			<c:if test="${not flag }">
+							   			<c:forEach var="item" items="${faq }" varStatus="loop" >
+							   				<tr>
+							   					<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.faq_ask}</a></td>
+												<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.faq_answer}</a></td>
+												<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.tabcon}</a></td>
+											</tr>
+							   			</c:forEach>
+						   			</c:if>
+						   		</tbody>		
+				   			</table>	
 			   			</div>
 			     	</div>
 			     	

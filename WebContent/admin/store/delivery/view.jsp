@@ -70,7 +70,7 @@
 				});
 				
 				idxNumber != 0 ? map.setCenter(new Tmap.LonLat(37.5511694, 126.9860379).transform("EPSG:4326", "EPSG:3857"), 15) 
-						       : map.setCenter(new Tmap.LonLat(34.4030796, 127.3187604).transform("EPSG:4326", "EPSG:3857"), 8);
+						       : map.setCenter(new Tmap.LonLat(34.4030796, 127.3187604).transform("EPSG:4326", "EPSG:3857"), 10);
 				var routeLayer = new Tmap.Layer.Vector("route");
 				map.addLayer(routeLayer);
 

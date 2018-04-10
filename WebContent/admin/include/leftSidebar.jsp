@@ -12,8 +12,8 @@
               
 	<li style="padding-left:0px;">
         <a href="${pageContext.request.contextPath }/ADMIN/Order.do"  style="align-content:center; padding-left:0px; padding-top:25px">
-        	<img src="${pageContext.request.contextPath}/bootstrap/img/BurgerKing.jpg" class="img-circle" 
-        	     width="50%" style="margin-left:auto; margin-right:auto; display:block;">
+        	<img src="${pageContext.request.contextPath}/Images/KING.png" width="50%" style="margin-left:auto; margin-right:auto; display:block;">
+        	     <!-- class="img-circle" --> 
         </a>
 	</li>
 	

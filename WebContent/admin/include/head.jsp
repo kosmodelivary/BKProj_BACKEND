@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap/js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bootstrap/lineicons/style.css">   
 	<!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/bootstrap/css/style.css?ver=2" rel="stylesheet"> <!-- 추가 css -->
+    <link href="${pageContext.request.contextPath}/bootstrap/css/style.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/bootstrap/css/style-responsive.css" rel="stylesheet">
 	<!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -37,4 +37,3 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  

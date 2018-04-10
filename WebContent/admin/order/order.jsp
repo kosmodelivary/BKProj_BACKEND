@@ -22,7 +22,7 @@
 <section id="main-content">
 	<section class="wrapper">
 		<div class="row">
-			<div class="col-lg-9 main-chart">
+			<div class="col-lg-9 main-chart" style="background-color:#F7F2E0;">
 			
 				<div class="row mtbox">
 				
@@ -39,7 +39,7 @@
 						<span class="li_cloud"></span>
 						<h3>+48</h3>
            			</div>
-						<p>48 New files were added in your cloud storage.</p>
+						<p>48 New files Upload</p>
            		</div>
                   		
            		<div class="col-md-2 col-sm-2 box0">
@@ -47,7 +47,7 @@
 						<span class="li_stack"></span>
 						<h3>23</h3>
            			</div>
-						<p>You have 23 unread messages in your inbox.</p>
+						<p>읽지않은 메시지</p>
            		</div>
                   		
            		<div class="col-md-2 col-sm-2 box0">
@@ -55,7 +55,7 @@
 						<span class="li_news"></span>
 						<h3>+10</h3>
            			</div>
-						<p>More than 10 news were added in your reader.</p>
+						<p>10개의 뉴스 추가</p>
            		</div>
                   		
            		<div class="col-md-2 col-sm-2 box0">
@@ -63,7 +63,7 @@
 						<span class="li_data"></span>
 						<h3>OK!</h3>
            			</div>
-						<p>Your server is working perfectly. Relax & enjoy.</p>
+						<p>서버 잘 작동 중</p>
            		</div>
                   	
                 </div><!-- /row mt -->	
@@ -247,11 +247,12 @@
 					</div><!-- /row -->	
 					
                   </div><!-- /col-lg-9 END SECTION MIDDLE -->
+<!-- *************************************************************************************************************************************************** -->
+<c:import url="/admin/include/rightSidebar.jsp" /><!-- rigthSidebar 추가 -->
+<!-- *************************************************************************************************************************************************** -->
                 </div>
               </section>
             </section>
-<!-- *************************************************************************************************************************************************** -->
-      	<c:import url="/admin/include/rightSidebar.jsp" /><!-- rigthSidebar 추가 -->
 	</section>
   </body> 
 </html>

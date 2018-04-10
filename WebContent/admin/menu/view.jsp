@@ -36,6 +36,15 @@
 				return false;
 			}
 		};
+		var isDelete = function() {
+			if (confirm('정말 지우시겠습니까?') == true) {
+				alert('지웁니다.');
+				return true;
+			} else {
+				alert('안지웁니다.');
+				return false;
+			}
+		};
   	</script>
 </head>
 <!-- *********************************************************** HEAD *********************************************************** -->

@@ -66,8 +66,19 @@ public class NCloudService {
 	
 	
 	
-	public void delete(File file) {
+	public void delete(String fileName) {
+		initialize();
+
+		try {
+			FSResourceID	rid = new FSResourceID("bkproject/json/delivery/" + fileName);
+			client.deleteFile(rid, null);
+		} catch (FSClientException e) {
+			e.printStackTrace();
+		} catch (FSServiceException e) {
+			e.printStackTrace();
+		}
 		
+		FSRestClient.destroy();
 	} // delete
 	
 	// ------------------------------------------------------------------------------------------------

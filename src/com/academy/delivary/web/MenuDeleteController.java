@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.academy.delivery.common.AWSService;
+import com.academy.delivery.common.NCloudService;
 import com.academy.delivery.service.MenuDto;
 import com.academy.delivery.service.MenuService;
 import com.academy.delivery.service.impl.MenuServiceImpl;
@@ -24,12 +25,16 @@ public class MenuDeleteController extends HttpServlet {
 		MenuDto menuDto = new MenuDto();
 		menuDto = menuService.selectOne(req.getParameter("no"));
 		
+		/*
 		AWSService amazonS3 = new AWSService();
         amazonS3.deleteFile(menuDto.getMenu_name()+menuDto.getMenu_file_extension());
+        */
+		
+		NCloudService ncloud = new NCloudService();
+		ncloud.delete(menuDto.getMenu_name()+menuDto.getMenu_file_extension());
         
 		req.setAttribute("DELETE_RESULT", menuService.delete(req.getParameter("no")));
 		req.getRequestDispatcher("/admin/menu/process.jsp").forward(req, resp);
-		
 	} // end service
 	
 } // end StoreDeleteController

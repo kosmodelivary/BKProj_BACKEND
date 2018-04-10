@@ -41,13 +41,15 @@
      </li>
                   
      <!-- 이벤트 관리 -->
+     <!-- 
  	 <li class="sub-menu" <c:if test="${fn:contains(pageContext.request.requestURI, 'menu/event') }">class="active"</c:if>>
         <a href="#">
              <span class="fa fa-star-o" style="font-size:12pt">&nbsp;&nbsp;&nbsp;Event Management</span>
              <c:if test="${fn:contains(pageContext.request.requestURI, 'menu/event') }"><span class="sr-only">(current)</span></c:if>
          </a>
      </li>
-                      
+       -->                
+
      <!-- 회원 리스트 -->
      <li class="sub-menu" <c:if test="${fn:contains(pageContext.request.requestURI, '/member/list') }">class="active"</c:if>>
          <a href="${pageContext.request.contextPath }/ADMIN/MEMBER/List.do">

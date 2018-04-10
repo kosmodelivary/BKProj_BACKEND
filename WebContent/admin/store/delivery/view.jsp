@@ -59,7 +59,7 @@
 				idxNumber = $(".selector option").index($(".selector option:selected"));
 				console.log("idxNumber: " + idxNumber);
 				
-				// map div 일단 다 지우기 
+				// map div에 출력된 지도 일단 모두 지우기
 				document.getElementById('map').innerHTML = "";
 				
 				// 1. 지도 띄우기
@@ -229,8 +229,7 @@
 				// 딜리버리는 일정 시간 간격으로 마커 위치 변경
 				window.setInterval(function () {
 					// 출력할 범위 설정
-					var from;
-					var to;
+					var from, to;
 					
 					if (idxNumber != 0) {
 						from	= idxNumber;
@@ -239,18 +238,18 @@
 						from 	= 1;
 						to		= $('.selector option').length;
 					}
-
+					
+					markerLayer.clearMarkers();
+					
 					// 설정된 범위의 위도, 경도 읽어서 지도에 표시
 					for (var i = from; i < to; i++) {
 						selectedDelivery = $('select option:eq(' + i + ')').val();
-						console.log("from: " + from + ", to: " + to);
-						console.log("i: " + i);
-						console.log("selectedDelivery: " + selectedDelivery);
 						
 						$.ajax({
 							url: '<c:url value="/admin/store/delivery/deliveryLoading.jsp"/>',
 							type: 'post',
 							dataType: 'json',
+							async:false,
 							data: {"selectedDelivery":selectedDelivery},
 							success: function(data) {
 								icon = new Tmap.Icon('http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_m_a.png',size, offset);//마커 아이콘 설정

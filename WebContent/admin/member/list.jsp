@@ -25,20 +25,25 @@
     <link href="${pageContext.request.contextPath}/bootstrap/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
   
 	<style type="text/css">
-	  		.table th, .table td {
-	  			text-align: center;
-	  		}
+		.table th, .table td {
+			text-align: center;
+		}
 	</style>
 	<script type="text/javascript">
-			var isDelete = function() {
-				if (confirm('정말 지우시겠습니까?') == true) {
-					alert('지웁니다.');
-					return true;
-				} else {
-					alert('안지웁니다.');
-					return false;
-				}
-			};
+		var isDelete = function() {
+			if (confirm('정말 지우시겠습니까?') == true) {
+				alert('지웁니다.');
+				return true;
+			} else {
+				alert('안지웁니다.');
+				return false;
+			}
+		};
+		
+		function openEmailForm() {
+			window.open("<c:url value='/ADMIN/MEMBER/EmailForm.do' />", "_blank", 
+					"toolbar=no,scrollbars=yes,resizable=yes,top=100,left=150,width=600,height=850");
+		}
 	</script>  
 </head>
 <!-- *********************************************************** HEAD *********************************************************** -->
@@ -109,6 +114,13 @@
 		   				</c:if>
 		   			</tbody>
 				</table>
+				<div class="row" id="email" align="center" style="padding:0px 30px 0px 0px;">
+					<a href="javascript:void(0);" onclick="openEmailForm()">
+						<img alt="이메일모달팝업" width="20" src="${pageContext.request.contextPath}/Images/plus.png">
+						<img alt="이메일모달팝업" width="50" src="${pageContext.request.contextPath}/Images/email.png">
+					</a>
+				</div>
+
 			   	</div>
 			</div>			
 			</div>	

@@ -8,4 +8,5 @@ public interface MemberService {
 	public MemberDto selectOne(String no);
 	public int update(MemberDto memberDto);
 	public int delete(String parameter);
+	public List<MemberDto> selectAgreeEmail();
 }

@@ -61,4 +61,15 @@ public class MemberDao implements MemberService {
 		return affected;
 	}
 
+	@Override
+	public List<MemberDto> selectAgreeEmail() {
+		List<MemberDto> list = null;
+		
+		try {
+			list = IbatisUtil.getMapper().queryForList("Member.selectAgreeEmail");
+		} catch(Exception e) {e.printStackTrace();}
+		
+		return list;
+	}
+
 } // end MemberDao

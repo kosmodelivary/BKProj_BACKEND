@@ -35,5 +35,8 @@
 	<delete id="Member.delete" parameterClass="java.lang.String" >
 		DELETE FROM member WHERE member_no = #member_no# 
 	</delete>
+	<select id="Member.selectAgreeEmail" resultMap="MemberDtoResult">
+		SELECT * FROM member WHERE member_agreeemail = 'true'
+	</select>
 	
 </sqlMap>

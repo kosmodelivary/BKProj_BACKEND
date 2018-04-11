@@ -33,4 +33,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.delete(no);
 	}
 
+	@Override
+	public List<MemberDto> selectAgreeEmail() {
+		return memberDao.selectAgreeEmail();
+	}
+
 } // end MemberServiceImpl 

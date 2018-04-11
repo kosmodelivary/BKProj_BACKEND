@@ -23,9 +23,8 @@
 	<section class="wrapper">
 		<div class="row">
 			<div class="col-lg-9 main-chart" style="background-color:#F7F2E0;">
-			
-				<div class="row mtbox">
-				
+<!-- ******************************************************************** --> 			
+<!-- <div class="row mtbox">				
 				<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
               		<div class="box1">
 	  					<span class="li_heart"></span>
@@ -64,10 +63,10 @@
 						<h3>OK!</h3>
            			</div>
 						<p>서버 잘 작동 중</p>
-           		</div>
-                  	
-                </div><!-- /row mt -->	
-<!-- ******************************************************************** -->                                        
+           		</div>                 	
+                </div>/row mt	 -->
+<!-- ******************************************************************** --> 
+				<div style="padding-top:20px;"></div>                                       
                 <div class="row mt">
                       <!-- SERVER STATUS PANELS -->
                       	<div class="col-md-4 col-sm-4 mb">

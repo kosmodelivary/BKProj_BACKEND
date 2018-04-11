@@ -2,29 +2,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<body>
-<section id="container" >
-
 <!--header start-->
-<header class="header black-bg" style="height:70px">
-	<div class="sidebar-toggle-box" style="vertical-align:middle;">
-        <i class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></i>
+<header class="header black-bg">
+	<div class="sidebar-toggle-box">
+		<i class="fa fa-bars" style="font-size:30px; margin:15px;" data-placement="right" data-original-title="Toggle Navigation"></i>
     </div>
 	
+	<a href="${pageContext.request.contextPath }/ADMIN/Order.do" class="logo" >
+		<p><img src="${pageContext.request.contextPath}/Images/PREMIUM_LOGO.png"
+				style="float:left; overflow:hidden; position:relative; width:85px; height:90px; padding-bottom:10px;"></p>
+	</a>
+	<a href="${pageContext.request.contextPath }/ADMIN/Order.do" class="logo" >
+		<p><img src="${pageContext.request.contextPath}/Images/NEW_LOGO.png"
+				style="float:left; overflow:hidden; position:relative; width:380px; height:70px; padding:0px 0px 3px 20px;"></p>
+	</a>
+	
     <div align="right">
-		<a href="${pageContext.request.contextPath }/ADMIN/Order.do" class="logo" >
-			<%-- <img src="${pageContext.request.contextPath}/Images/pac.png" width="45" style="padding-bottom:17px">
-			<font face="Impact" style="font-size:1.8em" color="RED">&nbsp;&nbsp;JAVA Murger&nbsp;&nbsp;</font>
-			<img src="${pageContext.request.contextPath}/Images/burger2.png" width="45" style="padding-bottom:17px"> --%>
-			<img src="${pageContext.request.contextPath}/Images/JAVAMURGER.png" width="300" style="padding-bottom:15px">
-		</a>
-
-	    <a href="${pageContext.request.contextPath}/admin/login/logoutProcess.jsp"  class="logout" style="align-items:right;">
-	        <img src="${pageContext.request.contextPath}/Images/logout.png" width="45" style="padding-top:17px">
+		<a href="${pageContext.request.contextPath}/admin/login/logoutProcess.jsp"  class="logout" style="align-items:right;">
+	    	<i class="fa fa-sign-out" style="font-size:40px; color:black; padding-top:35px" data-placement="right" ></i>
 		</a>
     </div>                 
 </header>
  <!--header end-->
-</section>
-</body>
-     

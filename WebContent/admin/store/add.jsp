@@ -73,7 +73,7 @@
 <c:import url="/admin/include/navigator.jsp" />
 <c:import url="/admin/include/leftSidebar.jsp" />
 <!-- ******************************************* -->  
-<div id="page-wrapper" style="padding:80px 0px 0px 0px; margin:0px 0px 0px 210px">
+<div id="page-wrapper" style="padding:100px 0px 0px 0px; margin:0px 0px 0px 210px">
 
 	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
         <img alt="메뉴추가" width="95px" src="${pageContext.request.contextPath}/Images/shop02.png"> 
@@ -85,7 +85,7 @@
     <div class="col-lg-12">
     	<div class="panel panel-default">
         	<div class="panel-heading">
-            	<font size="6pt" color="gray" face="Impact">Add BurgerKing Store</font>
+            	<font size="6pt" color="gray" face="Impact">Add JAVA MURGER Store</font>
 			</div>
 					     
 			<div class="panel-body">		     		

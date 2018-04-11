@@ -49,7 +49,7 @@
 <c:import url="/admin/include/navigator.jsp" />
 <c:import url="/admin/include/leftSidebar.jsp" />
 <!-- ******************************************* -->  
-<div id="page-wrapper" style="padding:80px 0px 0px 0px; margin:0px 0px 0px 210px">         
+<div id="page-wrapper" style="padding:100px 0px 0px 0px; margin:0px 0px 0px 210px">         
             
 	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
 		<img alt="Store" width="100" src="${pageContext.request.contextPath}/Images/memberlist.png"> 

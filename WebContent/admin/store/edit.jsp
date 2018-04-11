@@ -59,7 +59,7 @@
 <c:import url="/admin/include/navigator.jsp" />
 <c:import url="/admin/include/leftSidebar.jsp" />
 <!-- ******************************************* -->  
-<div id="page-wrapper" style="padding:70px 0px 0px 210px;">         
+<div id="page-wrapper" style="padding:100px 0px 0px 210px;">         
            
 	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:90%; margin:20px 20px 20px 30px;">
 		<img alt="수정" width="100" src="${pageContext.request.contextPath}/Images/edit.png"> 

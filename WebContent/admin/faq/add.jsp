@@ -53,11 +53,11 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>  
-<div id="page-wrapper" style="padding:80px 0px 0px 0px; margin:0px 0px 0px 210px">
+<div id="page-wrapper" style="padding:110px 0px 0px 0px; margin:0px 0px 0px 210px">
 
 	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
         <img alt="메뉴추가" width="95px" src="${pageContext.request.contextPath}/Images/shop02.png"> 
-        <span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;Add Store</span>
+        <span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;Add FAQ</span>
     </div>
 	
     <div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
@@ -65,7 +65,7 @@
     <div class="col-lg-12">
     	<div class="panel panel-default">
         	<div class="panel-heading">
-            	<font size="6pt" color="gray" face="Impact">Add BurgerKing Store</font>
+            	<font size="6pt" color="gray" face="Impact">Write</font>
 			</div>
 					     
 			<ul class="nav nav-tabs">

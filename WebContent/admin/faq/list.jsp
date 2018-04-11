@@ -32,7 +32,7 @@
 <c:import url="/admin/include/navigator.jsp" />
 <c:import url="/admin/include/leftSidebar.jsp" />
 <!-- ******************************************* -->  
-<div id="page-wrapper" style="padding:80px 0px 0px 0px; margin:0px 0px 0px 210px">         
+<div id="page-wrapper" style="padding:100px 0px 0px 0px; margin:0px 0px 0px 210px">         
             
 	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
 		<img alt="FAQ" width="100" src="${pageContext.request.contextPath}/Images/faq.png"> 
@@ -44,7 +44,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default"><!-- Table 테두리 설정 -->
 				<div class="panel-heading"><!-- Table panel 머리 -->
-		  			<font size="6pt" color="gray" face="Impact">BurgerKing FAQ</font>
+		  			<font size="6pt" color="gray" face="Impact">JAVA MURGER FAQ</font>
 				</div>
 				
         		<div class="panel-body" align="center"><!-- Table panel 바디 -->

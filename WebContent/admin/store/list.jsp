@@ -33,24 +33,22 @@
 <!-- *********************************************************** HEAD *********************************************************** -->
 <!-- *********************************************************** BODY *********************************************************** -->
 <body>
-<div id="wrapper"><!-- 페이지 전체 감싸는 div 태그 -->
+<section id="container" >
 <!-- ******************************************* -->  
 <c:import url="/admin/include/navigator.jsp" />
 <c:import url="/admin/include/leftSidebar.jsp" />
 <!-- ******************************************* -->  
-<div id="page-wrapper" style="padding:100px 0px 0px 0px; margin:0px 0px 0px 210px">         
-            
-	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
-		<img alt="Store" width="100" src="${pageContext.request.contextPath}/Images/shop02.png"> 
-		<span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;Store</span>
-	</div>
+<section id="main-content">
 
-	<div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
+	<section class="wrapper">       
+            
+	<div class="row" style="max-width:100%; max-height:100%; padding:70px 0px 0px 30px;">
 		<!-- Table 칼럼 -->	
 		<div class="col-lg-12">
+		
 			<div class="panel panel-default"><!-- Table 테두리 설정 -->
-				<div class="panel-heading"><!-- Table panel 머리 -->
-		  			<font size="6pt" color="gray" face="Impact">Store List</font>
+				<div class="panel-heading" style="vertical-align:middle;"><!-- Table panel 머리 -->
+					<font size="5pt" color="gray">&nbsp;&nbsp;Store List</font>
 				</div>
 				
         		<div class="panel-body" align="center"><!-- Table panel 바디 -->
@@ -63,12 +61,12 @@
 				<table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
 				   	<thead>
 		   				<tr>
-		   					<th style="width:12%">매장 이름</th>
-		   					<th style="width:31%">매장 주소</th>
-		   					<th style="width:12%">연락처</th>
-		   					<th style="width:16%">딜리버리 시간 (주중)</th>
-		   					<th style="width:16%">딜리버리 시간 (주말)</th>
-		   					<th style="width:13%">최소 주문 금액</th>		   					
+		   					<th style="width:12%; text-align:center;">매장 이름</th>
+		   					<th style="width:31%; text-align:center;">매장 주소</th>
+		   					<th style="width:12%; text-align:center;">연락처</th>
+		   					<th style="width:16%; text-align:center;">딜리버리 시간 (주중)</th>
+		   					<th style="width:16%; text-align:center;">딜리버리 시간 (주말)</th>
+		   					<th style="width:13%; text-align:center;">최소 주문 금액</th>		   					
 		   				</tr>
 		   			</thead>
 		   			<tbody>	
@@ -103,10 +101,14 @@
 		</div>
 		</div>
 		</div>
-		</div>
-      </div>
-    </div>
-  </body>
+	<!--common script for all pages-->
+    <script src="${pageContext.request.contextPath}/bootstrap/js/common-scripts.js"></script>
+   	
+   	</div>	
+</section>
+</section>
+</section>
+</body>
 <!-- *********************************************************** BODY *********************************************************** -->
 <!-- ******************************************* -->	  
 <c:import url="/admin/include/footer.jsp" />

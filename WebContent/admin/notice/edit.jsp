@@ -14,27 +14,24 @@
 <!-- *********************************************************** HEAD *********************************************************** -->
 <!-- *********************************************************** BODY *********************************************************** -->
 <body>
-<div id="wrapper">
+<section id="container" >
 <!-- ******************************************* -->  
 <c:import url="/admin/include/navigator.jsp" />
 <c:import url="/admin/include/leftSidebar.jsp" />
 <!-- ******************************************* -->  
-<div id="page-wrapper" style="padding:100px 0px 0px 0px; margin:0px 0px 0px 210px">       
-           
-	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
-		<img alt="수정" width="100" src="${pageContext.request.contextPath}/Images/edit.png"> 
-		<span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;Edit</span>
-	</div>
+<section id="main-content">
+
+	<section class="wrapper">             
 		
-	<div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
+	<div class="row" style="max-width:100%; max-height:100%; padding:70px 0px 0px 30px;">
 	
    	  	<div class="col-lg-12">
             <div class="panel panel-default">
-            	<div class="panel-heading">
-					<font size="6pt" color="gray" face="Impact">Edit</font>
+            <div class="panel-heading" style="vertical-align:middle;"><!-- Table panel 머리 -->
+					<font size="5pt" color="gray">&nbsp;&nbsp;Edit</font>
 				</div>
 				
-              	<div class="panel-body">
+              <div class="panel-body" align="center">
                 
                 <form action="<c:url value='/ADMIN/NOTICE/Edit.do'/>" method="post">
                 <input type="hidden" name="no" value="${noticeDto.notice_no}"/>
@@ -44,7 +41,7 @@
                 	<tr>
 	                	<td style="width:12%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 	                		<img alt="제목" width="40" src="${pageContext.request.contextPath}/Images/title.png">
-	                		<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;제 목</font> 
+	                		<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;제&nbsp;목</font> 
 	                	</td>
                	
  						<td class="text-left" style="padding:20px 20px 20px 20px;">
@@ -57,7 +54,7 @@
 	                <tr>
 		               <td style="width:12%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 	                		<img alt="내용" width="40" src="${pageContext.request.contextPath}/Images/document.png">
-		                	<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;내 용</font> 
+		                	<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;내&nbsp;용</font> 
 		                </td>
 		                
 		                <td colspan="2" class="text-left" style="padding:20px 20px 20px 20px;">
@@ -76,9 +73,14 @@
 		   </div>
 		 </div>
 		 </div>
-		 </div>
-	 </div>
-</div>
+		 
+		 <!--common script for all pages-->
+   		 <script src="${pageContext.request.contextPath}/bootstrap/js/common-scripts.js"></script>
+   	
+   	</div>	
+</section>
+</section>
+</section>
 </body>
 <!-- *********************************************************** BODY *********************************************************** -->
 </html>

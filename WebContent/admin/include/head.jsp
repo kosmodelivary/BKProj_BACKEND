@@ -9,7 +9,7 @@
     <meta name="author" content="Dashboard"><!-- 추가 -->
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina"><!-- 추가 -->
 
-    <title>Java King BACKEND</title>
+    <title>JAVA_MURGER BACKEND</title>
     
 	<!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet">   

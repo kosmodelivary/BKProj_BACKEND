@@ -44,25 +44,23 @@
 <!-- *********************************************************** BODY *********************************************************** -->
 <!-- https://jqueryui.com/toggle/ 활용하기 -->
 <body>
-<div id="wrapper"><!-- 페이지 전체 감싸는 div 태그 -->
+<section id="container" >
 <!-- ******************************************* -->	  
 <c:import url="/admin/include/navigator.jsp" />
 <c:import url="/admin/include/leftSidebar.jsp" />
 <!-- ******************************************* --> 
-<div id="page-wrapper" style="padding:100px 0px 0px 0px; margin:0px 0px 0px 210px">         
-            
-    <div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
-       <img alt="Menu" width="100" src="${pageContext.request.contextPath}/Images/menu.png"> 
-       <span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;Menu</span>
-    </div>
-            
-	<div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
+<section id="main-content">
 
-	<div class="col-lg-12">
+	<section class="wrapper">       
+            
+	<div class="row" style="max-width:100%; max-height:100%; padding:70px 0px 0px 30px;">
+		<!-- Table 칼럼 -->	
+		<div class="col-lg-12">
+		
 		<div class="panel panel-default">
-			<div class="panel-heading">
-				<font size="6pt" color="gray" face="Impact">JAVA MURGER Menu</font>
-			</div>
+			<div class="panel-heading" style="vertical-align:middle;"><!-- Table panel 머리 -->
+					<font size="5pt" color="gray">&nbsp;&nbsp;JAVA MURGER MENU</font>
+				</div>
 						
 			<div class="panel-body" align="center">
             			    		
@@ -128,10 +126,14 @@
 	        </div>
         	</div>
         	</div>
-        	</div>
-      	</div>
-    </div>
-  </body>
+        	 <!--common script for all pages-->
+    		<script src="${pageContext.request.contextPath}/bootstrap/js/common-scripts.js"></script>
+   	
+   	</div>	
+</section>
+</section>
+</section>
+</body>
 <!-- *********************************************************** BODY *********************************************************** -->
 <!-- ******************************************* -->	  
 <c:import url="/admin/include/footer.jsp" />

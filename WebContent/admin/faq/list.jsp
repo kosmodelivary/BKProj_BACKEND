@@ -27,24 +27,21 @@
 <!-- *********************************************************** HEAD *********************************************************** -->
 <!-- *********************************************************** BODY *********************************************************** -->
 <body>
-<div id="wrapper"><!-- 페이지 전체 감싸는 div 태그 -->
+<section id="container" >
 <!-- ******************************************* -->  
 <c:import url="/admin/include/navigator.jsp" />
 <c:import url="/admin/include/leftSidebar.jsp" />
 <!-- ******************************************* -->  
-<div id="page-wrapper" style="padding:100px 0px 0px 0px; margin:0px 0px 0px 210px">         
+<section id="main-content">
+
+	<section class="wrapper">       
             
-	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
-		<img alt="FAQ" width="100" src="${pageContext.request.contextPath}/Images/faq.png"> 
-		<span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;F&nbsp;A&nbsp;Q</span>
-	</div>
-			
-	<div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
+	<div class="row" style="max-width:100%; max-height:100%; padding:70px 0px 0px 30px;">
 		<!-- Table 칼럼 -->	
 		<div class="col-lg-12">
 			<div class="panel panel-default"><!-- Table 테두리 설정 -->
-				<div class="panel-heading"><!-- Table panel 머리 -->
-		  			<font size="6pt" color="gray" face="Impact">JAVA MURGER FAQ</font>
+				<div class="panel-heading" style="vertical-align:middle;"><!-- Table panel 머리 -->
+					<font size="5pt" color="gray">&nbsp;&nbsp;FAQ</font>
 				</div>
 				
         		<div class="panel-body" align="center"><!-- Table panel 바디 -->
@@ -56,9 +53,9 @@
 						   	<table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
 						   		<thead>
 						   			<tr>
-										<th style="width:35%">문의글</th>
-					   					<th style="width:35%">답변글</th>
-					   				    <th style="width:30%">분류</th>
+					   				    <th style="width:30%; text-align:center;">분류</th>
+										<th style="width:35%; text-align:center;">문의글</th>
+					   					<th style="width:35%; text-align:center;">답변글</th>
 				   				    </tr>
 						   		</thead>	
 						   		<tbody>
@@ -70,9 +67,9 @@
 						   			<c:if test="${not flag }">
 							   			<c:forEach var="item" items="${faq }" varStatus="loop" >
 							   				<tr>
+												<td style="text-align:center;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.tabcon}</a></td>
 							   					<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.faq_ask}</a></td>
 												<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.faq_answer}</a></td>
-												<td style="text-align:left;"><a href="<c:url value='/ADMIN/Faq/View.do?no=${item.faq_no}' />">${item.tabcon}</a></td>
 											</tr>
 							   			</c:forEach>
 						   			</c:if>
@@ -88,10 +85,15 @@
 					</div>
 			     </div>
 			</div>
-        </div>		        
-    </div>
+        </div>	
+        	        
+      	 <!--common script for all pages-->
+   		 <script src="${pageContext.request.contextPath}/bootstrap/js/common-scripts.js"></script>
+   	
    	</div>	
-</div>
+</section>
+</section>
+</section>
 </body>
 <!-- *********************************************************** BODY *********************************************************** -->
 <script type="text/javascript">

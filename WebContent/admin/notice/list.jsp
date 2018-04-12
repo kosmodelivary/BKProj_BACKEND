@@ -27,24 +27,21 @@
 <!-- *********************************************************** HEAD *********************************************************** -->
 <!-- *********************************************************** BODY *********************************************************** -->
 <body>
-<div id="wrapper"><!-- 페이지 전체 감싸는 div 태그 -->
+<section id="container" >
 <!-- ******************************************* -->  
 <c:import url="/admin/include/navigator.jsp" />
 <c:import url="/admin/include/leftSidebar.jsp" />
 <!-- ******************************************* -->  
-<div id="page-wrapper" style="padding:100px 0px 0px 0px; margin:0px 0px 0px 210px">         
+<section id="main-content">
+
+	<section class="wrapper">       
             
-	<div class="row" style="border:2px solid gold; padding:10px; height:auto; min-height:100px; overflow:auto; width:96%; margin:20px 20px 20px 30px;">
-		<img alt="공지사항" width="100" src="${pageContext.request.contextPath}/Images/notice.png"> 
-		<span style="font-family:Impact; font-size:5.0em; vertical-align:bottom;">&nbsp;&nbsp;Notice</span>
-	</div>
-			
-	<div class="row" style="padding:10px; height:auto; min-height:100px; overflow:auto; width:100%; margin:3px;">
+	<div class="row" style="max-width:100%; max-height:100%; padding:70px 0px 0px 30px;">
 		<!-- Table 칼럼 -->	
 		<div class="col-lg-12">
 			<div class="panel panel-default"><!-- Table 테두리 설정 -->
-				<div class="panel-heading"><!-- Table panel 머리 -->
-		  			<font size="6pt" color="gray" face="Impact">JAVA MURGER Notice</font>
+				<div class="panel-heading" style="vertical-align:middle;"><!-- Table panel 머리 -->
+					<font size="5pt" color="gray">&nbsp;&nbsp;Notice</font>
 				</div>
 				
         		<div class="panel-body" align="center"><!-- Table panel 바디 -->
@@ -57,10 +54,10 @@
 					<table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
 						<thead>
 							<tr>
-							  <th style="width:15%; text-align:center;">번  호</th>
-							  <th style="width:55%; text-align:center;">제   목</th>
-							  <th style="width:15%; text-align:center;">작  성  일</th>
-							  <th style="width:15%; text-align:center;">작  성  자</th>
+							  <th style="width:15%; text-align:center;">번호</th>
+							  <th style="width:55%; text-align:center;">제목</th>
+							  <th style="width:15%; text-align:center;">작성일</th>
+							  <th style="width:15%; text-align:center;">작성자</th>
 							</tr>
               			</thead>
               			<tbody>         
@@ -91,9 +88,14 @@
 			</div>
         </div>		        
     </div>
+    
+    <!--common script for all pages-->
+    <script src="${pageContext.request.contextPath}/bootstrap/js/common-scripts.js"></script>
+   	
    	</div>	
-</div>
-</div>
+</section>
+</section>
+</section>
 </body>
 <!-- *********************************************************** BODY *********************************************************** -->
 <!-- ******************************************* -->	  

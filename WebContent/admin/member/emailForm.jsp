@@ -14,6 +14,58 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/loading-bar.min.js"></script>
 <!-- ******************************************* -->  
 <script type="text/javascript">
+	var isSending = false;
+
+ 	$(function () {
+ 	 	var mailBar = new ldBar("#sendmail");
+
+/* 		if (isSend == true) { 	 		
+			console.log("isSend: " + isSend);
+ */ 			
+ 			pollInterval = setInterval(function () {
+	 			console.log("run... : " + isSending);
+ 				poll();
+ 			}, 700);
+ 			
+ 			poll = function() {
+ 				$.ajax({
+ 					url: '<c:url value="/admin/member/json/sendState.json"/>',
+					type: 'post',
+					dataType: 'json',
+					async:false,
+					success: function(data) {
+						console.log("data.total: " + data.total);
+						console.log("data.complete: " + data.complete);
+						
+						// mailBar 수치 변경
+						if (isSending == true) {
+							if (data.complete > 0) {
+								mailBar.set(parseInt(data.complete / data.total * 100.0));
+							}
+				 			document.getElementById("mailtext").innerHTML = '메일 전송 완료로 가는 중..';
+						}
+						// 메일이 모두 보내지면 polling 종료
+						if (data.complete > 0 && data.complete == data.total) {
+				 			document.getElementById("mailtext").innerHTML = '메일 전송 완료';
+							clearInterval(pollInterval);
+						}
+					},
+					error: function() {
+						console.log('fail');
+					}
+ 				}); // $.ajax
+ 			}; // poll = function() {
+ 			poll();
+ 		// } // if (isSend == true) 
+ 	}); // $(function () {
+	
+ 	function isCancel() {
+		if (confirm('정말 취소하시겠습니까?') == true) {
+			window.close();
+		} else {
+			return;
+		}
+	}
 	function isValidate(form){
 		if(form.title.value.length==0){
 			alert("제목을 입력하세요");
@@ -28,20 +80,13 @@
 		
 		if (confirm('Email 수신 동의 회원님들께 메일을 정말 보내시겠습니까?') == true) {
 			alert('메일 보냅니다.');
+
+			isSending = true;
 			return true;
 		} else {
 			return false;
 		}
-	}
-	
-	function isCancel() {
-		if (confirm('정말 취소하시겠습니까?') == true) {
-			window.close();
-		} else {
-			return;
-		}
-	}
-	
+	} // isValidate
 </script>
 </head>
 <!-- *********************************************************** HEAD *********************************************************** -->
@@ -94,12 +139,52 @@
 				<a class="btn btn-default" href="javascript:void(0);" role="button" style="a" onclick="isCancel();">취소</a>
 			  </span>
 			  <span style="float:inherit;">
-				<button type="submit" class="btn btn-default">보내기</button>
+				<button type="submit" id="sendSubmit" class="btn btn-default">메일 발송</button>
 			  </span>
 			 </div>
+<!-- 			 <script type="text/javascript">
+			 	var mailBar = new ldBar("#sendmail");
 
-			 
-			 </div>
+			 	$(function () {
+			 		var mailPolling = function () {
+						console.log("isSend: " + isSend);
+			 			if (isSend == false) {
+							return;			 			
+						}
+			 			
+			 			pollInterval = setInterval(function () {
+				 			console.log("run... : " + isSend);
+				 			document.getElementById("mailtext").innerHTML = '메일 전송중...';
+			 				poll();
+			 			}, 2000);
+			 			
+			 			poll = function() {
+			 				$.ajax({
+			 					url: '<c:url value="/admin/member/json/sendState.json"/>',
+								type: 'post',
+								dataType: 'json',
+								async:false,
+								success: function(data) {
+									console.log("data.total: " + data.total);
+									console.log("data.complete: " + data.complete);
+									
+									// ldBar 수치 변경
+									mailBar.set(parseInt(data.total / data.complete * 100.0));
+									if (data.complete > 0 && data.complete == data.total) {
+							 			document.getElementById("mailtext").innerHTML = '메일 전송 완료';
+										clearInterval(pollInterval);
+									}
+								},
+								error: function() {
+									console.log('fail');
+								}
+			 				}); // $.ajax
+			 			}; // poll = function() {
+			 			poll();
+			 		}; // $('#sendSubmit').click(function (){
+			 	}); // $(function () {
+			 </script>
+ -->			 </div>
 			</form>
 		   </div>
 		 </div>

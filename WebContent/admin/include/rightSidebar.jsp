@@ -36,7 +36,8 @@
 			window.setInterval(function(){
 				console.log('1분에 한번씩 호출');
 				$.ajax({
-				    url : "http://192.168.0.27:8080/delivery/mypage/rtSend.whpr",
+				    // url : "http://192.168.0.27:8080/delivery/mypage/rtSend.whpr",		// 내부
+				    url : "http://220.127.242.43:8090/delivery/mypage/rtSend.whpr",			// 외부
 				    dataType : "jsonp",
 				    jsonp : "callback",
 				    success: function(data,dest) {

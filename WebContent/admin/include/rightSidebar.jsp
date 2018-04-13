@@ -36,8 +36,8 @@
 			window.setInterval(function(){
 				console.log('1분에 한번씩 호출');
 				$.ajax({
-				    // url : "http://192.168.0.27:8080/delivery/mypage/rtSend.whpr",		// 내부
-				    url : "http://220.127.242.43:8090/delivery/mypage/rtSend.whpr",			// 외부
+				    url : "http://192.168.0.27:8080/delivery/mypage/rtSend.whpr",		// 내부
+				    //url : "http://220.127.242.43:8090/delivery/mypage/rtSend.whpr",			// 외부
 				    dataType : "jsonp",
 				    jsonp : "callback",
 				    success: function(data,dest) {
@@ -48,8 +48,6 @@
 					}
 				});		
 			},10000);
-			
-			
 			
 			var successCallback = function(data,target){
 	        	console.log('data : '+data+', 유형 : '+typeof data);
@@ -64,11 +62,13 @@
 							'<div class="details">'+
 								'<ul>'+
 								   '<li>Order No : #'+record.order_no+'</li>'+
-								   '<li>Store No : #'+record.store_no+'</li>'+
-								   '<li>Pay method :'+record.pay_complete+'</li>'+
-								   '<li>Order status : '+record.status+'</li>'+
+								   '<li>Order Info : #'+record.menu_name+'</li>'+
+								   '<li>Store Name : #'+record.store_name+'</li>'+
+								   '<li>Store Tel : #'+record.store_tel+'</li>'+
+							       '<li>Pay Method :'+record.pay_complete+'</li>'+
+								   '<li>Order Status : '+record.status+'</li>'+
 								   '<li>Orderer Address : '+record.order_addr+'</li>'+
-								   '<li>Order memo : '+record.order_memo+'</li>'+
+								   '<li>Order Memo : '+record.order_memo+'</li>'+
 								'</ul>'+
 							'</div>'+
 						'</div>';

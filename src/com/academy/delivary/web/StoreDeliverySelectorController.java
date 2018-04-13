@@ -50,7 +50,6 @@ public class StoreDeliverySelectorController extends HttpServlet {
 			resp.getWriter().write(object.toJSONString());
 
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

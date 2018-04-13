@@ -1,6 +1,9 @@
 package com.academy.delivary.web;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -17,7 +20,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 
-import com.academy.delivery.common.AWSService;
+import com.academy.delivery.common.NCloudService;
 import com.academy.delivery.service.MenuDto;
 import com.academy.delivery.service.MenuService;
 import com.academy.delivery.service.StoreDto;
@@ -29,7 +32,6 @@ import jdk.nashorn.internal.parser.DateParser;
 
 public class MenuEditController extends HttpServlet {
 
-	String filename;
 	@Override
 	protected void service(HttpServletRequest req,
 			HttpServletResponse resp) throws ServletException, IOException {
@@ -38,7 +40,6 @@ public class MenuEditController extends HttpServlet {
 		// post 방식	: 수정 처리
 		if (req.getMethod().equalsIgnoreCase("get")) {
 			MenuDto	menuDto		= menuService.selectOne(req.getParameter("no"));
-			filename = menuDto.getMenu_name()+menuDto.getMenu_file_extension();
 			req.setAttribute("menuDto", menuDto);
 			req.getRequestDispatcher("/admin/menu/edit.jsp").forward(req, resp);
 		} else {
@@ -89,22 +90,35 @@ public class MenuEditController extends HttpServlet {
 						}
 					}
 					else {
-						idx = FilenameUtils.getName(item.getName()).indexOf('.');
-						if(!FilenameUtils.getName(item.getName()).equalsIgnoreCase(filename)) {
-							AWSService amazonS3 = new AWSService();
-			                amazonS3.deleteFile(filename);
-			                amazonS3.uploadFile(item.getInputStream(),
-                					item.getSize(), 
-                					FilenameUtils.getName(item.getName()));
-			                menuDto.setMenu_file_extension(FilenameUtils.getName(item.getName()).substring(idx));
+						NCloudService ncloud = new NCloudService();
+						String filepath = req.getServletContext().getRealPath("/admin/menu/"+FilenameUtils.getName(item.getName()));
+						System.out.println(filepath);
+						
+						File file = new File(filepath);
+						FileOutputStream fos = new FileOutputStream(filepath);
+						int data = -1;
+						byte [] b = new byte[128];
+						InputStream is = item.getInputStream(); 
+						while((data = is.read(b)) != -1){
+							fos.write(b,0,data);
+							fos.flush();
 						}
+						if(is != null) is.close();
+						if(fos != null) fos.close();
+
+						ncloud.upload(file, "menu");
+						
+						file.delete();
+
+						idx = FilenameUtils.getName(item.getName()).indexOf('.');
+		                menuDto.setMenu_file_extension(FilenameUtils.getName(item.getName()).substring(idx));
 					}
 				}
 			} catch (FileUploadException e) {
 				e.printStackTrace();
 			} finally {
-//				req.setAttribute("EDIT_RESULT", menuService.update(menuDto));
-//				req.getRequestDispatcher("/admin/menu/process.jsp").forward(req, resp);
+				req.setAttribute("EDIT_RESULT", menuService.update(menuDto));
+				req.getRequestDispatcher("/admin/menu/process.jsp").forward(req, resp);
 			}
 		}
 	} // end service

@@ -23,5 +23,7 @@
   <sqlMap resource="ibatis/MenuDto_iBatis.xml"/>
   <sqlMap resource="ibatis/FAQDto_iBatis.xml"/>
   <sqlMap resource="ibatis/StoreDeliveryDto_iBatis.xml"/>
+  <sqlMap resource="ibatis/CartAndroid_iBatis.xml"/>
+  
   
 </sqlMapConfig>

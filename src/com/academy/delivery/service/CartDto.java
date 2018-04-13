@@ -11,7 +11,7 @@ public class CartDto {
 	private String		store_no;		// 매장번호(fk)
 	private String		status;			// 주문상태
 	private String		order_memo;		// 주문메모
-	private String		order_addr;		// 주문메모
+	private String		order_addr;		// 배달지
 	
 	//  ===== 여기부터 join문으로 가져오는 칼럼들 =====
 	private String 		menu_name;		// 메뉴이름

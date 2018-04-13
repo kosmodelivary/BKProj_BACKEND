@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+	<sqlMap namespace="Delivary">
+	
+	<!-- CartDto 별칭, resultMap -->
+	<typeAlias alias="CartDto" type="com.academy.delivery.service.CartDto"/>
+	<resultMap id="CartDtoResult" class="CartDto">
+		<result property="order_no" />
+		<result property="member_name" />
+		<result property="order_addr" />
+		<result property="total_price" />
+	</resultMap>
+
+	<!-- CartDao 사용 DB Query -->
+    <select id="StoreDelivery.selectToAndroid" parameterClass="java.lang.String" resultMap="CartDtoResult">
+		SELECT order_no, member_name, order_addr, SUM(menu_price * amount) total_price
+		FROM cart c JOIN menu m ON c.menu_no = m.menu_no JOIN member mb ON c.member_email = mb.member_email
+		WHERE store_no = 
+		(SELECT store_no FROM store WHERE store_name = #store_name#) AND c.status = '접수'
+		GROUP BY order_no, member_name, order_addr    
+    </select>
+
+
+</sqlMap>

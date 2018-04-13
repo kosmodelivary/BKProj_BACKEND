@@ -17,6 +17,17 @@
     <servlet-name>BackendOrder</servlet-name>
     <url-pattern>/ADMIN/Order.do</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>BackendOrderToAndroid</servlet-name>
+    <servlet-class>com.academy.delivary.web.OrderToAndroidController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BackendOrderToAndroid</servlet-name>
+    <url-pattern>/ADMIN/OrderToAndroid.do</url-pattern>
+  </servlet-mapping>
+  
+  
   <servlet>
     <servlet-name>BackendMemberList</servlet-name>
     <servlet-class>com.academy.delivary.web.MemberListController</servlet-class>
@@ -100,6 +111,16 @@
     <servlet-name>BackendStoreView</servlet-name>
     <url-pattern>/ADMIN/STORE/View.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>BackendStoreNameList</servlet-name>
+    <servlet-class>com.academy.delivary.web.StoreNameListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BackendStoreNameList</servlet-name>
+    <url-pattern>/ADMIN/STORE/NameList.do</url-pattern>
+  </servlet-mapping>
+
+
   <servlet>
     <servlet-name>BackendStoreDelivery</servlet-name>
     <servlet-class>com.academy.delivary.web.StoreDeliveryController</servlet-class>

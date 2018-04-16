@@ -33,7 +33,7 @@ public class StoreDeliveryAddingController extends HttpServlet {
 				if (object != null) {
 					StoreDeliveryDto	dto	= new StoreDeliveryDto();
 					
-					dto.setDelivery_no(object.get("uuid").toString());
+					dto.setDelivery_no(object.get("store").toString() + "-" + object.get("uuid").toString().split("-")[0]);
 					dto.setStore_no(storeService.selectOneByName(object.get("store").toString()).getStore_no());
 					deliveryService.insert(dto);
 				}

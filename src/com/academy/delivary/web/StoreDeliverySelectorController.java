@@ -43,6 +43,8 @@ public class StoreDeliverySelectorController extends HttpServlet {
 			// ajax에 돌려줄 매장 주소 json 객체에 저장
 			object		= new JSONObject();
 			object.put("address", storeService.getDeliveryAddr(storeDelivery.get(index).getStore_no()));
+			
+			
 
 			// 저장된 객체 응답 객체에 기록
 			resp.setContentType("application/x-json");

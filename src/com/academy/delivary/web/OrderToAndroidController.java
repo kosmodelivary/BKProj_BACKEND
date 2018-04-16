@@ -33,7 +33,7 @@ public class OrderToAndroidController extends HttpServlet {
 		try {
 			if (req.getParameter("PostData") != null) {
 				System.out.println(req.getParameter("PostData"));
-				dtoList	= cartService.selectToAndroid(req.getParameter("PostData"));
+				dtoList	= cartService.selectToAndroid(req.getParameter("PostData").split("-")[0]);
 				
 				System.out.println(dtoList.size());
 				

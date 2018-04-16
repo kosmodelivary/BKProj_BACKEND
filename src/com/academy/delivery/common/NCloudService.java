@@ -37,7 +37,7 @@ public class NCloudService {
 				
 		try {
 			if (uploadKeyword.contains("delivery")) {
-				rid = new FSResourceID("bkproject/json/delivery/" + file.getName());
+				rid = new FSResourceID("bkproject/json/delivery/" + URLEncoder.encode(file.getName(), "UTF-8"));
 			}
 			else if (uploadKeyword.contains("menu")) {
 				String filename = URLEncoder.encode(file.getName(), "UTF-8");

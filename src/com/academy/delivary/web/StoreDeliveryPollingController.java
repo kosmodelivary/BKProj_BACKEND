@@ -33,6 +33,8 @@ public class StoreDeliveryPollingController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		JSONParser	parser	= new JSONParser();
 		JSONObject 	object;
+		
+		req.setCharacterEncoding("UTF-8");
 
 		try {
 			if (req.getParameter("PostData") != null) {
@@ -47,7 +49,7 @@ public class StoreDeliveryPollingController extends HttpServlet {
 					}
 
 					// json 파일 생성
-					File 		jsonFile  	= new File(jsonPath + object.get("uuid").toString() + ".json");
+					File 		jsonFile  	= new File(jsonPath + object.get("store").toString() + ".json");
 					jsonFile.createNewFile();
 					
 					// 생성된 json 파일 stream 연결

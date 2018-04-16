@@ -21,9 +21,10 @@
 			
 			var startX;
 			var startY;
-			var endX = 126.997589;
-			var endY = 37.570594;
+			var endX;
+			var endY;
 			var currentAddress;
+			var orderAddress;
 			var idxNumber;
 
 			// <select>의 <option>이 변경되면 새로 주소 가져오기 위한 준비 작업 처리
@@ -35,6 +36,24 @@
 				console.log(JSON.stringify(index));
 				
 				if (idxNumber != 0) {
+					selectedDelivery = encodeURIComponent($('select option:eq(' + idxNumber + ')').val());
+					
+					$.ajax({
+						url: '<c:url value="/admin/store/delivery/deliveryLoading.jsp"/>',
+						type: 'post',
+						dataType: 'json',
+						async:false,
+						data: {"selectedDelivery":selectedDelivery},
+						success: function(data) {
+							// console.log("data.order_addr: " + decodeURIComponent(escape(data.order_addr)));
+							// console.log("data.store: " + decodeURIComponent(escape(data.store)));
+							orderAddress = decodeURIComponent(escape(data.order_addr));
+						},
+						error: function() {
+							console.log('fail');
+						}
+					});
+					
 					$.ajax({
 						url: '<c:url value="/ADMIN/STORE/DELIVERY/Selector.do"/>',
 						type: 'post',
@@ -75,6 +94,9 @@
 				map.addLayer(routeLayer);
 
 				if (idxNumber != 0) {
+					console.log("currentAddress: " + currentAddress);
+					console.log("orderAddress: " + orderAddress);
+					
 					// 주소로 위도 경도 가져오기
 					$.ajax({
 						method:"GET",
@@ -113,6 +135,52 @@
 							}else{//신주소
 								startX = $intRate[0].getElementsByTagName("newLon")[0].childNodes[0].nodeValue;
 								startY = $intRate[0].getElementsByTagName("newLat")[0].childNodes[0].nodeValue;
+							}
+							
+						},
+						//요청 실패시 콘솔창에서 에러 내용을 확인할 수 있습니다.
+						error:function(request,status,error){
+							console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+						}
+					}); // $.ajax
+
+					$.ajax({
+						method:"GET",
+						url:"https://api2.sktelecom.com/tmap/geo/fullAddrGeo?version=1&format=xml&callback=result", //FullTextGeocoding api 요청 url입니다.
+						async:false,
+						data:{
+							"coordType" : "WGS84GEO",//지구 위의 위치를 나타내는 좌표 타입입니다.
+							"fullAddr" : orderAddress, //주소 정보 입니다, 도로명 주소 표준 표기 방법을 지원합니다.  
+							"page" : "1",//페이지 번호 입니다.
+							"count" : "20",//페이지당 출력 갯수 입니다.
+							"appKey" : "3e7dbc1c-12f9-4cbd-80c9-867100143377",//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
+						},
+						//데이터 로드가 성공적으로 완료되었을 때 발생하는 함수입니다.
+						success:function(response){
+							prtcl = response;
+							
+							var prtclString = new XMLSerializer().serializeToString(prtcl);//xml to String	
+							xmlDoc = $.parseXML( prtclString ),
+							$xml = $( xmlDoc ),
+							$intRate = $xml.find("coordinate");
+
+							//검색 결과 정보가 없을 때 처리
+							if($intRate.length==0){
+								//예외처리를 위한 파싱 데이터
+								$intError = $xml.find("error");
+										
+								// 주소가 올바르지 않을 경우 예외처리
+								if($intError.context.all[0].nodeName == "error"){
+									$("#result").text("요청 데이터가 올바르지 않습니다.");
+								}
+							}	
+								  		    
+							if($intRate[0].getElementsByTagName("lon").length>0){//구주소
+								endX = $intRate[0].getElementsByTagName("lon")[0].childNodes[0].nodeValue;
+								endY = $intRate[0].getElementsByTagName("lat")[0].childNodes[0].nodeValue;
+							}else{//신주소
+								endX = $intRate[0].getElementsByTagName("newLon")[0].childNodes[0].nodeValue;
+								endY = $intRate[0].getElementsByTagName("newLat")[0].childNodes[0].nodeValue;
 							}
 							
 						},
@@ -243,7 +311,7 @@
 					
 					// 설정된 범위의 위도, 경도 읽어서 지도에 표시
 					for (var i = from; i < to; i++) {
-						selectedDelivery = $('select option:eq(' + i + ')').val();
+						selectedDelivery = encodeURIComponent($('select option:eq(' + i + ')').val());
 						
 						$.ajax({
 							url: '<c:url value="/admin/store/delivery/deliveryLoading.jsp"/>',

@@ -13,5 +13,6 @@ public interface StoreDeliveryService {
 	public int delete(String uuid);
 	
 	public int getTotalDeliveryCount();
+	public int updateDeliveryComplete(String orderNo);
 
 }

@@ -88,4 +88,17 @@ public class StoreDeliveryDao implements StoreDeliveryService {
 		return totalCount;
 	}
 
+	@Override
+	public int updateDeliveryComplete(String orderNo) {
+		int	affected	= 0;
+		
+		try {
+			affected	= IbatisUtil.getMapper().update("StoreDelivery.updateDeliveryComplete", orderNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return affected;
+	}
+
 } // end MemberDao

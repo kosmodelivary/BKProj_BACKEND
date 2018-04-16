@@ -45,9 +45,10 @@
 						async:false,
 						data: {"selectedDelivery":selectedDelivery},
 						success: function(data) {
-							// console.log("data.order_addr: " + decodeURIComponent(escape(data.order_addr)));
-							// console.log("data.store: " + decodeURIComponent(escape(data.store)));
-							orderAddress = decodeURIComponent(escape(data.order_addr));
+							console.log("data.order_addr: " + decodeURIComponent(escape(data.order_addr)));
+							orderAddress = decodeURIComponent(escape(data.order_addr)) == 'undefined'
+										   ? "서울특별시 금천구 가산동 426-5"
+										   : decodeURIComponent(escape(data.order_addr));
 						},
 						error: function() {
 							console.log('fail');

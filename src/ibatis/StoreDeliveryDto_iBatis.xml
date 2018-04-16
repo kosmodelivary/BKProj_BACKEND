@@ -28,5 +28,8 @@
 	<update id="StoreDelivery.update" parameterClass="StoreDeliveryDto">
 		UPDATE store_delivery SET delivery_useable = #delivery_useable# WHERE delivery_no = #delivery_no#
 	</update>
+	<update id="StoreDelivery.updateDeliveryComplete" parameterClass="java.lang.String">
+		UPDATE cart SET status = '완료' WHERE order_no = #order_no#
+	</update>
 	
 </sqlMap>

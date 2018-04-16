@@ -35,13 +35,21 @@ public class StoreDeliveryUseableController extends HttpServlet {
 				object = (JSONObject) parser.parse(req.getParameter("PostData"));
 
 				if (object != null) {
+					System.out.println(object.get("useable").toString());
+					
+					// 딜리버리 배달 상태 변경
+					StoreDeliveryDto	dto	= new StoreDeliveryDto();
+					
+					dto.setDelivery_useable(object.get("useable").toString());
+					dto.setDelivery_no(object.get("deliveryNo").toString());
+					deliveryService.update(dto);
+
 					// 배달 끝나서 해당 딜리버리 사용 가능하게 되었다면
 					if (object.get("useable").toString().equals("true")) {
-						StoreDeliveryDto	dto	= new StoreDeliveryDto();
-						
-						dto.setDelivery_no(object.get("uuid").toString());
-						dto.setDelivery_useable(object.get("useable").toString());
-						deliveryService.update(dto);
+						// 배달 종료될 때만 주문 번호가 들어오므로
+						if (object.get("order_no") != null) {
+							deliveryService.updateDeliveryComplete(object.get("order_no").toString());
+						}
 					} // if if (object.get("useable").toString().equals("true")) 
 				} // if (object != null) 
 			} 

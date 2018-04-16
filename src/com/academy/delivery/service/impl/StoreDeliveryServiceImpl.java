@@ -43,5 +43,10 @@ public class StoreDeliveryServiceImpl implements StoreDeliveryService {
 	public int getTotalDeliveryCount() {
 		return storeDeliveryDao.getTotalDeliveryCount();
 	}
+
+	@Override
+	public int updateDeliveryComplete(String orderNo) {
+		return storeDeliveryDao.updateDeliveryComplete(orderNo);
+	}
 	
 } // end MemberServiceImpl 

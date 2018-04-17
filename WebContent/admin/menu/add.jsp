@@ -186,7 +186,7 @@
 	     				</td>
 	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
  							<font size="4em">
-  								<input class="form-control" type="text" name="menu_enddate">
+  								<input id="date" class="form-control" type="text" name="menu_enddate">
  							</font>
  						</td>
 	     			</tr>

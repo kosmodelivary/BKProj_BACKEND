@@ -117,9 +117,9 @@
 				</div>
 		
 				<div class="row" align="center" style="padding:0px 30px 0px 0px;">
-					<a href="<c:url value='/ADMIN/MENU/Add.do'/>">
+					<a style="text-decoration: none" href="<c:url value='/ADMIN/MENU/Add.do'/>">
 						<img alt="메뉴추가" width="20" src="${pageContext.request.contextPath}/Images/plus.png">
-						<img alt="메뉴추가" width="50" src="${pageContext.request.contextPath}/Images/burger01.png">
+						&nbsp;<img alt="메뉴추가" width="50" src="${pageContext.request.contextPath}/Images/burger01.png">
 					</a>
 				</div>
 	     	</div>

@@ -113,7 +113,7 @@
 		   			</tbody>
 				</table>
 				<div class="row" id="email" align="center" style="padding:0px 30px 0px 0px;">
-					<a href="javascript:void(0);" onclick="openEmailForm()">
+					<a style="text-decoration: none" href="javascript:void(0);" onclick="openEmailForm()">
 						<img alt="이메일모달팝업" width="20" src="${pageContext.request.contextPath}/Images/plus.png">
 						<img alt="이메일모달팝업" width="50" src="${pageContext.request.contextPath}/Images/email.png">
 					</a>

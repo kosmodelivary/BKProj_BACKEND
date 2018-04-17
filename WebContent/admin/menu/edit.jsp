@@ -118,6 +118,7 @@
 		     					<option value="hamburger" <c:if test="${fn:indexOf(menuDto.category_name, 'ham') != -1 }">selected</c:if>>햄버거</option>
 		     					<option value="side" <c:if test="${fn:indexOf(menuDto.category_name, 'side') != -1 }">selected</c:if>>사이드</option>
 		     					<option value="drink" <c:if test="${fn:indexOf(menuDto.category_name, 'dri') != -1 }">selected</c:if>>드링크</option>
+		     					<option value="set" <c:if test="${fn:indexOf(menuDto.category_name, 'se') != -1 }">selected</c:if>>세트</option>
 			     				</select>
  							</font>
  						</td>
@@ -214,7 +215,7 @@
 	     				</td>
 	     				<td class="text-left" style="padding:20px 20px 20px 20px;">
  							<font size="4em">
-  								<input class="form-control" type="text" name="menu_enddate" value="${menuDto.menu_enddate }">
+  								<input id="date" class="form-control" type="text" name="menu_enddate" value="${menuDto.menu_enddate }">
  							</font>
  						</td>
 	     			</tr>
@@ -227,8 +228,8 @@
 	     				<td class="text-left" style="padding:40px 20px 0px 20px;">
  							<font size="4em">
   								<input class="form-control" type="file" name="menu_image" id="menu_image"/><h1></h1>
-					     		<img src="https://s3.ap-northeast-2.amazonaws.com/bkprojserver/${menuDto.menu_name }${menuDto.menu_file_extension }" 
-					     		     id="menu_image_thumbnail" alt="img_thumbnail" style="width:300px;height:300px;"/>
+					     		<img src="http://restapi.fs.ncloud.com/bkproject/image/menu/${menuDto.menu_name }${menuDto.menu_file_extension }" 
+					     		     id="menu_image_thumbnail" alt="${menuDto.menu_name }이미지" style="width:300px;height:300px;"/>
  							</font>
  						</td>
 	     			</tr>
@@ -246,7 +247,17 @@
 			</div>
 		 <!--common script for all pages-->
    		 <script src="${pageContext.request.contextPath}/bootstrap/js/common-scripts.js"></script>
-   	
+   		 <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.1/combined/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+	  	 <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.1/combined/js/gijgo.min.js" type="text/javascript"></script>
+	  	 <script src="${pageContext.request.contextPath }/bootstrap/js/messages.ko-kr.js" type="text/javascript"></script>
+	  	 <script>
+	  		 $('#date').datepicker({
+	  			 uiLibrary:'bootstrap',
+	  			 locale:'ko-kr',
+	  			 format:'yyyy-mm-dd',
+	  			 minDate: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
+	  		 });	
+	  	 </script>
 	   	</div>	
 	</section>
 	</section>

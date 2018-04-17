@@ -29,7 +29,7 @@
 	</select>
 	<insert id="Menu.insert" parameterClass="MenuDto">
 		INSERT INTO menu VALUES(SEQ_MENU_MENU_NO.NEXTVAL,#category_name#,#menu_name#,
-		#menu_price#,#menu_weight#,#menu_calrorie#,#menu_protein#,#menu_sodium#,#menu_sugars#,#menu_fat#,#menu_enddate#,#menu_file_extension#)
+		#menu_price#,#menu_weight#,#menu_calrorie#,#menu_protein#,#menu_sodium#,#menu_sugars#,#menu_fat#,#menu_enddate#,#menu_file_extension#,default)
 	</insert>
 	<select id="Menu.selectOne" parameterClass="java.lang.String" resultMap="MenuDtoResult">
 		SELECT * FROM menu WHERE menu_no = #menu_no#

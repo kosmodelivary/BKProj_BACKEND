@@ -64,10 +64,10 @@
 			<form class="form-inline" action="<c:url value='/ADMIN/MENU/Add.do' />" 
 				  method="post" enctype="multipart/form-data">
 			
-				<table class="table table-bordered">
+				<table class="table table-bordered table-responsive">
 				
 	     			<tr>
-	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+	     				<td style="width:25%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		     				<img alt="메뉴 이름" width="40" src="${pageContext.request.contextPath}/Images/name.png">
 		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;메뉴 이름</font>
 	     				</td>
@@ -79,7 +79,7 @@
 	     			</tr>
 	     			
 	     			<tr>
-	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+	     				<td style="width:25%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		     				<img alt="분류" width="40" src="${pageContext.request.contextPath}/Images/category.png">
 		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;메뉴 분류</font>
 	     				</td>
@@ -90,13 +90,14 @@
 			     					<option value="hamburger">햄버거</option>
 			     					<option value="side">사이드</option>
 			     					<option value="drink">드링크</option>
+			     					<option value="set">세트</option>
 			     				</select>
  							</font>
  						</td>
 	     			</tr>
 	     			
 	     			<tr>
-	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+	     				<td style="width:25%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		     				<img alt="가격" width="40" src="${pageContext.request.contextPath}/Images/money.png">
 		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;메뉴 가격</font>
 	     				</td>
@@ -120,7 +121,7 @@
 	     			</tr>
 	     			
 	     			<tr>
-	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+	     				<td style="width:25%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		     				<img alt="열량" width="40" src="${pageContext.request.contextPath}/Images/check.png">
 		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;열&nbsp;량</font>
 	     				</td>
@@ -132,7 +133,7 @@
 	     			</tr>
 	     			
 	     			<tr>
-	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+	     				<td style="width:25%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		     				<img alt="단백질" width="40" src="${pageContext.request.contextPath}/Images/check.png">
 		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;단&nbsp;백&nbsp;질</font>
 	     				</td>
@@ -144,7 +145,7 @@
 	     			</tr>
 	     			
 	     			<tr>
-	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+	     				<td style="width:25%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		     				<img alt="나트륨" width="40" src="${pageContext.request.contextPath}/Images/check.png">
 		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;나&nbsp;트&nbsp;륨</font>
 	     				</td>
@@ -156,7 +157,7 @@
 	     			</tr>
 	     			
 	     			<tr>
-	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+	     				<td style="width:25%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		     				<img alt="당류" width="40" src="${pageContext.request.contextPath}/Images/check.png">
 		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;당&nbsp;류</font>
 	     				</td>
@@ -168,7 +169,7 @@
 	     			</tr>
 	     			
 	     			<tr>
-	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+	     				<td style="width:25%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		     				<img alt="포화지방" width="40" src="${pageContext.request.contextPath}/Images/check.png">
 		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;포화&nbsp;지방</font>
 	     				</td>
@@ -180,7 +181,7 @@
 	     			</tr>
 	     			
 	     			<tr>
-	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+	     				<td style="width:25%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		     				<img alt="판매종료일" width="40" src="${pageContext.request.contextPath}/Images/date.png">
 		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;판매 종료일</font>
 	     				</td>
@@ -192,7 +193,7 @@
 	     			</tr>
 	     			
 	     			<tr>
-	     				<td style="width:15%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
+	     				<td style="width:25%; padding:10px; text-align:left; vertical-align:middle;" class="alert alert-warning">
 		     				<img alt="메뉴 이미지" width="40" src="${pageContext.request.contextPath}/Images/image.png">
 		     				<font size="4em" style="vertical-align:middle;">&nbsp;&nbsp;메뉴 이미지</font>
 	     				</td>
@@ -256,7 +257,8 @@
   		$('#date').datepicker({
   			uiLibrary:'bootstrap',
   			locale:'ko-kr',
-  			format:'yyyy-mm-dd'
+  			format:'yyyy-mm-dd',
+  			minDate: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
   		});	
   	</script>
   </body>

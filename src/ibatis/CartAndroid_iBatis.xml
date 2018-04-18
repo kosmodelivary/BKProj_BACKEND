@@ -21,7 +21,8 @@
 		FROM cart c JOIN menu m ON c.menu_no = m.menu_no JOIN member mb ON c.member_email = mb.member_email
 		WHERE store_no = 
 		(SELECT store_no FROM store WHERE store_name = #store_name#) AND c.status = '접수'
-		GROUP BY order_no, member_name, order_addr    
+		GROUP BY order_no, member_name, order_addr
+		ORDER BY order_no DESC    
     </select>
 
 
